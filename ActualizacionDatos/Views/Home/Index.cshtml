@@ -5,7 +5,7 @@
 <div class="" style="background-color:white;">
     <div class="bg-orange text-white  p-3">
         <div class="p-2 m-0">
-           <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px"/>
+            <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" />
         </div>
         <h1>Actualización de datos M&A</h1>
 
@@ -51,32 +51,30 @@
                     <input type="text" class="form-control" placeholder="Apellido Materno" />
                 </div>
                 <button type="button" class="btn textBlue2 bgacero py-0 float-right" onclick="NuevoHermano();" style="font-size:1.4rem; position: relative; left: 100%;top: -36px;">+</button>
-                
-                <div id="nuevo-Hermano" class="p-0 m-0 form-row col-md-12">
-                   
-                </div>
+
+                <div id="nuevo-Hermano" class="p-0 mx-0 mb-0 form-row col-md-12" style="margin-top:-1.5em !important;"></div>
 
             </div>
-               
+
         </div>
         <br />
         <div class="textBlue">
             <p class="font-weight-bold"> 2.- Actualmente tienes algún familiar hasta segundo grado de consanguineidad o afinidad (cónyuge, conviviente, pareja, hijos, padres, hermanos o abuelos) laborando o prestando servicios en el Estado o que en los últimos 5 años haya trabajado en el Estado?</p>
             <div class="px-0 mx-0">
-                <div class="form-check">
-                    <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <div class="form-check" style="display:flex !important;">
+                    <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Sí" onclick="SiNo()">
                     <label for="inlineRadio1" class="mb-0"></label>
-                    <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio1"> &nbsp;SI</label>
+                    <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio1"> &nbsp; SI</label>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <div class="form-check mt-2" style="display:flex !important;">
+                    <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No" onclick="SiNo()">
                     <label for="inlineRadio2" class="mb-0"></label>
                     <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio2">&nbsp; NO</label>
                 </div>
             </div>
         </div>
         <br />
-        <div class="textBlue">
+        <div class="textBlue d-none" id="oculto">
             <p class="font-weight-bold">2.1- Por favor indica sus datos a continuación:</p>
             <div class="px-0 mx-0 form-row">
                 <label class="col-md-3 ">PARENTESCO</label>
@@ -97,20 +95,21 @@
             </div>
         </div>
         <br />
-        <div class="textBlue">
+        <div class="textBlue" id="div3">
             <p class="font-weight-bold">3.- Si actualmente ejerces un cargo público o lo has desempeñado en el pasado, por ejemplo como director de una empresa pública, asesor, magistrado, vocal de algún tribunal administrativo o similares), por favor completar los siguientes campos: </p>
             <div class="px-0 mx-0 form-row">
                 <label class="col-md-3 ">ENTIDAD ESTATAL</label>
                 <input type="text" class="col-md-3 form-control" placeholder="" />
-
                 <label class="col-md-3 text-center">CARGO O POSICIÓN</label>
                 <input type="text" class="col-md-3 form-control" placeholder="" />
                 <br /><br />
                 <label class="col-md-3 ">FECHA</label>
                 <input type="date" class="col-md-3 form-control" placeholder="" />
-
             </div>
         </div>
+        <button type="button" class="btn textBlue2 bgacero py-0 mt-2 float-right" onclick="Nuevo3();" style="font-size:1.4rem;">+</button>
+
+        <br />
         <br />
         <div class="textBlue bgacero p-2">
             <h3>DECLARACION JURADA</h3>
@@ -129,6 +128,7 @@
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script>
 
+    var count = 0;
     function NuevoHermano() {
         $('#nuevo-Hermano').append(` <label class="col-md-3"></label>
                     <div class="col-md-3">
@@ -140,7 +140,35 @@
                     <div class="col-md-3">
                         <input type="text" class="form-control" placeholder="Apellido Materno" />
                     </div><br><br>
-`);
+        `);
     }
-   
+    function Nuevo3() {
+        count++;
+        $('#div3').append(`<hr class="w-100"><div class="px-0 mx-0 form-row mt-3" id="a-${count}">
+        <button type="button" class="btn text-white bg-orange py-0 mt-2" onclick="Remove(a-${count});" style="font-size:1rem;position:absolute;z-index:1;left:85.5%;bottom:-174px;">X</button>
+
+                <label class="col-md-3 ">ENTIDAD ESTATAL</label>
+                <input type="text" class="col-md-3 form-control" placeholder="" />
+                <label class="col-md-3 text-center">CARGO O POSICIÓN</label>
+                <input type="text" class="col-md-3 form-control" placeholder="" />
+                <br /><br />
+                <label class="col-md-3 ">FECHA</label>
+                <input type="date" class="col-md-3 form-control" placeholder="" />
+            </div>`)
+    }
+    function SiNo() {
+        var seleccionado = $("input[name='inlineRadioOptions']:checked").val();
+        if (seleccionado == 'Sí') {
+            $('#oculto').removeClass('d-none');
+        } else {
+            $('#oculto').addClass('d-none');
+
+        }
+    }
+
+    function Remove(id) {
+        $(id).remove();
+    }
+
+
 </script>
