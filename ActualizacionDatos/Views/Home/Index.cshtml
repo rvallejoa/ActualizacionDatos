@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="" style="background-color:white;">
+    <div class="bg-orange text-white  p-3">
+        <div class="p-2 m-0">
+           <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px"/>
+        </div>
+        <h1>Actualización de datos M&A</h1>
+
+        <h5>Con el fin de tener actualizados sus datos personales y familiares y así poder cumplir con los eventuales requerimientos que nuestros clientes puedan solicitarnos como parte de sus políticas internas, agradeceremos completar el siguiente formulario</h5>
+    </div>
+    <br />
+    <div class="px-5">
+        <div class="textBlue">
+            <p class="font-weight-bold"> 1.- Por favor ingresa los nombres y apellidos de tus padres y hermanos:</p>
+            <div class="form-row px-2">
+                <label class="col-md-3">PADRE</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Nombres" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control px-2" placeholder="Apellido Paterno" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Apellido Materno" />
+                </div>
+
+                <br /><br />
+                <label class="col-md-3">MADRE</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Nombres" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control px-2" placeholder="Apellido Paterno" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Apellido Materno" />
+                </div>
+                <br />
+                <br />
+                <label class="col-md-3">HERMANO(A)</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Nombres" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control px-2" placeholder="Apellido Paterno" />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Apellido Materno" />
+                </div>
+                <button type="button" class="btn textBlue2 bgacero py-0 float-right" onclick="NuevoHermano();" style="font-size:1.4rem; position: relative; left: 100%;top: -36px;">+</button>
+                
+                <div id="nuevo-Hermano" class="p-0 m-0 form-row col-md-12">
+                   
+                </div>
+
+            </div>
+               
+        </div>
+        <br />
+        <div class="textBlue">
+            <p class="font-weight-bold"> 2.- Actualmente tienes algún familiar hasta segundo grado de consanguineidad o afinidad (cónyuge, conviviente, pareja, hijos, padres, hermanos o abuelos) laborando o prestando servicios en el Estado o que en los últimos 5 años haya trabajado en el Estado?</p>
+            <div class="px-0 mx-0">
+                <div class="form-check">
+                    <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label for="inlineRadio1" class="mb-0"></label>
+                    <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio1"> &nbsp;SI</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label for="inlineRadio2" class="mb-0"></label>
+                    <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio2">&nbsp; NO</label>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="textBlue">
+            <p class="font-weight-bold">2.1- Por favor indica sus datos a continuación:</p>
+            <div class="px-0 mx-0 form-row">
+                <label class="col-md-3 ">PARENTESCO</label>
+                <input type="text" class="col-md-3 form-control" placeholder="" />
+
+                <label class="col-md-3 text-center">NOMBRE COMPLETO</label>
+                <input type="text" class="col-md-3 form-control" placeholder="" />
+                <br /><br />
+                <label class="col-md-3 ">FECHA DE NACIMIENTO</label>
+                <input type="date" class="col-md-3 form-control" placeholder="" />
+
+                <label class="col-md-3 text-center">ENTIDAD ESTATAL</label>
+                <input type="text" class="col-md-3 form-control" placeholder="" />
+                <br /><br />
+                <label class="col-md-3 ">CARGO O POSICIÓN</label>
+                <input type="text" class="col-md-3 form-control" placeholder="" />
+
+            </div>
+        </div>
+        <br />
+        <div class="textBlue">
+            <p class="font-weight-bold">3.- Si actualmente ejerces un cargo público o lo has desempeñado en el pasado, por ejemplo como director de una empresa pública, asesor, magistrado, vocal de algún tribunal administrativo o similares), por favor completar los siguientes campos: </p>
+            <div class="px-0 mx-0 form-row">
+                <label class="col-md-3 ">ENTIDAD ESTATAL</label>
+                <input type="text" class="col-md-3 form-control" placeholder="" />
+
+                <label class="col-md-3 text-center">CARGO O POSICIÓN</label>
+                <input type="text" class="col-md-3 form-control" placeholder="" />
+                <br /><br />
+                <label class="col-md-3 ">FECHA</label>
+                <input type="date" class="col-md-3 form-control" placeholder="" />
+
+            </div>
+        </div>
+        <br />
+        <div class="textBlue bgacero p-2">
+            <h3>DECLARACION JURADA</h3>
+            <span>
+                Mediante el presente documentos reconozco haber sido informado sobre la finalidad de la información solicitada para lo cual otorgo mi consentimiento. Asimismo, reconozco que la información brindada a través del presente documento virtual es verdadera y tiene calidad de declaración jurada.
+            </span>
+        </div>
+        <br />
+        <div class="text-center">
+            <button type="button" class=" btn bg-orange text-white font-weight-bold">GUARDAR DATOS</button>
+        </div>
+        <br />
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+
+    function NuevoHermano() {
+        $('#nuevo-Hermano').append(` <label class="col-md-3"></label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Nombres" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control px-2" placeholder="Apellido Paterno" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Apellido Materno" />
+                    </div><br><br>
+`);
+    }
+   
+</script>

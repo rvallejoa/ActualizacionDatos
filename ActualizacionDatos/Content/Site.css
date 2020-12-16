@@ -1,0 +1,224 @@
+﻿body {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bgblue: rgb( 65, 85, 99);
+    --bgbrow: rgb(208, 203, 198);
+    --bgorange: #f37a00;
+    --bgblue2: #325262;
+    --bggray: rgb(240, 240, 240);
+    --bgacero: #E0E0E0;
+    --bgacero2: #32526225;
+    --bgacerotable: #a9b4c3;
+    --blue-light: #B1C5CF;
+    /*--grisEvva: #E0E0E0;
+    --bgacero: #e9ecef;*/
+}
+
+
+/***********************estilos generales***********************/
+
+.orangeTr {
+    background-color: #f8c28c !important;
+}
+
+
+.bg-blue {
+    background-color: var(--bgblue2);
+}
+
+.bg-orange {
+    background-color: var(--bgorange);
+}
+
+.bg-blue-light {
+    background-color: #B1C5CF;
+}
+
+.shadown-inset {
+    -webkit-box-shadow: inset -1px 1px 6px 2px rgba(154,150,150,0.46);
+    -moz-box-shadow: inset -1px 1px 6px 2px rgba(154,150,150,0.46);
+    box-shadow: inset -1px 1px 6px 2px rgba(154,150,150,0.46);
+}
+
+.p-8 {
+    font-size: 0.8em;
+}
+
+.p-7 {
+    font-size: 0.7em;
+}
+
+.p-9 {
+    font-size: 0.9em;
+}
+
+
+.textBlue {
+    color: var(--bgblue2);
+}
+
+.textBlue2 {
+    color: var(--bgblue2);
+    font-weight: bold;
+}
+
+.text-blue-light {
+    color: #B1C5CF;
+}
+
+.textOrange {
+    color: var(--bgorange);
+}
+
+.textOrange2 {
+    color: var(--bgorange);
+    font-weight: bold;
+}
+
+
+.textgray {
+    color: var(--bgacerotable);
+}
+
+.text-carbon {
+    color: #333333;
+}
+
+.bggray {
+    background-color: rgb(240, 240, 240);
+}
+
+.bgacero {
+    background-color: var(--bgacero);
+}
+
+.textAcero {
+    color: var(--bgacero);
+}
+
+.textAcero2 {
+    color: var(--bgacero);
+    font-weight: bold;
+}
+
+.backgGrey {
+    background-color: gray;
+}
+
+/* Sombras */
+
+.shadow-depth-1-half {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15) !important;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15) !important;
+}
+
+.shadow-depth-1 {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
+}
+
+.shadow-depth-2 {
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+}
+
+.shadow-depth-3 {
+    -webkit-box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19) !important;
+    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19) !important;
+}
+
+.shadow-depth-4 {
+    -webkit-box-shadow: 0 16px 28px 0 rgba(0,0,0,0.22),0 25px 55px 0 rgba(0,0,0,0.21) !important;
+    box-shadow: 0 16px 28px 0 rgba(0,0,0,0.22),0 25px 55px 0 rgba(0,0,0,0.21) !important;
+}
+
+.shadow-depth-5 {
+    -webkit-box-shadow: 0 27px 24px 0 rgba(0,0,0,0.2),0 40px 77px 0 rgba(0,0,0,0.22) !important;
+    box-shadow: 0 27px 24px 0 rgba(0,0,0,0.2),0 40px 77px 0 rgba(0,0,0,0.22) !important;
+}
+
+.border-lightgrey-1 {
+    border: 1px solid lightgray;
+}
+
+.border-lightgrey-2 {
+    border: 2px solid lightgray;
+}
+
+/*********************** fin estilos generales***********************/
+/* Radio Button CSS*/
+label {
+    display: inline;
+}
+
+.radio-1 {
+    width: 193px;
+}
+
+.button-holder {
+    float: left;
+    margin-left: 6px;
+    margin-top: 16px;
+}
+
+.regular-radio {
+    display: none;
+}
+
+    .regular-radio + label {
+        background-color: #fafafa;
+        border: 2px solid #cacece;
+        border-radius: 50px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 -15px 10px -12px rgba(0, 0, 0, 0.05) inset;
+        display: inline-block;
+        padding: 9px;
+        position: relative;
+    }
+
+    .regular-radio:checked + label:after {
+        background: none repeat scroll 0 0 var(--orange-hex);
+        border-radius: 50px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) inset;
+        content: " ";
+        font-size: 36px;
+        height: 10px;
+        left: 4px;
+        position: absolute;
+        top: 4px;
+        width: 10px;
+    }
+
+
+    .regular-radio:checked + label {
+        background-color: var(--bgorange);
+        border: 2px solid var(--bgorange);
+        color: #99a1a7;
+        padding: 9px;
+    }
+
+        .regular-radio + label:active, .regular-radio:checked + label:active {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+        }
+
+    /*----------------hungtq added--------------*/
+    .regular-radio + label:before {
+        background: none repeat scroll 0 0 white;
+        border-radius: 50px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) inset;
+        content: " ";
+        font-size: 36px;
+        height: 10px;
+        left: 4px;
+        position: absolute;
+        top: 4px;
+        width: 10px;
+    }
+
+/*fin  Radio Button CSS*/
