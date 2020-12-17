@@ -174,13 +174,13 @@
         $('#nuevo-Hermano').append(`<div id="div-${count1}" class="p-0 mx-0 mb-0 mt-2 form-row col-md-12">
                                             <label class="col-md-3"></label>
                                             <div class="col-md-3">
-                                                <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" />
+                                                <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" required/>
                                             </div>
                                             <div class="col-md-3">
-                                                <input type="text" class="form-control px-2" name="Tx_ApellidoPatHermano"  placeholder="Apellido Paterno" />
+                                                <input type="text" class="form-control px-2" name="Tx_ApellidoPatHermano"  placeholder="Apellido Paterno" required/>
                                             </div>
                                             <div class="col-md-3">
-                                                <input type="text" class="form-control" name="Tx_ApellidoMatHermano" placeholder="Apellido Materno" />
+                                                <input type="text" class="form-control" name="Tx_ApellidoMatHermano" placeholder="Apellido Materno" required/>
                                             </div>
                                             <button class="btn bg-orange position-absolute text-white" style="font-size:1rem;left:100%; padding:3.5px 12px; bottom:1px;" onclick="Remove1(${count1})">x</button>
                                         </div>
@@ -192,12 +192,12 @@
                                 <div class="px-0 mx-0 form-row mt-3" id="a-${count2}">
                                     <hr class="w-100">
                                     <label class="col-md-3 ">ENTIDAD ESTATAL</label>
-                                    <input type="text" class="col-md-3 form-control" placeholder="" />
+                                    <input type="text" class="col-md-3 form-control" placeholder="" required/>
                                     <label class="col-md-3 text-center">CARGO O POSICIÓN</label>
-                                    <input type="text" class="col-md-3 form-control" placeholder="" />
+                                    <input type="text" class="col-md-3 form-control" placeholder="" required/>
                                     <br /><br />
                                     <label class="col-md-3 ">FECHA</label>
-                                    <input type="date" class="col-md-3 form-control" placeholder="" />
+                                    <input type="date" class="col-md-3 form-control" placeholder="" required/>
                                     <button type="button" class="btn text-white bg-orange py-0 mt-2 position-relative" onclick="Remove(${count2});" style="font-size:1rem;left:50.5%;bottom:53px;">x</button>
 
                                 </div>`)
