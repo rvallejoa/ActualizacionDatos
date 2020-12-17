@@ -21,7 +21,7 @@ namespace ActualizacionDatos.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Familia familia, string[] Tx_NombresHermano, string[] Tx_ApellidoPatHermano,string[] Tx_ApellidoMatHermano, string[] Tx_Parentesco, string[] Tx_NombreCompleto,DateTime[] Fe_Nacimiento,string[] Tx_Entidad,string[] Tx_Cargo)
+        public ActionResult Index(Familia familia, string[] Tx_NombresHermano, string[] Tx_ApellidoPatHermano,string[] Tx_ApellidoMatHermano, string[] Tx_Parentesco, string[] Tx_NombreCompleto,DateTime[] Fe_Nacimiento,string[] Tx_Entidad,string[] Tx_Cargo, string[] EntidadEstatal, string[] Cargo, DateTime[] fecha)
         {
             string name = User.Identity.Name;
             int position = name.IndexOf('@');
@@ -65,9 +65,27 @@ namespace ActualizacionDatos.Controllers
                         db.SaveChanges();
                     }
                 }
+
+                //Se agrega la logica para Cargos publicos
+                CargoPublico temporal3;
+                if (EntidadEstatal != null)
+                {
+                    for (int i = 0; i <= EntidadEstatal.Length -1; i++)
+                    {
+                        temporal3 = new CargoPublico();
+                        temporal3.Co_Familia = familia.Co_Familia;
+                        temporal3.Tx_Entidad = EntidadEstatal[i];
+                        temporal3.Tx_Cargo = Cargo[i];
+                        temporal3.Fe_Fecha = fecha[i];
+                        temporal3.Fe_Registro = DateTime.Now;
+                        familia.CargoPublico.Add(temporal3);
+                        db.SaveChanges();
+                    }
+                }
+
             }
 
-                return View();
+            return View();
         }
 
         public ActionResult About()

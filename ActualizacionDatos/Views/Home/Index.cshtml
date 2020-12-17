@@ -27,25 +27,25 @@
                 <div class="form-row px-2">
                     <label class="col-md-3">PADRE</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="Tx_NombresPadre" placeholder="Nombres" />
+                        <input type="text" class="form-control" name="Tx_NombresPadre" placeholder="Nombres" required/>
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control px-2" name="Tx_ApellidoPatPadre" placeholder="Apellido Paterno" />
+                        <input type="text" class="form-control px-2" name="Tx_ApellidoPatPadre" placeholder="Apellido Paterno" required/>
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="Tx_ApellidoMatPadre" placeholder="Apellido Materno" />
+                        <input type="text" class="form-control" name="Tx_ApellidoMatPadre" placeholder="Apellido Materno" required/>
                     </div>
 
                     <br /><br />
                     <label class="col-md-3">MADRE</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="Tx_NombresMadre" placeholder="Nombres" />
+                        <input type="text" class="form-control" name="Tx_NombresMadre" placeholder="Nombres" required/>
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control px-2" name="Tx_ApellidoPatMadre" placeholder="Apellido Paterno" />
+                        <input type="text" class="form-control px-2" name="Tx_ApellidoPatMadre" placeholder="Apellido Paterno" required/>
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="Tx_ApellidoMatMadre" placeholder="Apellido Materno" />
+                        <input type="text" class="form-control" name="Tx_ApellidoMatMadre" placeholder="Apellido Materno" required/>
                     </div>
                     <br />
                     <br />
@@ -111,12 +111,12 @@
                 <p class="font-weight-bold">3.- Si actualmente ejerces un cargo público o lo has desempeñado en el pasado, por ejemplo como director de una empresa pública, asesor, magistrado, vocal de algún tribunal administrativo o similares), por favor completar los siguientes campos: </p>
                 <div class="px-0 mx-0 form-row">
                     <label class="col-md-3 ">ENTIDAD ESTATAL</label>
-                    <input type="text" class="col-md-3 form-control" placeholder="" />
+                    <input type="text" class="col-md-3 form-control" name="EntidadEstatal" placeholder="" />
                     <label class="col-md-3 text-center">CARGO O POSICIÓN</label>
-                    <input type="text" class="col-md-3 form-control" placeholder="" />
+                    <input type="text" class="col-md-3 form-control" name="Cargo" placeholder="" />
                     <br /><br />
                     <label class="col-md-3 ">FECHA</label>
-                    <input type="date" class="col-md-3 form-control" placeholder="" />
+                    <input type="date" class="col-md-3 form-control" name="fecha" placeholder="" />
                 </div>
             </div>
             <button type="button" class="btn textBlue2 bgacero py-0 mt-2 position-relative" onclick="Nuevo3();" style="font-size:1.4rem;left:99.7%;">+</button>
@@ -148,13 +148,13 @@
         $('#nuevo-Hermano').append(`<div id="div-${count1}" class="p-0 mx-0 mb-0 mt-2 form-row col-md-12">
                                             <label class="col-md-3"></label>
                                             <div class="col-md-3">
-                                                <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" />
+                                                <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" required/>
                                             </div>
                                             <div class="col-md-3">
-                                                <input type="text" class="form-control px-2" name="Tx_ApellidoPatHermano"  placeholder="Apellido Paterno" />
+                                                <input type="text" class="form-control px-2" name="Tx_ApellidoPatHermano"  placeholder="Apellido Paterno" required/>
                                             </div>
                                             <div class="col-md-3">
-                                                <input type="text" class="form-control" name="Tx_ApellidoMatHermano" placeholder="Apellido Materno" />
+                                                <input type="text" class="form-control" name="Tx_ApellidoMatHermano" placeholder="Apellido Materno" required/>
                                             </div>
                                             <button class="btn bg-orange position-absolute text-white" style="font-size:1rem;left:100%;" onclick="Remove1(${count1})">x</button>
                                         </div>
@@ -166,12 +166,12 @@
                                 <div class="px-0 mx-0 form-row mt-3" id="a-${count2}">
                                     <hr class="w-100">
                                     <label class="col-md-3 ">ENTIDAD ESTATAL</label>
-                                    <input type="text" class="col-md-3 form-control" placeholder="" />
+                                    <input type="text" class="col-md-3 form-control" name="EntidadEstatal" placeholder="" required/>
                                     <label class="col-md-3 text-center">CARGO O POSICIÓN</label>
-                                    <input type="text" class="col-md-3 form-control" placeholder="" />
+                                    <input type="text" class="col-md-3 form-control" name="Cargo" placeholder="" required
                                     <br /><br />
                                     <label class="col-md-3 ">FECHA</label>
-                                    <input type="date" class="col-md-3 form-control" placeholder="" />
+                                    <input type="date" class="col-md-3 form-control" name="fecha" placeholder="" required/>
                                     <button type="button" class="btn text-white bg-orange py-0 mt-2 position-relative" onclick="Remove(${count2});" style="font-size:1rem;left:47.5%;">x</button>
 
                                 </div>`)
@@ -181,12 +181,26 @@
         if (seleccionado == 'Sí') {
             $('#oculto').removeClass('d-none');
             $('#Fl_CosanguiniedadEstado').val(1);
+
+
+            $('#Tx_Parentesco').attr('required', '');
+            $('#Tx_NombreCompleto').attr('required', '');
+            $('#Fe_Nacimiento').attr('required', '');
+            $('#Tx_Entidad').attr('required', '');
+            $('#Tx_Cargo').attr('required', '');
         } else {
             $('#oculto').addClass('d-none');
             $('#Fl_CosanguiniedadEstado').val(0);
 
+            $('#Tx_Parentesco').removeAttr('required');
+            $('#Tx_NombreCompleto').removeAttr('required');
+            $('#Fe_Nacimiento').removeAttr('required');
+            $('#Tx_Entidad').removeAttr('required');
+            $('#Tx_Cargo').removeAttr('required');
         }
     }
+
+
 
     function Remove1(id) {
         $("#div-" + id).remove();
@@ -205,17 +219,17 @@
                                             <hr class="w-100">
                                             <button type="button" class="btn text-white bg-orange py-0 mt-2 position-absolute" onclick="Remove3(${count3});" style="font-size:1rem;left:87.5%;">x</button>
                                             <label class="col-md-3 ">PARENTESCO</label>
-                                            <input type="text" class="col-md-3 form-control" name="Tx_Parentesco" placeholder="" />
+                                            <input type="text" class="col-md-3 form-control" name="Tx_Parentesco" placeholder="" required/>
                                             <label class="col-md-3 text-center">NOMBRE COMPLETO</label>
-                                            <input type="text" class="col-md-3 form-control" name="Tx_NombreCompleto" placeholder="" />
+                                            <input type="text" class="col-md-3 form-control" name="Tx_NombreCompleto" placeholder="" required/>
                                             <br /><br />
                                             <label class="col-md-3 ">FECHA DE NACIMIENTO</label>
-                                            <input type="date" class="col-md-3 form-control" name="Fe_Nacimiento" placeholder="" />
+                                            <input type="date" class="col-md-3 form-control" name="Fe_Nacimiento" placeholder="" required/>
                                             <label class="col-md-3 text-center">ENTIDAD ESTATAL</label>
-                                            <input type="text" class="col-md-3 form-control" name="Tx_Entidad" placeholder="" />
+                                            <input type="text" class="col-md-3 form-control" name="Tx_Entidad" placeholder="" required/>
                                             <br /><br />
                                             <label class="col-md-3 ">CARGO O POSICIÓN</label>
-                                            <input type="text" class="col-md-3 form-control" name="Tx_Cargo" placeholder="" />
+                                            <input type="text" class="col-md-3 form-control" name="Tx_Cargo" placeholder="" required/>
                                         </div>`)
     }
 </script>
