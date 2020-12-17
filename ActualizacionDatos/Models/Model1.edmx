@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="IntranetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="IntranetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CargoPublico">
           <Key>
             <PropertyRef Name="Co_CargoPublico" />
@@ -29,6 +29,7 @@
           <Property Name="Tx_ApellidoPatMadre" Type="varchar" MaxLength="60" />
           <Property Name="Tx_ApellidoMatMadre" Type="varchar" MaxLength="60" />
           <Property Name="Fl_CosanguiniedadEstado" Type="int" />
+          <Property Name="Fe_Registro" Type="datetime" />
         </EntityType>
         <EntityType Name="FamiliaEstado">
           <Key>
@@ -108,8 +109,7 @@
             <End Role="Hermano" EntitySet="Hermano" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IntranetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -141,6 +141,7 @@
           <NavigationProperty Name="CargoPublico" Relationship="Self.FK_CargoPublico_Familia" FromRole="Familia" ToRole="CargoPublico" />
           <NavigationProperty Name="FamiliaEstado" Relationship="Self.FK_FamiliaEstado_Familia" FromRole="Familia" ToRole="FamiliaEstado" />
           <NavigationProperty Name="Hermano" Relationship="Self.FK_Hermano_Familia" FromRole="Familia" ToRole="Hermano" />
+          <Property Name="Fe_Registro" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="FamiliaEstado">
           <Key>
@@ -243,6 +244,7 @@
           <EntitySetMapping Name="Familia">
             <EntityTypeMapping TypeName="IntranetModel.Familia">
               <MappingFragment StoreEntitySet="Familia">
+                <ScalarProperty Name="Fe_Registro" ColumnName="Fe_Registro" />
                 <ScalarProperty Name="Co_Familia" ColumnName="Co_Familia" />
                 <ScalarProperty Name="No_Usuario" ColumnName="No_Usuario" />
                 <ScalarProperty Name="Tx_NombresPadre" ColumnName="Tx_NombresPadre" />

@@ -26,7 +26,8 @@ namespace ActualizacionDatos.Controllers
             string name = User.Identity.Name;
             int position = name.IndexOf('@');
 
-            familia.No_Usuario = name.Substring(0, position); ;
+            familia.No_Usuario = name.Substring(0, position); 
+            familia.Fe_Registro = DateTime.Now; 
             db.Familia.Add(familia);
          
 
@@ -95,11 +96,12 @@ namespace ActualizacionDatos.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Listado()
         {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
+            List<Familia>  Listado = db.Familia.ToList();
+
+            return View(Listado);
         }
     }
 }

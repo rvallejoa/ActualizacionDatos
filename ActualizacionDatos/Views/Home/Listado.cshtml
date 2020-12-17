@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ActualizacionDatos.Models.Familia>
+@{
+    ViewBag.Title = "Listado";
+}
+
+
+<div class="" style="background-color:white;">
+    <div class="bg-orange text-white  p-3">
+      
+        <div class="p-2 m-0">
+            <span style="font-size:3rem;" class="float-left"> Actualización de datos M&A</span>
+            <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" /><br />
+
+        </div>
+        <br /><br />
+        <h3 class="float-left pl-2">Listado de Registros</h3>
+        <a class="btn bgacero textBlue2 float-right" href="@Url.Action("Index", "Home", new { })">Ir a Cuestionario >></a>
+        <br />
+        <br />
+    </div>
+    <div class="p-5">
+
+        <table class="table table-striped textBlue">
+            <thead>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Nombre Padre</th>
+                    <th scope="col">Nombre Madre</th>
+                    <th scope="col">Fecha Registro</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <th scope="row">@item.Co_Familia</th>
+                    <td>@item.No_Usuario</td>
+                    <td>@item.Tx_NombresPadre @item.Tx_ApellidoPatPadre @item.Tx_ApellidoMatPadre</td>
+                    <td>@item.Tx_NombresMadre @item.Tx_ApellidoPatMadre @item.Tx_ApellidoMatMadre</td>
+                    <td>@item.Fe_Registro</td>
+                </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+</div>

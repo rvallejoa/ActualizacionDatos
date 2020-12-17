@@ -4,21 +4,26 @@
 @{
     string name = User.Identity.Name;
     int position = name.IndexOf('@');
+    string usuario = name.Substring(0, position);
 }
 
 @using (Html.BeginForm())
 {
-
     <div class="" style="background-color:white;">
-        <div class="bg-orange text-white  p-3">
+        <div class="bg-orange text-white  py-3 px-5">
             <div class="p-2 m-0">
                 <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" />
             </div>
             <h1>Actualización de datos M&A</h1>
             <h5>Con el fin de tener actualizados sus datos personales y familiares y así poder cumplir con los eventuales requerimientos que nuestros clientes puedan solicitarnos como parte de sus políticas internas, agradeceremos completar el siguiente formulario</h5>
+            @if (usuario == "mrodriguez" || usuario == "rvallejo" || usuario == "egalarza" || usuario == "jdominguez" || usuario == "jalegre" || usuario == "dsanchez")
+            {
+                <a class="btn bgacero textBlue2 float-right" href="@Url.Action("Listado", "Home", new { })">Ir a Listado >></a>
+                <br /><br />
+            }
         </div>
         <p class="px-5 pt-3 m-0 textBlue">
-            Hola, <b>@name.Substring(0, position)</b>: al enviar este formulario, el propietario podrá ver su nombre y dirección de correo electrónico.
+            Hola, <b>@usuario</b>: al enviar este formulario, el propietario podrá ver su nombre y dirección de correo electrónico.
             <span class="float-right font-weight-bold">Campos Obligatorios (<span class="font-weight-bold textOrange2" style="font-size:1.3rem;">*</span>)</span>
         </p>
         <br />
@@ -132,7 +137,7 @@
             </div>
             <br />
             <div class="text-center">
-                <button type="button" class=" btn bg-orange text-white font-weight-bold" data-toggle="modal" data-target="#ModalConfirmacion" disabled id="guardar">ENVIAR DATOS</button>
+                <button type="button" class=" btn bg-orange text-white font-weight-bold" data-toggle="modal" data-target="#ModalConfirmacion" id="guardar">ENVIAR DATOS</button>
             </div>
             <br />
         </div>
@@ -225,10 +230,10 @@
             }
         });
 
-        console.log(esLleno);
-        if (esLleno == 1) {
-            $('#guardar').removeAttr('disabled');
-        }
+        //console.log(esLleno);
+        //if (esLleno == 1) {
+        //    $('#guardar').removeAttr('disabled');
+        //}
     }
 
     function Remove1(id) {
