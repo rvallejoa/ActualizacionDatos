@@ -96,8 +96,10 @@
                 <br /><br />
                 <label class="col-md-3 ">CARGO O POSICIÓN</label>
                 <input type="text" class="col-md-3 form-control" placeholder="" />
-
             </div>
+            <div id="agregarfamilia"></div>
+            <button type="button" class="btn textBlue2 bgacero py-0 mt-2 position-relative" onclick="Nuevo2();" style="font-size:1.4rem; left:99.7%;">+</button>
+
         </div>
         <br />
         <div class="textBlue" id="div3">
@@ -112,8 +114,7 @@
                 <input type="date" class="col-md-3 form-control" placeholder="" />
             </div>
         </div>
-        <button type="button" class="btn textBlue2 bgacero py-0 mt-2 float-right" onclick="Nuevo3();" style="font-size:1.4rem;">+</button>
-
+        <button type="button" class="btn textBlue2 bgacero py-0 mt-2 position-relative" onclick="Nuevo3();" style="font-size:1.4rem;left:99.7%;">+</button>
         <br />
         <br />
         <div class="textBlue bgacero p-2">
@@ -135,6 +136,7 @@
 
     var count1 = 0;
     var count2 = 0;
+    var count3 = 0;
     function NuevoHermano() {
         count1++;
         $('#nuevo-Hermano').append(`<div id="div-${count1}" class="p-0 mx-0 mb-0 mt-2 form-row col-md-12">
@@ -148,7 +150,7 @@
                                         <div class="col-md-3">
                                             <input type="text" class="form-control" placeholder="Apellido Materno" />
                                         </div>
-                                        <button class="btn bg-orange position-absolute text-white" style="left:100%;" onclick="Remove1(${count1})">x</button>
+                                        <button class="btn bg-orange position-absolute text-white" style="font-size:1rem;left:100%;" onclick="Remove1(${count1})">x</button>
                                     </div>
         `);
     }
@@ -185,5 +187,27 @@
         $("#a-" + id).remove();
     }
 
+    function Remove3(id) {
+        $("#divv-" + id).remove();
+    }
 
+    function Nuevo2() {
+        count3++;
+        $("#agregarfamilia").append(`<div class="px-0 mx-0 form-row mt-3" id="divv-${count3}">
+                                        <hr class="w-100">
+                                        <button type="button" class="btn text-white bg-orange py-0 mt-2 position-absolute" onclick="Remove3(${count3});" style="font-size:1rem;left:87.5%;">x</button>
+                                        <label class="col-md-3 ">PARENTESCO</label>
+                                        <input type="text" class="col-md-3 form-control" placeholder="" />
+                                        <label class="col-md-3 text-center">NOMBRE COMPLETO</label>
+                                        <input type="text" class="col-md-3 form-control" placeholder="" />
+                                        <br /><br />
+                                        <label class="col-md-3 ">FECHA DE NACIMIENTO</label>
+                                        <input type="date" class="col-md-3 form-control" placeholder="" />
+                                        <label class="col-md-3 text-center">ENTIDAD ESTATAL</label>
+                                        <input type="text" class="col-md-3 form-control" placeholder="" />
+                                        <br /><br />
+                                        <label class="col-md-3 ">CARGO O POSICIÓN</label>
+                                        <input type="text" class="col-md-3 form-control" placeholder="" />
+                                    </div>`)
+    }
 </script>
