@@ -340,6 +340,7 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-ui-1.12.1\package.json" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Views\Home\RegistroCorrecto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

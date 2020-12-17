@@ -85,12 +85,12 @@ namespace ActualizacionDatos.Controllers
 
             }
 
-            return View();
+            return RedirectToAction("RegistroCorrecto");
         }
 
-        public ActionResult About()
+        public ActionResult RegistroCorrecto()
         {
-            ViewBag.Message = "Your application description page.";
+         
 
             return View();
         }
