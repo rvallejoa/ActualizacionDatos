@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IntranetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CargoPublico">
+          <Key>
+            <PropertyRef Name="Co_CargoPublico" />
+          </Key>
+          <Property Name="Co_CargoPublico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Co_Familia" Type="int" />
+          <Property Name="Tx_Entidad" Type="varchar" MaxLength="450" />
+          <Property Name="Tx_Cargo" Type="varchar" MaxLength="250" />
+          <Property Name="Fe_Fecha" Type="date" />
+          <Property Name="Fe_Registro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Familia">
+          <Key>
+            <PropertyRef Name="Co_Familia" />
+          </Key>
+          <Property Name="Co_Familia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="No_Usuario" Type="varchar" MaxLength="50" />
+          <Property Name="Tx_NombresPadre" Type="varchar" MaxLength="100" />
+          <Property Name="Tx_ApellidoPatPadre" Type="varchar" MaxLength="60" />
+          <Property Name="Tx_ApellidoMatPadre" Type="varchar" MaxLength="60" />
+          <Property Name="Tx_NombresMadre" Type="varchar" MaxLength="100" />
+          <Property Name="Tx_ApellidoPatMadre" Type="varchar" MaxLength="60" />
+          <Property Name="Tx_ApellidoMatMadre" Type="varchar" MaxLength="60" />
+          <Property Name="Fl_CosanguiniedadEstado" Type="int" />
+        </EntityType>
+        <EntityType Name="FamiliaEstado">
+          <Key>
+            <PropertyRef Name="Co_FamiliaEstado" />
+          </Key>
+          <Property Name="Co_FamiliaEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Co_Familia" Type="int" />
+          <Property Name="Tx_Parentesco" Type="varchar" MaxLength="60" />
+          <Property Name="Tx_NombreCompleto" Type="varchar" MaxLength="250" />
+          <Property Name="Fe_Nacimiento" Type="date" />
+          <Property Name="Tx_Entidad" Type="varchar" MaxLength="450" />
+          <Property Name="Tx_Cargo" Type="varchar" MaxLength="250" />
+          <Property Name="Fe_Registro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Hermano">
+          <Key>
+            <PropertyRef Name="Co_Hermano" />
+          </Key>
+          <Property Name="Co_Hermano" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Co_Familia" Type="int" />
+          <Property Name="Tx_NombresHermano" Type="varchar" MaxLength="100" />
+          <Property Name="Tx_ApellidoPatHermano" Type="varchar" MaxLength="60" />
+          <Property Name="Tx_ApellidoMatHermano" Type="varchar" MaxLength="60" />
+          <Property Name="Fe_Registro" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_CargoPublico_Familia">
+          <End Role="Familia" Type="Self.Familia" Multiplicity="0..1" />
+          <End Role="CargoPublico" Type="Self.CargoPublico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Familia">
+              <PropertyRef Name="Co_Familia" />
+            </Principal>
+            <Dependent Role="CargoPublico">
+              <PropertyRef Name="Co_Familia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamiliaEstado_Familia">
+          <End Role="Familia" Type="Self.Familia" Multiplicity="0..1" />
+          <End Role="FamiliaEstado" Type="Self.FamiliaEstado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Familia">
+              <PropertyRef Name="Co_Familia" />
+            </Principal>
+            <Dependent Role="FamiliaEstado">
+              <PropertyRef Name="Co_Familia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hermano_Familia">
+          <End Role="Familia" Type="Self.Familia" Multiplicity="0..1" />
+          <End Role="Hermano" Type="Self.Hermano" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Familia">
+              <PropertyRef Name="Co_Familia" />
+            </Principal>
+            <Dependent Role="Hermano">
+              <PropertyRef Name="Co_Familia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IntranetModelStoreContainer">
+          <EntitySet Name="CargoPublico" EntityType="Self.CargoPublico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Familia" EntityType="Self.Familia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FamiliaEstado" EntityType="Self.FamiliaEstado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hermano" EntityType="Self.Hermano" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CargoPublico_Familia" Association="Self.FK_CargoPublico_Familia">
+            <End Role="Familia" EntitySet="Familia" />
+            <End Role="CargoPublico" EntitySet="CargoPublico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamiliaEstado_Familia" Association="Self.FK_FamiliaEstado_Familia">
+            <End Role="Familia" EntitySet="Familia" />
+            <End Role="FamiliaEstado" EntitySet="FamiliaEstado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hermano_Familia" Association="Self.FK_Hermano_Familia">
+            <End Role="Familia" EntitySet="Familia" />
+            <End Role="Hermano" EntitySet="Hermano" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IntranetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CargoPublico">
+          <Key>
+            <PropertyRef Name="Co_CargoPublico" />
+          </Key>
+          <Property Name="Co_CargoPublico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Co_Familia" Type="Int32" />
+          <Property Name="Tx_Entidad" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_Cargo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Fe_Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Fe_Registro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Familia" Relationship="Self.FK_CargoPublico_Familia" FromRole="CargoPublico" ToRole="Familia" />
+        </EntityType>
+        <EntityType Name="Familia">
+          <Key>
+            <PropertyRef Name="Co_Familia" />
+          </Key>
+          <Property Name="Co_Familia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="No_Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_NombresPadre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApellidoPatPadre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApellidoMatPadre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_NombresMadre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApellidoPatMadre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApellidoMatMadre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Fl_CosanguiniedadEstado" Type="Int32" />
+          <NavigationProperty Name="CargoPublico" Relationship="Self.FK_CargoPublico_Familia" FromRole="Familia" ToRole="CargoPublico" />
+          <NavigationProperty Name="FamiliaEstado" Relationship="Self.FK_FamiliaEstado_Familia" FromRole="Familia" ToRole="FamiliaEstado" />
+          <NavigationProperty Name="Hermano" Relationship="Self.FK_Hermano_Familia" FromRole="Familia" ToRole="Hermano" />
+        </EntityType>
+        <EntityType Name="FamiliaEstado">
+          <Key>
+            <PropertyRef Name="Co_FamiliaEstado" />
+          </Key>
+          <Property Name="Co_FamiliaEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Co_Familia" Type="Int32" />
+          <Property Name="Tx_Parentesco" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_NombreCompleto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Fe_Nacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Tx_Entidad" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_Cargo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Fe_Registro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Familia" Relationship="Self.FK_FamiliaEstado_Familia" FromRole="FamiliaEstado" ToRole="Familia" />
+        </EntityType>
+        <EntityType Name="Hermano">
+          <Key>
+            <PropertyRef Name="Co_Hermano" />
+          </Key>
+          <Property Name="Co_Hermano" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Co_Familia" Type="Int32" />
+          <Property Name="Tx_NombresHermano" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApellidoPatHermano" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApellidoMatHermano" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Fe_Registro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Familia" Relationship="Self.FK_Hermano_Familia" FromRole="Hermano" ToRole="Familia" />
+        </EntityType>
+        <Association Name="FK_CargoPublico_Familia">
+          <End Role="Familia" Type="Self.Familia" Multiplicity="0..1" />
+          <End Role="CargoPublico" Type="Self.CargoPublico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Familia">
+              <PropertyRef Name="Co_Familia" />
+            </Principal>
+            <Dependent Role="CargoPublico">
+              <PropertyRef Name="Co_Familia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FamiliaEstado_Familia">
+          <End Role="Familia" Type="Self.Familia" Multiplicity="0..1" />
+          <End Role="FamiliaEstado" Type="Self.FamiliaEstado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Familia">
+              <PropertyRef Name="Co_Familia" />
+            </Principal>
+            <Dependent Role="FamiliaEstado">
+              <PropertyRef Name="Co_Familia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hermano_Familia">
+          <End Role="Familia" Type="Self.Familia" Multiplicity="0..1" />
+          <End Role="Hermano" Type="Self.Hermano" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Familia">
+              <PropertyRef Name="Co_Familia" />
+            </Principal>
+            <Dependent Role="Hermano">
+              <PropertyRef Name="Co_Familia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IntranetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CargoPublico" EntityType="Self.CargoPublico" />
+          <EntitySet Name="Familia" EntityType="Self.Familia" />
+          <EntitySet Name="FamiliaEstado" EntityType="Self.FamiliaEstado" />
+          <EntitySet Name="Hermano" EntityType="Self.Hermano" />
+          <AssociationSet Name="FK_CargoPublico_Familia" Association="Self.FK_CargoPublico_Familia">
+            <End Role="Familia" EntitySet="Familia" />
+            <End Role="CargoPublico" EntitySet="CargoPublico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FamiliaEstado_Familia" Association="Self.FK_FamiliaEstado_Familia">
+            <End Role="Familia" EntitySet="Familia" />
+            <End Role="FamiliaEstado" EntitySet="FamiliaEstado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hermano_Familia" Association="Self.FK_Hermano_Familia">
+            <End Role="Familia" EntitySet="Familia" />
+            <End Role="Hermano" EntitySet="Hermano" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IntranetModelStoreContainer" CdmEntityContainer="IntranetEntities">
+          <EntitySetMapping Name="CargoPublico">
+            <EntityTypeMapping TypeName="IntranetModel.CargoPublico">
+              <MappingFragment StoreEntitySet="CargoPublico">
+                <ScalarProperty Name="Co_CargoPublico" ColumnName="Co_CargoPublico" />
+                <ScalarProperty Name="Co_Familia" ColumnName="Co_Familia" />
+                <ScalarProperty Name="Tx_Entidad" ColumnName="Tx_Entidad" />
+                <ScalarProperty Name="Tx_Cargo" ColumnName="Tx_Cargo" />
+                <ScalarProperty Name="Fe_Fecha" ColumnName="Fe_Fecha" />
+                <ScalarProperty Name="Fe_Registro" ColumnName="Fe_Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Familia">
+            <EntityTypeMapping TypeName="IntranetModel.Familia">
+              <MappingFragment StoreEntitySet="Familia">
+                <ScalarProperty Name="Co_Familia" ColumnName="Co_Familia" />
+                <ScalarProperty Name="No_Usuario" ColumnName="No_Usuario" />
+                <ScalarProperty Name="Tx_NombresPadre" ColumnName="Tx_NombresPadre" />
+                <ScalarProperty Name="Tx_ApellidoPatPadre" ColumnName="Tx_ApellidoPatPadre" />
+                <ScalarProperty Name="Tx_ApellidoMatPadre" ColumnName="Tx_ApellidoMatPadre" />
+                <ScalarProperty Name="Tx_NombresMadre" ColumnName="Tx_NombresMadre" />
+                <ScalarProperty Name="Tx_ApellidoPatMadre" ColumnName="Tx_ApellidoPatMadre" />
+                <ScalarProperty Name="Tx_ApellidoMatMadre" ColumnName="Tx_ApellidoMatMadre" />
+                <ScalarProperty Name="Fl_CosanguiniedadEstado" ColumnName="Fl_CosanguiniedadEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamiliaEstado">
+            <EntityTypeMapping TypeName="IntranetModel.FamiliaEstado">
+              <MappingFragment StoreEntitySet="FamiliaEstado">
+                <ScalarProperty Name="Co_FamiliaEstado" ColumnName="Co_FamiliaEstado" />
+                <ScalarProperty Name="Co_Familia" ColumnName="Co_Familia" />
+                <ScalarProperty Name="Tx_Parentesco" ColumnName="Tx_Parentesco" />
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="Fe_Nacimiento" ColumnName="Fe_Nacimiento" />
+                <ScalarProperty Name="Tx_Entidad" ColumnName="Tx_Entidad" />
+                <ScalarProperty Name="Tx_Cargo" ColumnName="Tx_Cargo" />
+                <ScalarProperty Name="Fe_Registro" ColumnName="Fe_Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hermano">
+            <EntityTypeMapping TypeName="IntranetModel.Hermano">
+              <MappingFragment StoreEntitySet="Hermano">
+                <ScalarProperty Name="Co_Hermano" ColumnName="Co_Hermano" />
+                <ScalarProperty Name="Co_Familia" ColumnName="Co_Familia" />
+                <ScalarProperty Name="Tx_NombresHermano" ColumnName="Tx_NombresHermano" />
+                <ScalarProperty Name="Tx_ApellidoPatHermano" ColumnName="Tx_ApellidoPatHermano" />
+                <ScalarProperty Name="Tx_ApellidoMatHermano" ColumnName="Tx_ApellidoMatHermano" />
+                <ScalarProperty Name="Fe_Registro" ColumnName="Fe_Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
