@@ -1,16 +1,21 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+@{
+    string name = User.Identity.Name;
+    int position = name.IndexOf('@');
+}
 <div class="" style="background-color:white;">
     <div class="bg-orange text-white  p-3">
         <div class="p-2 m-0">
             <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" />
         </div>
         <h1>Actualización de datos M&A</h1>
-
         <h5>Con el fin de tener actualizados sus datos personales y familiares y así poder cumplir con los eventuales requerimientos que nuestros clientes puedan solicitarnos como parte de sus políticas internas, agradeceremos completar el siguiente formulario</h5>
     </div>
+    <p class="px-5 pt-3 m-0">
+        Hola, <b>@name.Substring(0, position)</b>: al enviar este formulario, el propietario podrá ver su nombre y dirección de correo electrónico.
+    </p>
     <br />
     <div class="px-5">
         <div class="textBlue">
@@ -128,33 +133,40 @@
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script>
 
-    var count = 0;
+    var count1 = 0;
+    var count2 = 0;
     function NuevoHermano() {
-        $('#nuevo-Hermano').append(` <label class="col-md-3"></label>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" placeholder="Nombres" />
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control px-2" placeholder="Apellido Paterno" />
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" placeholder="Apellido Materno" />
-                    </div><br><br>
+        count1++;
+        $('#nuevo-Hermano').append(`<div id="div-${count1}" class="p-0 mx-0 mb-0 mt-2 form-row col-md-12">
+                                        <label class="col-md-3"></label>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" placeholder="Nombres" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control px-2" placeholder="Apellido Paterno" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" placeholder="Apellido Materno" />
+                                        </div>
+                                        <button class="btn bg-orange position-absolute text-white" style="left:100%;" onclick="Remove1(${count1})">x</button>
+                                    </div>
         `);
     }
     function Nuevo3() {
-        count++;
-        $('#div3').append(`<hr class="w-100"><div class="px-0 mx-0 form-row mt-3" id="a-${count}">
-        <button type="button" class="btn text-white bg-orange py-0 mt-2" onclick="Remove(a-${count});" style="font-size:1rem;position:absolute;z-index:1;left:85.5%;bottom:-174px;">X</button>
+        count2++;
+        $('#div3').append(`
+                            <div class="px-0 mx-0 form-row mt-3" id="a-${count2}">
+                                <hr class="w-100">
+                                <label class="col-md-3 ">ENTIDAD ESTATAL</label>
+                                <input type="text" class="col-md-3 form-control" placeholder="" />
+                                <label class="col-md-3 text-center">CARGO O POSICIÓN</label>
+                                <input type="text" class="col-md-3 form-control" placeholder="" />
+                                <br /><br />
+                                <label class="col-md-3 ">FECHA</label>
+                                <input type="date" class="col-md-3 form-control" placeholder="" />
+                                <button type="button" class="btn text-white bg-orange py-0 mt-2 position-relative" onclick="Remove(${count2});" style="font-size:1rem;left:47.5%;">x</button>
 
-                <label class="col-md-3 ">ENTIDAD ESTATAL</label>
-                <input type="text" class="col-md-3 form-control" placeholder="" />
-                <label class="col-md-3 text-center">CARGO O POSICIÓN</label>
-                <input type="text" class="col-md-3 form-control" placeholder="" />
-                <br /><br />
-                <label class="col-md-3 ">FECHA</label>
-                <input type="date" class="col-md-3 form-control" placeholder="" />
-            </div>`)
+                            </div>`)
     }
     function SiNo() {
         var seleccionado = $("input[name='inlineRadioOptions']:checked").val();
@@ -166,8 +178,11 @@
         }
     }
 
+    function Remove1(id) {
+        $("#div-" + id).remove();
+    }
     function Remove(id) {
-        $(id).remove();
+        $("#a-" + id).remove();
     }
 
 
