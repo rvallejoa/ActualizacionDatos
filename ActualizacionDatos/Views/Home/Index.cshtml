@@ -19,6 +19,7 @@
         </div>
         <p class="px-5 pt-3 m-0 textBlue">
             Hola, <b>@name.Substring(0, position)</b>: al enviar este formulario, el propietario podrá ver su nombre y dirección de correo electrónico.
+            <span class="float-right font-weight-bold">Campos Obligatorios (<span class="font-weight-bold textOrange2" style="font-size:1.3rem;">*</span>)</span>
         </p>
         <br />
         <div class="px-5">
@@ -27,37 +28,37 @@
                 <div class="form-row pl-2 pr-0">
                     <label class="col-md-3"><span class="textOrange2">* </span>PADRE</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control obligatorio" name="Tx_NombresPadre" placeholder="Nombres" required />
+                        <input type="text" class="form-control obligatorio" name="Tx_NombresPadre" placeholder="Nombres" required autocomplete="off" />
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control px-2 obligatorio" name="Tx_ApellidoPatPadre" placeholder="Apellido Paterno" required />
+                        <input type="text" class="form-control px-2 obligatorio" name="Tx_ApellidoPatPadre" placeholder="Apellido Paterno" required autocomplete="off" />
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control obligatorio" name="Tx_ApellidoMatPadre" placeholder="Apellido Materno" required />
+                        <input type="text" class="form-control obligatorio" name="Tx_ApellidoMatPadre" placeholder="Apellido Materno" required autocomplete="off" />
                     </div>
 
                     <br /><br />
                     <label class="col-md-3"><span class="textOrange2">* </span>MADRE</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control obligatorio" name="Tx_NombresMadre" placeholder="Nombres" required />
+                        <input type="text" class="form-control obligatorio" name="Tx_NombresMadre" placeholder="Nombres" required autocomplete="off" />
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control px-2 obligatorio" name="Tx_ApellidoPatMadre" placeholder="Apellido Paterno" required />
+                        <input type="text" class="form-control px-2 obligatorio" name="Tx_ApellidoPatMadre" placeholder="Apellido Paterno" required autocomplete="off" />
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control obligatorio" name="Tx_ApellidoMatMadre" placeholder="Apellido Materno" required />
+                        <input type="text" class="form-control obligatorio" name="Tx_ApellidoMatMadre" placeholder="Apellido Materno" required autocomplete="off" />
                     </div>
                     <br />
                     <br />
                     <label class="col-md-3">HERMANO(A)</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" />
+                        <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" autocomplete="off"  />
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control px-2" name="Tx_ApellidoPatHermano" placeholder="Apellido Paterno" />
+                        <input type="text" class="form-control px-2" name="Tx_ApellidoPatHermano" placeholder="Apellido Paterno" autocomplete="off" />
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="Tx_ApellidoMatHermano" placeholder="Apellido Materno" />
+                        <input type="text" class="form-control" name="Tx_ApellidoMatHermano" placeholder="Apellido Materno" autocomplete="off" />
                     </div>
 
                     <div id="nuevo-Hermano" class="p-0 mx-0 mb-0 form-row col-md-12"></div>
@@ -89,19 +90,19 @@
                 <p class="font-weight-bold">2.1- Por favor indica sus datos a continuación:</p>
                 <div class="px-0 mx-0 form-row">
                     <label class="col-md-3 "><span class="textOrange2">* </span>PARENTESCO</label>
-                    <input type="text" class="col-md-3 form-control obli" name="Tx_Parentesco" placeholder="" />
+                    <input type="text" class="col-md-3 form-control obli" name="Tx_Parentesco" placeholder="" autocomplete="off" />
 
                     <label class="col-md-3 text-center"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
-                    <input type="text" class="col-md-3 form-control obli" name="Tx_NombreCompleto" placeholder="" />
+                    <input type="text" class="col-md-3 form-control obli" name="Tx_NombreCompleto" placeholder="" autocomplete="off" />
                     <br /><br />
                     <label class="col-md-3 "><span class="textOrange2">* </span>FECHA DE NACIMIENTO</label>
-                    <input type="date" class="col-md-3 form-control obli" name="Fe_Nacimiento" placeholder="" />
+                    <input type="date" class="col-md-3 form-control obli" name="Fe_Nacimiento" placeholder="" autocomplete="off" />
 
                     <label class="col-md-3 text-center"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
-                    <input type="text" class="col-md-3 form-control obli" name="Tx_Entidad" placeholder="" />
+                    <input type="text" class="col-md-3 form-control obli" name="Tx_Entidad" placeholder="" autocomplete="off" />
                     <br /><br />
                     <label class="col-md-3 "><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
-                    <input type="text" class="col-md-3 form-control obli" name="Tx_Cargo" placeholder="" />
+                    <input type="text" class="col-md-3 form-control obli" name="Tx_Cargo" placeholder="" autocomplete="off" />
                 </div>
                 <div id="agregarfamilia"></div>
                 <button type="button" class="btn textBlue2 bgacero py-0 position-relative" onclick="Nuevo2();" style="left:91%;">&nbsp;&nbsp; + Familiar &nbsp;&nbsp;</button>
@@ -112,12 +113,12 @@
                 <p class="font-weight-bold">3.- Si actualmente ejerces un cargo público o lo has desempeñado en el pasado, por ejemplo como director de una empresa pública, asesor, magistrado, vocal de algún tribunal administrativo o similares), por favor completar los siguientes campos: </p>
                 <div class="px-0 mx-0 form-row">
                     <label class="col-md-3 ">ENTIDAD ESTATAL</label>
-                    <input type="text" class="col-md-3 form-control" placeholder="" />
+                    <input type="text" class="col-md-3 form-control" placeholder="" autocomplete="off"  />
                     <label class="col-md-3 text-center">CARGO O POSICIÓN</label>
-                    <input type="text" class="col-md-3 form-control" placeholder="" />
+                    <input type="text" class="col-md-3 form-control" placeholder="" autocomplete="off" />
                     <br /><br />
                     <label class="col-md-3 ">FECHA</label>
-                    <input type="date" class="col-md-3 form-control" placeholder="" />
+                    <input type="date" class="col-md-3 form-control" placeholder="" autocomplete="off" />
                 </div>
             </div>
             <button type="button" class="btn textBlue2 bgacero py-0 position-relative" onclick="Nuevo3();" style="left:91%;"> &nbsp;&nbsp;&nbsp;&nbsp; + Cargo &nbsp;&nbsp;&nbsp;&nbsp;</button>
@@ -131,12 +132,33 @@
             </div>
             <br />
             <div class="text-center">
-                <button type="submit" class=" btn bg-orange text-white font-weight-bold" disabled id="guardar">GUARDAR DATOS</button>
+                <button type="button" class=" btn bg-orange text-white font-weight-bold" data-toggle="modal" data-target="#ModalConfirmacion" disabled id="guardar">ENVIAR DATOS</button>
             </div>
             <br />
-
         </div>
     </div>
+
+    <!-- Modal confirmacion-->
+        <div class="modal fade" id="ModalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-center textBlue2">
+                  <h3> Está seguro de enviar la información?</h3> 
+              </div>
+              <div class="text-center py-4">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="submit" class="btn bg-orange text-white font-weight-bold">Si</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
 
 }
