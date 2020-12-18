@@ -15,7 +15,7 @@
                 <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" />
             </div>
             <h2>Actualización de datos M&A</h2>
-            <h5>Con el fin de tener actualizados sus datos personales y familiares y así poder cumplir con los eventuales requerimientos que nuestros clientes puedan solicitarnos como parte de sus políticas internas, agradeceremos completar el siguiente formulario</h5>
+            <h5>Con el fin de tener actualizados sus datos personales - familiares, y así poder cumplir con los eventuales requerimientos que nuestros clientes puedan solicitarnos como parte de sus políticas internas, agradeceremos completar el siguiente formulario</h5>
             @if (usuario == "mrodriguez" || usuario == "rvallejo" || usuario == "egalarza" || usuario == "jdominguez" || usuario == "jalegre" || usuario == "dsanchez")
             {
                 <a class="btn bgacero textBlue2 float-right" href="@Url.Action("Listado", "Home", new { })">Ir a Listado >></a>
@@ -55,7 +55,7 @@
                     </div>
                     <br />
                     <br />
-                    <label class="col-md-3">HERMANO(A)</label>
+                    <label class="col-md-3"><span class="text-white">* </span>HERMANO(A)</label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" autocomplete="off" />
                     </div>
@@ -74,7 +74,33 @@
             </div>
             <br />
             <div class="textBlue">
-                <p class="font-weight-bold"> 2.- ¿En la actualidad, tienes algún familiar hasta segundo grado de consanguinidad o afinidad (cónyuge, conviviente, pareja, hijos, padres, hermanos, abuelos, suegros, cónyuges o convivientes de los hijos, cónyuges o convivientes de los padres, cónyuges o convivientes de los hermanos (cuñados) o hermanastros(as) laborando o prestando servicios en el Estado o que <u>en los últimos 5 años</u> haya trabajado en el Estado?</p>
+                <p class="font-weight-bold mb-0"> 2.- En la actualidad ¿Tienes algún familiar hasta 2° grado de consanguinidad o afinidad laborando o prestando servicios en el Estado o que <u> en los últimos 5 años</u> ha trabajado en el Estado?</p>
+                <div class="col-12 d-flex" style="font-size:.9em;">
+                    <div class="col-4">
+                        <ul>
+                            <li>Cónyuge.</li>
+                            <li>Conviviente.</li>
+                            <li>Pareja.</li>
+                            <li>Hijos.</li>
+                        </ul>
+                    </div>
+                    <div class="col-4">
+                        <ul>
+                            <li>Padres.</li>
+                            <li>Hermanos.</li>
+                            <li>Abuelos.</li>
+                            <li>Suegros.</li>
+                        </ul>
+                    </div>
+                    <div class="col-4">
+                        <ul>
+                            <li>Cónyuges o convivientes de los hijos.</li>
+                            <li>Cónyuges o convivientes de los padres.</li>
+                            <li>Cónyuges o convivientes de los hermanos (cuñados.)</li>
+                            <li>Hermanastros(as).</li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="px-0 mx-0">
                     <div class="form-check" style="display:flex !important;">
                         <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Sí" onclick="SiNo()" required>
@@ -97,13 +123,13 @@
                     <label class="col-md-3 "><span class="textOrange2">* </span>PARENTESCO</label>
                     <input type="text" class="col-md-3 form-control obli" name="Tx_Parentesco" placeholder="" autocomplete="off" />
 
-                    <label class="col-md-3 text-center"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
+                    <label class="col-md-3 pl-5"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
                     <input type="text" class="col-md-3 form-control obli" name="Tx_NombreCompleto" placeholder="" autocomplete="off" />
                     <br /><br />
                     <label class="col-md-3 "><span class="textOrange2">* </span>FECHA DE NACIMIENTO</label>
                     <input type="date" class="col-md-3 form-control obli" name="Fe_Nacimiento" placeholder="" autocomplete="off" />
 
-                    <label class="col-md-3 text-center"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
+                    <label class="col-md-3 pl-5"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
                     <input type="text" class="col-md-3 form-control obli" name="Tx_Entidad" placeholder="" autocomplete="off" />
                     <br /><br />
                     <label class="col-md-3 "><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
@@ -116,7 +142,7 @@
             <br />
             <div class="textBlue" id="div3">
 
-                <p class="font-weight-bold">3.- ¿En la actualidad, ejerces un cargo público o lo has desempeñado en el pasado, por ejemplo como director de una empresa pública, asesor, magistrado, vocal de algún tribunal administrativo o similares?. </p>
+                <p class="font-weight-bold">3.- En la actualidad ¿Ejerces algún cargo público o lo has desempeñado en el pasado? Ejm.: Director de una empresa pública, asesor, magistrado, vocal de algún tribunal administrativo o similares?. </p>
                 <div class="px-0 mx-0">
                     <div class="form-check" style="display:flex !important;">
                         <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="Sí" onclick="SiNo2()" required>
@@ -139,13 +165,12 @@
                 <div class="px-0 mx-0 form-row">
                     <label class="col-md-3 "><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
                     <input type="text" class="col-md-3 form-control obli2" name="EntidadEstatal" placeholder="" autocomplete="off" />
-                    <label class="col-md-3 text-center"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                    <label class="col-md-3 pl-5"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
                     <input type="text" class="col-md-3 form-control obli2" name="Cargo" placeholder="" autocomplete="off" />
                     <br /><br />
                     <label class="col-md-3 "><span class="textOrange2">* </span>FECHA</label>
                     <input type="date" class="col-md-3 form-control obli2" name="fecha" placeholder="" autocomplete="off" />
                 </div>
-
                 <div id="agregarcargo"></div>
                 <button type="button" class="btn textBlue2 bgacero py-0 position-relative" onclick="Nuevo3();" style="left:91%;"> &nbsp;&nbsp;&nbsp;&nbsp; + Cargo &nbsp;&nbsp;&nbsp;&nbsp;</button>
 
@@ -157,7 +182,7 @@
             <div class="textBlue bgacero p-2">
                 <h3>DECLARACION JURADA</h3>
                 <span>
-                    Mediante el presente documentos reconozco haber sido informado sobre la finalidad de la información solicitada para lo cual brindo mi consentimiento libre e informado. Asimismo, reconozco que la información brindada a través del presente documento virtual es verdadera y tiene calidad de declaración jurada.
+                    Mediante el presente documento reconozco haber sido informado sobre sobre la finalidad de la información solicitada, para lo cual brindo mi consentimiento libre e informado. Asimismo, reconozco que la información brindada a través del presente documento virtual es verdadera y tiene calidad de declaración jurada.
                 </span>
             </div>
             <br />
@@ -223,7 +248,7 @@
                                     <hr class="w-100">
                                     <label class="col-md-3 "><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
                                     <input type="text" class="col-md-3 form-control" name="EntidadEstatal" placeholder="" required/>
-                                    <label class="col-md-3 text-center"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                                    <label class="col-md-3 pl-5"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
                                     <input type="text" class="col-md-3 form-control" name="Cargo" placeholder="" required/>
                                     <br /><br />
                                     <label class="col-md-3 "><span class="textOrange2">* </span>FECHA</label>
@@ -309,12 +334,12 @@
                                             <button type="button" class="btn text-white bg-orange py-0 position-relative" onclick="Remove3(${count3});" style="font-size:1rem;left:2.8%;bottom:-34px;">x</button>
                                             <label class="col-md-3 "><span class="textOrange2">* </span>PARENTESCO</label>
                                             <input type="text" class="col-md-3 form-control" name="Tx_Parentesco" placeholder="" required/>
-                                            <label class="col-md-3 text-center"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
+                                            <label class="col-md-3 pl-5"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
                                             <input type="text" class="col-md-3 form-control" name="Tx_NombreCompleto" placeholder="" required/>
                                             <br /><br />
                                             <label class="col-md-3 "><span class="textOrange2">* </span>FECHA DE NACIMIENTO</label>
                                             <input type="date" class="col-md-3 form-control" name="Fe_Nacimiento" placeholder="" required/>
-                                            <label class="col-md-3 text-center"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
+                                            <label class="col-md-3 pl-5"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
                                             <input type="text" class="col-md-3 form-control" name="Tx_Entidad" placeholder="" required/>
                                             <br /><br />
                                             <label class="col-md-3 "><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
