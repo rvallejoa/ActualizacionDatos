@@ -57,7 +57,7 @@
                     <br />
                     <label class="col-md-3">HERMANO(A)</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" autocomplete="off" />
+                        <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" autocomplete="off"  />
                     </div>
                     <div class="col-md-3">
                         <input type="text" class="form-control px-2" name="Tx_ApellidoPatHermano" placeholder="Apellido Paterno" autocomplete="off" />
@@ -77,12 +77,12 @@
                 <p class="font-weight-bold"> 2.- Actualmente tienes algún familiar hasta segundo grado de consanguinidad o afinidad (cónyuge, conviviente, pareja, hijos, padres, hermanos, abuelos, suegros, cónyuges o convivientes de los hijos, cónyuges o convivientes de los padres, cónyuges o convivientes de los hermanos (cuñados) o hermanastros(as) laborando o prestando servicios en el Estado o que <u>en los últimos 5 años</u> haya trabajado en el Estado?</p>
                 <div class="px-0 mx-0">
                     <div class="form-check" style="display:flex !important;">
-                        <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Sí" onclick="SiNo()" required>
+                        <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Sí" onclick="SiNo()">
                         <label for="inlineRadio1" class="mb-0"></label>
                         <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio1"> &nbsp; SI</label>
                     </div>
                     <div class="form-check mt-2" style="display:flex !important;">
-                        <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No" onclick="SiNo()" required>
+                        <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No" onclick="SiNo()">
                         <label for="inlineRadio2" class="mb-0"></label>
                         <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio2">&nbsp; NO</label>
                     </div>
@@ -115,43 +115,18 @@
             </div>
             <br />
             <div class="textBlue" id="div3">
-
                 <p class="font-weight-bold">3.- Si actualmente ejerces un cargo público o lo has desempeñado en el pasado, por ejemplo como director de una empresa pública, asesor, magistrado, vocal de algún tribunal administrativo o similares), por favor completar los siguientes campos: </p>
-                <div class="px-0 mx-0">
-                    <div class="form-check" style="display:flex !important;">
-                        <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="Sí" onclick="SiNo2()" required>
-                        <label for="inlineRadio3" class="mb-0"></label>
-                        <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio3"> &nbsp; SI</label>
-                    </div>
-                    <div class="form-check mt-2" style="display:flex !important;">
-                        <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="No" onclick="SiNo2()" required>
-                        <label for="inlineRadio4" class="mb-0"></label>
-                        <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio4">&nbsp; NO</label>
-                    </div>
-                    <input type="number" name="Fl_CargoPublico" id="Fl_CargoPublico" value="" class="d-none" />
-
-                </div>
-            </div>
-            <br />
-
-            <div class="textBlue d-none" id="oculto2">
-                <p class="font-weight-bold">3.1- Por favor indica sus datos a continuación:</p>
                 <div class="px-0 mx-0 form-row">
-                    <label class="col-md-3 "><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
-                    <input type="text" class="col-md-3 form-control obli2" name="EntidadEstatal" placeholder="" autocomplete="off" />
-                    <label class="col-md-3 text-center"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
-                    <input type="text" class="col-md-3 form-control obli2" name="Cargo" placeholder="" autocomplete="off" />
+                    <label class="col-md-3 ">ENTIDAD ESTATAL</label>
+                    <input type="text" class="col-md-3 form-control" placeholder="" autocomplete="off"  />
+                    <label class="col-md-3 text-center">CARGO O POSICIÓN</label>
+                    <input type="text" class="col-md-3 form-control" placeholder="" autocomplete="off" />
                     <br /><br />
-                    <label class="col-md-3 "><span class="textOrange2">* </span>FECHA</label>
-                    <input type="date" class="col-md-3 form-control obli2" name="fecha" placeholder="" autocomplete="off" />
+                    <label class="col-md-3 ">FECHA</label>
+                    <input type="date" class="col-md-3 form-control" placeholder="" autocomplete="off" />
                 </div>
-
-                <div id="agregarcargo"></div>
-                <button type="button" class="btn textBlue2 bgacero py-0 position-relative" onclick="Nuevo3();" style="left:91%;"> &nbsp;&nbsp;&nbsp;&nbsp; + Cargo &nbsp;&nbsp;&nbsp;&nbsp;</button>
-
             </div>
-
-           
+            <button type="button" class="btn textBlue2 bgacero py-0 position-relative" onclick="Nuevo3();" style="left:91%;"> &nbsp;&nbsp;&nbsp;&nbsp; + Cargo &nbsp;&nbsp;&nbsp;&nbsp;</button>
             <br />
             <br />
             <div class="textBlue bgacero p-2">
@@ -218,16 +193,16 @@
     }
     function Nuevo3() {
         count2++;
-        $('#agregarcargo').append(`
+        $('#div3').append(`
                                 <div class="px-0 mx-0 form-row mt-3" id="a-${count2}">
                                     <hr class="w-100">
-                                    <label class="col-md-3 "><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
-                                    <input type="text" class="col-md-3 form-control" name="EntidadEstatal" placeholder="" required/>
-                                    <label class="col-md-3 text-center"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
-                                    <input type="text" class="col-md-3 form-control" name="Cargo" placeholder="" required/>
+                                    <label class="col-md-3 ">ENTIDAD ESTATAL</label>
+                                    <input type="text" class="col-md-3 form-control" placeholder="" required/>
+                                    <label class="col-md-3 text-center">CARGO O POSICIÓN</label>
+                                    <input type="text" class="col-md-3 form-control" placeholder="" required/>
                                     <br /><br />
-                                    <label class="col-md-3 "><span class="textOrange2">* </span>FECHA</label>
-                                    <input type="date" class="col-md-3 form-control" name="fecha" placeholder="" required/>
+                                    <label class="col-md-3 ">FECHA</label>
+                                    <input type="date" class="col-md-3 form-control" placeholder="" required/>
                                     <button type="button" class="btn text-white bg-orange py-0 mt-2 position-relative" onclick="Remove(${count2});" style="font-size:1rem;left:50.5%;bottom:53px;">x</button>
 
                                 </div>`)
@@ -247,36 +222,6 @@
         }
 
         var obligatorios = $('.obligatorio');
-        obligatorios.each(function () {
-            if (this.value == "") {
-                console.log('vacio');
-            } else {
-                esLleno = 1;
-            }
-        });
-
-        //console.log(esLleno);
-        //if (esLleno == 1) {
-        //    $('#guardar').removeAttr('disabled');
-        //}
-    }
-
-
-    function SiNo2() {
-        var seleccionado = $("input[name='inlineRadioOptions2']:checked").val();
-        if (seleccionado == 'Sí') {
-            $('#oculto2').removeClass('d-none');
-            $('#Fl_CargoPublico').val(1);
-            console.log($('.obli2'))
-            $('.obli2').attr('required', true);
-        } else {
-            $('#oculto2').addClass('d-none');
-            $('#Fl_CargoPublico').val(0);
-            $('.obli2').removeAttr('required');
-
-        }
-
-        var obligatorios = $('.obligatorio2');
         obligatorios.each(function () {
             if (this.value == "") {
                 console.log('vacio');

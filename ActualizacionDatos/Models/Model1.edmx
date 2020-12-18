@@ -30,6 +30,7 @@
           <Property Name="Tx_ApellidoMatMadre" Type="varchar" MaxLength="60" />
           <Property Name="Fl_CosanguiniedadEstado" Type="int" />
           <Property Name="Fe_Registro" Type="datetime" />
+          <Property Name="Fl_CargoPublico" Type="int" />
         </EntityType>
         <EntityType Name="FamiliaEstado">
           <Key>
@@ -142,6 +143,7 @@
           <NavigationProperty Name="FamiliaEstado" Relationship="Self.FK_FamiliaEstado_Familia" FromRole="Familia" ToRole="FamiliaEstado" />
           <NavigationProperty Name="Hermano" Relationship="Self.FK_Hermano_Familia" FromRole="Familia" ToRole="Hermano" />
           <Property Name="Fe_Registro" Type="DateTime" Precision="3" />
+          <Property Name="Fl_CargoPublico" Type="Int32" />
         </EntityType>
         <EntityType Name="FamiliaEstado">
           <Key>
@@ -244,6 +246,7 @@
           <EntitySetMapping Name="Familia">
             <EntityTypeMapping TypeName="IntranetModel.Familia">
               <MappingFragment StoreEntitySet="Familia">
+                <ScalarProperty Name="Fl_CargoPublico" ColumnName="Fl_CargoPublico" />
                 <ScalarProperty Name="Fe_Registro" ColumnName="Fe_Registro" />
                 <ScalarProperty Name="Co_Familia" ColumnName="Co_Familia" />
                 <ScalarProperty Name="No_Usuario" ColumnName="No_Usuario" />
