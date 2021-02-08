@@ -3,46 +3,157 @@
     ViewBag.Title = "Listado";
 }
 
+<link href="~/Content/DataTable/datatables.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/datatables.mark.js/2.0.0/datatables.mark.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/plug-ins/1.10.13/features/mark.js/datatables.mark.min.css" rel="stylesheet" />
 
-<div class="" style="background-color:white;">
-    <div class="bg-orange text-white  p-3">
-      
-        <div class="p-2 m-0">
-            <span style="font-size:3rem;" class="float-left"> Actualización de datos M&A</span>
-            <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" /><br />
-
+@if (ViewBag.usuario == "mrodriguez" || ViewBag.usuario == "egalarza" || ViewBag.usuario == "jdominguez" || ViewBag.usuario == "jalegre" || ViewBag.usuario == "dsanchez" || ViewBag.usuario == "ssulca" || ViewBag.usuario == "jnapan" || ViewBag.usuario == "ocordero" || ViewBag.usuario == "lcordova")
+{
+    <div class="" style="background-color:white;">
+        <div class="bg-orange text-white  p-3">
+            <div class="p-2 m-0">
+                <span style="font-size:3rem;" class="float-left"> Actualización de datos M&A</span>
+                <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" /><br />
+            </div>
+            <br /><br />
+            <h3 class="float-left pl-2">Listado de Registros</h3>
+            <a class="btn bgacero textBlue2 float-right" href="@Url.Action("Index", "Home", new { })">Ir a Cuestionario >></a>
+            <br />
+            <br />
         </div>
-        <br /><br />
-        <h3 class="float-left pl-2">Listado de Registros</h3>
-        <a class="btn bgacero textBlue2 float-right" href="@Url.Action("Index", "Home", new { })">Ir a Cuestionario >></a>
-        <br />
-        <br />
-    </div>
-    <div class="p-5">
+        <div class="p-5">
+            <table class="table table-striped textBlue" id="table-listado-general">
+                <thead>
+                    <tr>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Nombre Padre</th>
+                        <th scope="col">Nombre Madre</th>
+                        <th scope="col">Nombre Hermanos</th>
+                        <th scope="col">Familiares trabajando en el estado</th>
+                        <th scope="col">¿Ha ejercido algún cargo público?</th>
+                        <th scope="col">Fecha Registro</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-        <table class="table table-striped textBlue">
-            <thead>
-                <tr>
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Nombre Padre</th>
-                    <th scope="col">Nombre Madre</th>
-                    <th scope="col">Fecha Registro</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                <tr>
-                    <th scope="row">@item.Co_Familia</th>
-                    <td>@item.No_Usuario</td>
-                    <td>@item.Tx_NombresPadre @item.Tx_ApellidoPatPadre @item.Tx_ApellidoMatPadre</td>
-                    <td>@item.Tx_NombresMadre @item.Tx_ApellidoPatMadre @item.Tx_ApellidoMatMadre</td>
-                    <td>@item.Fe_Registro</td>
-                </tr>
-                }
-                
-            </tbody>
-        </table>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@item.Co_Familia</th>
+                            <td>@item.No_Usuario</td>
+                            <td>@item.Tx_NombresPadre @item.Tx_ApellidoPatPadre @item.Tx_ApellidoMatPadre</td>
+                            <td>@item.Tx_NombresMadre @item.Tx_ApellidoPatMadre @item.Tx_ApellidoMatMadre</td>
+                            <td>
+                                <ul>
+                                    @foreach (var item2 in item.Hermano)
+                                    {
+                                        <li>@item2.Tx_NombresHermano @item2.Tx_ApellidoPatHermano @item2.Tx_ApellidoMatHermano</li>
+                                    }
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                @if (item.Fl_CosanguiniedadEstado == 1)
+                                {
+                                    <ul style="text-align:left !important;" class="list-unstyled">
+                                        @foreach (var item3 in item.FamiliaEstado)
+                                        {
+                                            <li>
+                                                <i class="fad fa-users" title="Parentesco"></i>&nbsp;&nbsp;@item3.Tx_Parentesco
+                                            </li>
+                                            <li>
+                                                <i class="fad fa-user" title="Nombre Completo"></i>&nbsp;&nbsp;@item3.Tx_NombreCompleto
+                                            </li>
+                                            <li>
+                                                <i class="fad fa-calendar-alt" title="Fecha de Nacimiento"></i>&nbsp;&nbsp;@item3.Fe_Nacimiento.Value.ToString("dd/MM/yyyy")
+                                            </li>
+                                            <li>
+                                                <i class="fad fa-map-marked-alt" title="Entidad"></i>&nbsp;&nbsp;@item3.Tx_Entidad
+                                            </li>
+                                            <li>
+                                                <i class="fad fa-briefcase" title="Cargo"></i>&nbsp;&nbsp;@item3.Tx_Cargo
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <span>-</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                @if (item.Fl_CargoPublico == 1)
+                                {
+                                    <ul style="text-align:left !important;" class="list-unstyled">
+                                        @foreach (var item3 in item.CargoPublico)
+                                        {
+                                            <li>
+                                                <i class="fad fa-map-marked-alt" title="Entidad"></i>&nbsp;&nbsp;@item3.Tx_Entidad
+                                            </li>
+                                            <li>
+                                                <i class="fad fa-briefcase" title="Cargo"></i>&nbsp;&nbsp;@item3.Tx_Cargo
+                                            </li>
+                                            <li>
+                                                <i class="fad fa-calendar-alt" title="Fecha"></i>&nbsp;&nbsp;@item3.Fe_Fecha.Value.ToString("dd/MM/yyyy")
+                                            </li>
+
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <span class="text-center">-</span>
+                                }
+                            </td>
+                            <td>@item.Fe_Registro</td>
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+}
+
+else
+{
+    <div class="" style="background-color:white;height:96vh">
+        <div class="bg-orange text-white  p-3">
+            <div class="p-2 m-0">
+                <span style="font-size:3rem;" class="float-left"> Actualización de datos M&A</span>
+                <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" /><br />
+            </div>
+            <br />
+            <br />
+        </div>
+        <div class="textBlue2">
+            <br />
+            <h2 class="float-left pl-4">No tienes permisos para visualizar esta información,comunicate con el área de <a href="mailto:desarrollo_ti@mafirma.com.pe" class="textBlue2">Desarrollo</a></h2>
+            <br />
+        </div>
+    </div>
+}
+
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script src="~/Content/DataTable/datatables.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/g/mark.js(jquery.mark.min.js)"></script>
+        <script src="https://cdn.datatables.net/plug-ins/1.10.13/features/mark.js/datatables.mark.js"></script>
+
+        <script>
+            //---TABLA GENERAL
+            var table1 = $('#table-listado-general').DataTable({
+                orderCellsTop: true,
+                pageLength: 15,
+                mark: true,
+                language: {
+                    searchPlaceholder: 'Buscador General'
+                }
+            });
+            //oculta ver registro
+            $('#table-listado-general_length').toggleClass('d-none');
+            $('#table-listado-general_wrapper').css({
+                'width': '100%'
+            });
+        </script>

@@ -98,6 +98,9 @@ namespace ActualizacionDatos.Controllers
 
         public ActionResult Listado()
         {
+            string name = User.Identity.Name;
+            int position = name.IndexOf('@');
+            ViewBag.usuario= name.Substring(0, position);
 
             List<Familia>  Listado = db.Familia.ToList();
 
