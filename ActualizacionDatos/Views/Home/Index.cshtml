@@ -6,220 +6,221 @@
     int position = name.IndexOf('@');
     string usuario = name.Substring(0, position);
 }
-
-@using (Html.BeginForm())
-{
-    <div class="" style="background-color:white;">
-        <div class="bg-orange text-white  py-3 px-5">
-            <div class="p-2 m-0">
-                <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" />
-            </div>
-            <h2>Actualización de datos M&A</h2>
-            <h5>Con el fin de tener actualizados sus datos personales - familiares, y así poder cumplir con los eventuales requerimientos que nuestros clientes puedan solicitarnos como parte de sus políticas internas, agradeceremos completar el siguiente formulario</h5>
-            @if (usuario == "mrodriguez" || usuario == "rvallejo" || usuario == "egalarza" || usuario == "jdominguez" || usuario == "jalegre" || usuario == "dsanchez")
-            {
-                <a class="btn bgacero textBlue2 float-right" href="@Url.Action("Listado", "Home", new { })">Ir a Listado >></a>
-                <br /><br />
-            }
-        </div>
-        <p class="px-5 pt-3 m-0 textBlue">
-            Hola, <b>@usuario</b>: al enviar este formulario, el propietario podrá ver su nombre y dirección de correo electrónico.
-            <span class="float-right font-weight-bold">Campos Obligatorios (<span class="font-weight-bold textOrange2" style="font-size:1.3rem;">*</span>)</span>
-        </p>
-        <br />
-        <div class="px-5">
-            <div class="textBlue">
-                <p class="font-weight-bold"> 1.- Por favor ingresa los nombres y apellidos de tus padres y hermanos:</p>
-                <div class="form-row pl-2 pr-0">
-                    <label class="col-md-3"><span class="textOrange2">* </span>PADRE</label>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control obligatorio" name="Tx_NombresPadre" placeholder="Nombres" required autocomplete="off" />
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control px-2 obligatorio" name="Tx_ApellidoPatPadre" placeholder="Apellido Paterno" required autocomplete="off" />
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control obligatorio" name="Tx_ApellidoMatPadre" placeholder="Apellido Materno" required autocomplete="off" />
-                    </div>
-
+<div style="padding-left:10%;padding-right:10%;background-color:lightgray">
+    @using (Html.BeginForm())
+    {
+        <div class="" style="background-color:white;">
+            <div class="bg-orange text-white  py-3 px-5">
+                <div class="p-2 m-0">
+                    <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" />
+                </div>
+                <h2>Actualización de datos M&A</h2>
+                <h5>Con el fin de tener actualizados sus datos personales - familiares, y así poder cumplir con los eventuales requerimientos que nuestros clientes puedan solicitarnos como parte de sus políticas internas, agradeceremos completar el siguiente formulario</h5>
+                @if (usuario == "mrodriguez" || usuario == "rvallejo" || usuario == "egalarza" || usuario == "jdominguez" || usuario == "jalegre" || usuario == "dsanchez" || usuario == "ssulca")
+                {
+                    <a class="btn bgacero textBlue2 float-right" href="@Url.Action("Listado", "Home", new { })">Ir a Listado >></a>
                     <br /><br />
-                    <label class="col-md-3"><span class="textOrange2">* </span>MADRE</label>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control obligatorio" name="Tx_NombresMadre" placeholder="Nombres" required autocomplete="off" />
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control px-2 obligatorio" name="Tx_ApellidoPatMadre" placeholder="Apellido Paterno" required autocomplete="off" />
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control obligatorio" name="Tx_ApellidoMatMadre" placeholder="Apellido Materno" required autocomplete="off" />
-                    </div>
-                    <br />
-                    <br />
-                    <label class="col-md-3"><span class="text-white">* </span>HERMANO(A)</label>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" autocomplete="off" />
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control px-2" name="Tx_ApellidoPatHermano" placeholder="Apellido Paterno" autocomplete="off" />
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" name="Tx_ApellidoMatHermano" placeholder="Apellido Materno" autocomplete="off" />
-                    </div>
-
-                    <div id="nuevo-Hermano" class="p-0 mx-0 mb-0 form-row col-md-12"></div>
-                    <button type="button" class="btn textBlue2 bgacero py-0 float-right" onclick="NuevoHermano();" style="position: relative; left: 90.7%;top: 2px;"> + Hermano(a)</button>
-
-                </div>
-
+                }
             </div>
+            <p class="px-5 pt-3 m-0 textBlue">
+                Hola, <b>@usuario</b>: al enviar este formulario, el propietario podrá ver su nombre y dirección de correo electrónico.
+                <span class="float-right font-weight-bold">Campos Obligatorios (<span class="font-weight-bold textOrange2" style="font-size:1.3rem;">*</span>)</span>
+            </p>
             <br />
-            <div class="textBlue">
-                <p class="font-weight-bold mb-0"> 2.- En la actualidad ¿Tienes algún familiar hasta 2° grado de consanguinidad o afinidad laborando o prestando servicios en el Estado o que <u> en los últimos 5 años</u> ha trabajado en el Estado?</p>
-                <div class="col-12 d-flex" style="font-size:.9em;">
-                    <div class="col-4">
-                        <ul>
-                            <li>Cónyuge.</li>
-                            <li>Conviviente.</li>
-                            <li>Pareja.</li>
-                            <li>Hijos.</li>
-                        </ul>
+            <div class="px-5">
+                <div class="textBlue">
+                    <p class="font-weight-bold"> 1.- Por favor ingresa los nombres y apellidos de tus padres y hermanos:</p>
+                    <div class="form-row pl-2 pr-0">
+                        <label class="col-md-3"><span class="textOrange2">* </span>PADRE</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control obligatorio" name="Tx_NombresPadre" placeholder="Nombres" required autocomplete="off" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control px-2 obligatorio" name="Tx_ApellidoPatPadre" placeholder="Apellido Paterno" required autocomplete="off" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control obligatorio" name="Tx_ApellidoMatPadre" placeholder="Apellido Materno" required autocomplete="off" />
+                        </div>
+
+                        <br /><br />
+                        <label class="col-md-3"><span class="textOrange2">* </span>MADRE</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control obligatorio" name="Tx_NombresMadre" placeholder="Nombres" required autocomplete="off" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control px-2 obligatorio" name="Tx_ApellidoPatMadre" placeholder="Apellido Paterno" required autocomplete="off" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control obligatorio" name="Tx_ApellidoMatMadre" placeholder="Apellido Materno" required autocomplete="off" />
+                        </div>
+                        <br />
+                        <br />
+                        <label class="col-md-3"><span class="text-white">* </span>HERMANO(A)</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" autocomplete="off" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control px-2" name="Tx_ApellidoPatHermano" placeholder="Apellido Paterno" autocomplete="off" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" name="Tx_ApellidoMatHermano" placeholder="Apellido Materno" autocomplete="off" />
+                        </div>
+
+                        <div id="nuevo-Hermano" class="p-0 mx-0 mb-0 form-row col-md-12"></div>
+                        <button type="button" class="btn textBlue2 bgacero py-0 float-right" onclick="NuevoHermano();" style="position: relative; left: 90.7%;top: 2px;"> + Hermano(a)</button>
+
                     </div>
-                    <div class="col-4">
-                        <ul>
-                            <li>Padres.</li>
-                            <li>Hermanos.</li>
-                            <li>Abuelos.</li>
-                            <li>Suegros.</li>
-                        </ul>
+
+                </div>
+                <br />
+                <div class="textBlue">
+                    <p class="font-weight-bold mb-0"> 2.- ¿En la actualidad tienes algún familiar hasta 2° grado de consanguinidad o afinidad laborando o prestando servicios en el Estado o que <u> en los últimos 5 años</u> ha trabajado en el Estado?</p>
+                    <div class="col-12 d-flex" style="font-size:.9em;">
+                        <div class="col-4">
+                            <ul>
+                                <li>Cónyuge.</li>
+                                <li>Conviviente.</li>
+                                <li>Pareja.</li>
+                                <li>Hijos.</li>
+                            </ul>
+                        </div>
+                        <div class="col-4">
+                            <ul>
+                                <li>Padres.</li>
+                                <li>Hermanos.</li>
+                                <li>Abuelos.</li>
+                                <li>Suegros.</li>
+                            </ul>
+                        </div>
+                        <div class="col-4">
+                            <ul>
+                                <li>Cónyuges o convivientes de los hijos.</li>
+                                <li>Cónyuges o convivientes de los padres.</li>
+                                <li>Cónyuges o convivientes de los hermanos (cuñados.)</li>
+                                <li>Hermanastros(as).</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <ul>
-                            <li>Cónyuges o convivientes de los hijos.</li>
-                            <li>Cónyuges o convivientes de los padres.</li>
-                            <li>Cónyuges o convivientes de los hermanos (cuñados.)</li>
-                            <li>Hermanastros(as).</li>
-                        </ul>
+                    <div class="px-0 mx-0">
+                        <div class="form-check" style="display:flex !important;">
+                            <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Sí" onclick="SiNo()" required>
+                            <label for="inlineRadio1" class="mb-0"></label>
+                            <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio1"> &nbsp; SI</label>
+                        </div>
+                        <div class="form-check mt-2" style="display:flex !important;">
+                            <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No" onclick="SiNo()" required>
+                            <label for="inlineRadio2" class="mb-0"></label>
+                            <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio2">&nbsp; NO</label>
+                        </div>
+                        <input type="number" name="Fl_CosanguiniedadEstado" id="Fl_CosanguiniedadEstado" value="" class="d-none" />
+
                     </div>
                 </div>
-                <div class="px-0 mx-0">
-                    <div class="form-check" style="display:flex !important;">
-                        <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Sí" onclick="SiNo()" required>
-                        <label for="inlineRadio1" class="mb-0"></label>
-                        <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio1"> &nbsp; SI</label>
+                <br />
+                <div class="textBlue d-none" id="oculto">
+                    <p class="font-weight-bold">2.1- Por favor completa los siguientes campos:</p>
+                    <div class="px-0 mx-0 form-row">
+                        <label class="col-md-3 "><span class="textOrange2">* </span>PARENTESCO</label>
+                        <input type="text" class="col-md-3 form-control obli" name="Tx_Parentesco" placeholder="" autocomplete="off" />
+
+                        <label class="col-md-3 pl-5"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
+                        <input type="text" class="col-md-3 form-control obli" name="Tx_NombreCompleto" placeholder="" autocomplete="off" />
+                        <br /><br />
+                        <label class="col-md-3 "><span class="textOrange2">* </span>FECHA DE NACIMIENTO</label>
+                        <input type="date" class="col-md-3 form-control obli" name="Fe_Nacimiento" placeholder="" autocomplete="off" />
+
+                        <label class="col-md-3 pl-5"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
+                        <input type="text" class="col-md-3 form-control obli" name="Tx_Entidad" placeholder="" autocomplete="off" />
+                        <br /><br />
+                        <label class="col-md-3 "><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                        <input type="text" class="col-md-3 form-control obli" name="Tx_Cargo" placeholder="" autocomplete="off" />
                     </div>
-                    <div class="form-check mt-2" style="display:flex !important;">
-                        <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No" onclick="SiNo()" required>
-                        <label for="inlineRadio2" class="mb-0"></label>
-                        <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio2">&nbsp; NO</label>
+                    <div id="agregarfamilia"></div>
+                    <button type="button" class="btn textBlue2 bgacero py-0 position-relative" onclick="Nuevo2();" style="left:91%;">&nbsp;&nbsp; + Familiar &nbsp;&nbsp;</button>
+
+                </div>
+                <br />
+                <div class="textBlue" id="div3">
+
+                    <p class="font-weight-bold">3.- ¿En la actualidad o en los últimos 5 años has ejercido algún cargo público?. Ejm.: Director de una empresa pública, asesor, magistrado, vocal de algún tribunal administrativo o similares. </p>
+                    <div class="px-0 mx-0">
+                        <div class="form-check" style="display:flex !important;">
+                            <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="Sí" onclick="SiNo2()" required>
+                            <label for="inlineRadio3" class="mb-0"></label>
+                            <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio3"> &nbsp; SI</label>
+                        </div>
+                        <div class="form-check mt-2" style="display:flex !important;">
+                            <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="No" onclick="SiNo2()" required>
+                            <label for="inlineRadio4" class="mb-0"></label>
+                            <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio4">&nbsp; NO</label>
+                        </div>
+                        <input type="number" name="Fl_CargoPublico" id="Fl_CargoPublico" value="" class="d-none" />
+
                     </div>
-                    <input type="number" name="Fl_CosanguiniedadEstado" id="Fl_CosanguiniedadEstado" value="" class="d-none" />
-
                 </div>
-            </div>
-            <br />
-            <div class="textBlue d-none" id="oculto">
-                <p class="font-weight-bold">2.1- Por favor completa los siguientes campos:</p>
-                <div class="px-0 mx-0 form-row">
-                    <label class="col-md-3 "><span class="textOrange2">* </span>PARENTESCO</label>
-                    <input type="text" class="col-md-3 form-control obli" name="Tx_Parentesco" placeholder="" autocomplete="off" />
+                <br />
 
-                    <label class="col-md-3 pl-5"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
-                    <input type="text" class="col-md-3 form-control obli" name="Tx_NombreCompleto" placeholder="" autocomplete="off" />
-                    <br /><br />
-                    <label class="col-md-3 "><span class="textOrange2">* </span>FECHA DE NACIMIENTO</label>
-                    <input type="date" class="col-md-3 form-control obli" name="Fe_Nacimiento" placeholder="" autocomplete="off" />
-
-                    <label class="col-md-3 pl-5"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
-                    <input type="text" class="col-md-3 form-control obli" name="Tx_Entidad" placeholder="" autocomplete="off" />
-                    <br /><br />
-                    <label class="col-md-3 "><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
-                    <input type="text" class="col-md-3 form-control obli" name="Tx_Cargo" placeholder="" autocomplete="off" />
-                </div>
-                <div id="agregarfamilia"></div>
-                <button type="button" class="btn textBlue2 bgacero py-0 position-relative" onclick="Nuevo2();" style="left:91%;">&nbsp;&nbsp; + Familiar &nbsp;&nbsp;</button>
-
-            </div>
-            <br />
-            <div class="textBlue" id="div3">
-
-                <p class="font-weight-bold">3.- En la actualidad ¿Ejerces algún cargo público o lo has desempeñado en el pasado? Ejm.: Director de una empresa pública, asesor, magistrado, vocal de algún tribunal administrativo o similares?. </p>
-                <div class="px-0 mx-0">
-                    <div class="form-check" style="display:flex !important;">
-                        <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="Sí" onclick="SiNo2()" required>
-                        <label for="inlineRadio3" class="mb-0"></label>
-                        <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio3"> &nbsp; SI</label>
+                <div class="textBlue d-none" id="oculto2">
+                    <p class="font-weight-bold">3.1- Por favor completa los siguientes campos:</p>
+                    <div class="px-0 mx-0 form-row">
+                        <label class="col-md-3 "><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
+                        <input type="text" class="col-md-3 form-control obli2" name="EntidadEstatal" placeholder="" autocomplete="off" />
+                        <label class="col-md-3 pl-5"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                        <input type="text" class="col-md-3 form-control obli2" name="Cargo" placeholder="" autocomplete="off" />
+                        <br /><br />
+                        <label class="col-md-3 "><span class="textOrange2">* </span>FECHA</label>
+                        <input type="date" class="col-md-3 form-control obli2" name="fecha" placeholder="" autocomplete="off" />
                     </div>
-                    <div class="form-check mt-2" style="display:flex !important;">
-                        <input class="form-check-input regular-radio" type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="No" onclick="SiNo2()" required>
-                        <label for="inlineRadio4" class="mb-0"></label>
-                        <label class="form-check-label fontSizeDashSubDesc" for="inlineRadio4">&nbsp; NO</label>
-                    </div>
-                    <input type="number" name="Fl_CargoPublico" id="Fl_CargoPublico" value="" class="d-none" />
+                    <div id="agregarcargo"></div>
+                    <button type="button" class="btn textBlue2 bgacero py-0 position-relative" onclick="Nuevo3();" style="left:91%;"> &nbsp;&nbsp;&nbsp;&nbsp; + Cargo &nbsp;&nbsp;&nbsp;&nbsp;</button>
 
                 </div>
-            </div>
-            <br />
 
-            <div class="textBlue d-none" id="oculto2">
-                <p class="font-weight-bold">3.1- Por favor completa los siguientes campos:</p>
-                <div class="px-0 mx-0 form-row">
-                    <label class="col-md-3 "><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
-                    <input type="text" class="col-md-3 form-control obli2" name="EntidadEstatal" placeholder="" autocomplete="off" />
-                    <label class="col-md-3 pl-5"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
-                    <input type="text" class="col-md-3 form-control obli2" name="Cargo" placeholder="" autocomplete="off" />
-                    <br /><br />
-                    <label class="col-md-3 "><span class="textOrange2">* </span>FECHA</label>
-                    <input type="date" class="col-md-3 form-control obli2" name="fecha" placeholder="" autocomplete="off" />
+
+                <br />
+                <br />
+                <div class="textBlue bgacero p-2">
+                    <h3>DECLARACIÓN JURADA</h3>
+                    <span>
+                        Mediante el presente documento reconozco haber sido informado sobre sobre la finalidad de la información solicitada, para lo cual brindo mi consentimiento libre e informado. Asimismo, reconozco que la información brindada a través del presente documento virtual es verdadera y tiene calidad de declaración jurada.
+                    </span>
                 </div>
-                <div id="agregarcargo"></div>
-                <button type="button" class="btn textBlue2 bgacero py-0 position-relative" onclick="Nuevo3();" style="left:91%;"> &nbsp;&nbsp;&nbsp;&nbsp; + Cargo &nbsp;&nbsp;&nbsp;&nbsp;</button>
-
-            </div>
-
-
-            <br />
-            <br />
-            <div class="textBlue bgacero p-2">
-                <h3>DECLARACIÓN JURADA</h3>
-                <span>
-                    Mediante el presente documento reconozco haber sido informado sobre sobre la finalidad de la información solicitada, para lo cual brindo mi consentimiento libre e informado. Asimismo, reconozco que la información brindada a través del presente documento virtual es verdadera y tiene calidad de declaración jurada.
-                </span>
-            </div>
-            <br />
-            <div class="text-center">
-                <button type="button" class=" btn bg-orange text-white font-weight-bold" data-toggle="modal" data-target="#ModalConfirmacion" id="guardar">ENVIAR DATOS</button>
-            </div>
-            <br />
-        </div>
-    </div>
-
-    <!-- Modal confirmacion-->
-    <div class="modal fade" id="ModalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <br />
+                <div class="text-center">
+                    <button type="button" class=" btn bg-orange text-white font-weight-bold" data-toggle="modal" data-target="#ModalConfirmacion" id="guardar">ENVIAR DATOS</button>
                 </div>
-                <div class="modal-body text-center textBlue2">
-                    <h3> Está seguro de enviar la información?</h3>
-                </div>
-                <div class="text-center py-4">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button type="submit" class="btn bg-orange text-white font-weight-bold">Sí</button>
-                </div>
+                <br />
             </div>
         </div>
-    </div>
+
+        <!-- Modal confirmacion-->
+        <div class="modal fade" id="ModalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center textBlue2">
+                        <h3> Está seguro de enviar la información?</h3>
+                    </div>
+                    <div class="text-center py-4">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="submit" class="btn bg-orange text-white font-weight-bold">Sí</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
-}
+    }
+</div>
+
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script>
-
     var count1 = 0;
     var count2 = 0;
     var count3 = 0;
@@ -285,8 +286,6 @@
         //    $('#guardar').removeAttr('disabled');
         //}
     }
-
-
     function SiNo2() {
         var seleccionado = $("input[name='inlineRadioOptions2']:checked").val();
         if (seleccionado == 'Sí') {
@@ -315,18 +314,15 @@
         //    $('#guardar').removeAttr('disabled');
         //}
     }
-
     function Remove1(id) {
         $("#div-" + id).remove();
     }
     function Remove(id) {
         $("#a-" + id).remove();
     }
-
     function Remove3(id) {
         $("#divv-" + id).remove();
     }
-
     function Nuevo2() {
         count3++;
         $("#agregarfamilia").append(`<div class="px-0 mx-0 form-row mt-3" id="divv-${count3}">
@@ -346,6 +342,4 @@
                                             <input type="text" class="col-md-3 form-control" name="Tx_Cargo" placeholder="" required/>
                                         </div>`)
     }
-
-
 </script>
