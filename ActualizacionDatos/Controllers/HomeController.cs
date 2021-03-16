@@ -27,8 +27,8 @@ namespace ActualizacionDatos.Controllers
             int position = name.IndexOf('@');
 
             familia.No_Usuario = name.Substring(0, position); 
-            familia.Fe_Registro = DateTime.Now; 
-            familia.Fl_Activo=1
+            familia.Fe_Registro = DateTime.Now;
+            familia.Fl_Activo = 1;
             db.Familia.Add(familia);
          
 
