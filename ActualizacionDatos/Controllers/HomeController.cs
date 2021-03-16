@@ -28,6 +28,7 @@ namespace ActualizacionDatos.Controllers
 
             familia.No_Usuario = name.Substring(0, position); 
             familia.Fe_Registro = DateTime.Now; 
+            familia.Fl_Activo=1
             db.Familia.Add(familia);
          
 
@@ -102,7 +103,7 @@ namespace ActualizacionDatos.Controllers
             int position = name.IndexOf('@');
             ViewBag.usuario= name.Substring(0, position);
 
-            List<Familia>  Listado = db.Familia.ToList();
+            List<Familia>  Listado = db.Familia.Where(x=>x.Fl_Activo == 1).ToList();
 
             return View(Listado);
         }

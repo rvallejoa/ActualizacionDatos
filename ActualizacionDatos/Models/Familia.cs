@@ -33,6 +33,7 @@ namespace ActualizacionDatos.Models
         public Nullable<int> Fl_CosanguiniedadEstado { get; set; }
         public Nullable<System.DateTime> Fe_Registro { get; set; }
         public Nullable<int> Fl_CargoPublico { get; set; }
+        public Nullable<int> Fl_Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CargoPublico> CargoPublico { get; set; }
