@@ -106,6 +106,7 @@ namespace ActualizacionDatos.Controllers
             List<Familia>  Listado = db.Familia.Where(x=>x.Fl_Activo == 1).ToList();
 
             return View(Listado);
+
         }
     }
 }
