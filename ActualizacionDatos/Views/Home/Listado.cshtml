@@ -7,8 +7,22 @@
 <link href="https://cdn.jsdelivr.net/datatables.mark.js/2.0.0/datatables.mark.min.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/plug-ins/1.10.13/features/mark.js/datatables.mark.min.css" rel="stylesheet" />
 
-@if (ViewBag.usuario == "mrodriguez" || ViewBag.usuario == "egalarza" || ViewBag.usuario == "jdominguez" || ViewBag.usuario == "jalegre" || ViewBag.usuario == "dsanchez" || ViewBag.usuario == "ssulca" || ViewBag.usuario == "jnapan" || ViewBag.usuario == "ocordero" || ViewBag.usuario == "lcordova" || ViewBag.usuario == "rvallejo")
+@if (ViewBag.usuario == "mrodriguez" || ViewBag.usuario == "egalarza" || ViewBag.usuario == "jdominguez" || ViewBag.usuario == "jalegre" || ViewBag.usuario == "dsanchez" || ViewBag.usuario == "kserrano" || ViewBag.usuario == "jnapan" || ViewBag.usuario == "ocordero" || ViewBag.usuario == "lcordova" || ViewBag.usuario == "rvallejo")
 {
+
+
+
+
+
+
+
+
+    <button class="btn btn-orange-tr border-0 mt-5 pt-5 d-none" style="z-index:1;" onclick="DescargarReporte();">
+
+        <span>Descargar reportes</span>
+    </button>
+
+
     <div class="" style="background-color:white;">
         <div class="bg-orange text-white  p-3">
             <div class="p-2 m-0">
@@ -48,7 +62,7 @@
                                 <ul>
                                     @foreach (var item2 in item.Hermano)
                                     {
-                                        <li>@item2.Tx_NombresHermano @item2.Tx_ApellidoPatHermano @item2.Tx_ApellidoMatHermano</li>
+                                        <li>@item2.Tx_NombresHermano @item2.Tx_ApellidoPatHermano @item2.Tx_ApellidoMatHermano</li><br />
                                     }
                                 </ul>
                             </td>
@@ -135,25 +149,43 @@ else
     </div>
 }
 
-        <script src="~/Scripts/jquery-3.3.1.js"></script>
-        <script src="~/Content/DataTable/datatables.js"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Content/DataTable/datatables.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/g/mark.js(jquery.mark.min.js)"></script>
-        <script src="https://cdn.datatables.net/plug-ins/1.10.13/features/mark.js/datatables.mark.js"></script>
+<script src="https://cdn.jsdelivr.net/g/mark.js(jquery.mark.min.js)"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.13/features/mark.js/datatables.mark.js"></script>
 
-        <script>
-            //---TABLA GENERAL
-            var table1 = $('#table-listado-general').DataTable({
-                orderCellsTop: true,
-                pageLength: 15,
-                mark: true,
-                language: {
-                    searchPlaceholder: 'Buscador General'
-                }
-            });
-            //oculta ver registro
-            $('#table-listado-general_length').toggleClass('d-none');
-            $('#table-listado-general_wrapper').css({
-                'width': '100%'
-            });
-        </script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+
+
+<script>
+    //---TABLA GENERAL
+    var table1 = $('#table-listado-general').DataTable({
+        orderCellsTop: true,
+        pageLength: 15,
+        mark: true,
+        language: {
+            searchPlaceholder: 'Buscador General'
+        },
+        dom: 'Bfrtip',
+        buttons: [{
+            extend: 'excel', className: "d-none",
+            attr: {
+                id: 'exportTable'
+            }
+        }],
+    });
+    //oculta ver registro
+    $('#table-listado-general_length').toggleClass('d-none');
+    $('#table-listado-general_wrapper').css({
+        'width': '100%'
+    });
+
+
+    function DescargarReporte() {
+        $('#exportTable').click();
+    }
+
+</script>
