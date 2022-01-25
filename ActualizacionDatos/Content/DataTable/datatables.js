@@ -4236,7 +4236,7 @@
 			.val( previousSearch.sSearch )
 			.attr( 'placeholder', language.sSearchPlaceholder )
 			.on(
-				'keyup.DT search.DT input.DT paste.DT cut.DT',
+				'click.DT search.DT input.DT paste.DT cut.DT',
 				searchDelay ?
 					_fnThrottle( searchFn, searchDelay ) :
 					searchFn

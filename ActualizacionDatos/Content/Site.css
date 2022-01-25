@@ -17,10 +17,48 @@
     --bgacero2: #32526225;
     --bgacerotable: #a9b4c3;
     --blue-light: #B1C5CF;
+    --btorange: #FFB661;
+    --btorange2: #ffa500;
     /*--grisEvva: #E0E0E0;
     --bgacero: #e9ecef;*/
 }
 
+
+/************************************/
+#tableReporte_paginate, #tableReporte_info, #tableReporte_filter {
+    display: none;
+}
+#tableReporte {
+    display: none;
+}
+
+#table-listado-general_filter {
+    width: 20% !important;
+    margin-bottom: 12px;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+     margin-left: 0 !important; 
+}
+
+
+.img-login {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.img {
+    position: absolute;
+    width: 100%;
+    height: 120px;
+}
+
+.img-logo {
+    position: absolute;
+   /*width: 11%;*/
+    padding: 18px;
+}
 
 /***********************estilos generales***********************/
 
@@ -59,6 +97,9 @@
     font-size: 0.9em;
 }
 
+.btn-orange {
+    background-color: var(--btorange);
+}
 
 .textBlue {
     color: var(--bgblue2);
@@ -197,8 +238,8 @@ label {
 
 
     .regular-radio:checked + label {
-        background-color: var(--bgorange);
-        border: 2px solid var(--bgorange);
+        background-color: var(--btorange2);
+        border: 2px solid var(--btorange2);
         color: #99a1a7;
         padding: 9px;
     }

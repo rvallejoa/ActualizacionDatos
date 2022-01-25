@@ -10,21 +10,30 @@
 @if (ViewBag.usuario == "mrodriguez" || ViewBag.usuario == "egalarza" || ViewBag.usuario == "jdominguez" || ViewBag.usuario == "jalegre" || ViewBag.usuario == "dsanchez" || ViewBag.usuario == "kserrano" || ViewBag.usuario == "jnapan" || ViewBag.usuario == "ocordero" || ViewBag.usuario == "lcordova" || ViewBag.usuario == "rvallejo")
 {
 
+<div style="background-color: #F1F1F1; padding-left: 1%; padding-right: 1%;">
+
+    <div class="img-login">
+        <img class="img" src="~/Content/banner.png" />
+        <div  class="img-logo text-center">
+            <img style="width:50%" src="~/Content/logocolores.png" /><br />
+            <span class="textBlue font-weight-bold" style="text-transform: capitalize;color:gray">@ViewBag.fecha |</span> <span id="HoraActual" class="font-weight-bold" style="color:gray"></span>
+        </div>
+      
+        <a class="btn  textBlue2 float-right" style="z-index: 1 !important; right: -46% !important; position: relative; top: 25px; background-color: #F1F1F1;" href="@Url.Action("Index", "Home", new { })"> <i class="fas fa-home"></i> Ir a Inicio</a>
+    </div>
+    <br /><br />
+    <div class="pl-4 pr-5 col-md-12 mt-5">
+        <span style="font-size:1.9rem;" class="float-left textBlue font-weight-bold"> Actualización de datos M&A : Listado</span>
+        <button class="btn  float-right bg-orange text-white " style="z-index: 1; position: relative; top: 70px; left: -20%;" id="exportTable" >
+            <i class="fas fa-file-excel "></i> <span> Descargar</span>
+        </button>
+    </div>
+
+    @*</div>
 
 
-
-
-
-
-
-    <button class="btn btn-orange-tr border-0 mt-5 pt-5 d-none" style="z-index:1;" onclick="DescargarReporte();">
-
-        <span>Descargar reportes</span>
-    </button>
-
-
-    <div class="" style="background-color:white;">
-        <div class="bg-orange text-white  p-3">
+        <div class="" style="background-color:white;">*@
+    @*<div class="bg-orange text-white  p-3">
             <div class="p-2 m-0">
                 <span style="font-size:3rem;" class="float-left"> Actualización de datos M&A</span>
                 <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" /><br />
@@ -34,100 +43,184 @@
             <a class="btn bgacero textBlue2 float-right" href="@Url.Action("Index", "Home", new { })">Ir a Cuestionario >></a>
             <br />
             <br />
-        </div>
-        <div class="p-5">
-            <table class="table table-striped textBlue" id="table-listado-general">
-                <thead>
-                    <tr>
-                        <th scope="col">Codigo</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Nombre Padre</th>
-                        <th scope="col">Nombre Madre</th>
-                        <th scope="col">Nombre Hermanos</th>
-                        <th scope="col">Familiares trabajando en el estado</th>
-                        <th scope="col">¿Ha ejercido algún cargo público?</th>
-                        <th scope="col">Fecha Registro</th>
-                    </tr>
-                </thead>
-                <tbody>
 
-                    @foreach (var item in Model)
+        </div>*@
+
+    @**************************************tabla oculta******************************************@
+    <table class="table textBlue" id="tableReporte">
+        <thead class="bg-blue text-white">
+            <tr>
+                <th scope="col" class="d-none">Codigo</th>
+                <th scope="col">Usuario </th>
+                <th scope="col" style="width:15%">Nombre Padre</th>
+                <th scope="col" style="width:15%">Nombre Madre</th>
+                <th scope="col" style="width:15%">Nombre Hermanos</th>
+                <th scope="col">Familiares trabajando en el estado</th>
+                <th scope="col">¿Ha ejercido algún cargo público?</th>
+                <th scope="col"style="width:12%">Fecha Registro</th>
+                <th scope="col">Fecha Actualización</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <th scope="row" class="d-none">@item.Co_Familia</th>
+                <td>@item.No_Usuario</td>
+                <td>@item.Tx_NombresPadre @item.Tx_ApellidoPatPadre @item.Tx_ApellidoMatPadre</td>
+                <td>@item.Tx_NombresMadre @item.Tx_ApellidoPatMadre @item.Tx_ApellidoMatMadre</td>
+                <td>
+                    @foreach (var item2 in item.Hermano)
                     {
-                        <tr>
-                            <th scope="row">@item.Co_Familia</th>
-                            <td>@item.No_Usuario</td>
-                            <td>@item.Tx_NombresPadre @item.Tx_ApellidoPatPadre @item.Tx_ApellidoMatPadre</td>
-                            <td>@item.Tx_NombresMadre @item.Tx_ApellidoPatMadre @item.Tx_ApellidoMatMadre</td>
-                            <td>
-                                <ul>
-                                    @foreach (var item2 in item.Hermano)
-                                    {
-                                        <li>@item2.Tx_NombresHermano @item2.Tx_ApellidoPatHermano @item2.Tx_ApellidoMatHermano</li><br />
-                                    }
-                                </ul>
-                            </td>
-                            <td class="text-center">
-                                @if (item.Fl_CosanguiniedadEstado == 1)
-                                {
-                                    <ul style="text-align:left !important;" class="list-unstyled">
-                                        @foreach (var item3 in item.FamiliaEstado)
-                                        {
-                                            <li>
-                                                <i class="fad fa-users" title="Parentesco"></i>&nbsp;&nbsp;@item3.Tx_Parentesco
-                                            </li>
-                                            <li>
-                                                <i class="fad fa-user" title="Nombre Completo"></i>&nbsp;&nbsp;@item3.Tx_NombreCompleto
-                                            </li>
-                                            <li>
-                                                <i class="fad fa-calendar-alt" title="Fecha de Nacimiento"></i>&nbsp;&nbsp;@item3.Fe_Nacimiento.Value.ToString("dd/MM/yyyy")
-                                            </li>
-                                            <li>
-                                                <i class="fad fa-map-marked-alt" title="Entidad"></i>&nbsp;&nbsp;@item3.Tx_Entidad
-                                            </li>
-                                            <li>
-                                                <i class="fad fa-briefcase" title="Cargo"></i>&nbsp;&nbsp;@item3.Tx_Cargo
-                                            </li>
-                                        }
-                                    </ul>
-                                }
-                                else
-                                {
-                                    <span>-</span>
-                                }
-                            </td>
-                            <td class="text-center">
-                                @if (item.Fl_CargoPublico == 1)
-                                {
-                                    <ul style="text-align:left !important;" class="list-unstyled">
-                                        @foreach (var item3 in item.CargoPublico)
-                                        {
-                                            <li>
-                                                <i class="fad fa-map-marked-alt" title="Entidad"></i>&nbsp;&nbsp;@item3.Tx_Entidad
-                                            </li>
-                                            <li>
-                                                <i class="fad fa-briefcase" title="Cargo"></i>&nbsp;&nbsp;@item3.Tx_Cargo
-                                            </li>
-                                            <li>
-                                                <i class="fad fa-calendar-alt" title="Fecha"></i>&nbsp;&nbsp;@item3.Fe_Fecha.Value.ToString("dd/MM/yyyy")
-                                            </li>
-
-                                        }
-                                    </ul>
-                                }
-                                else
-                                {
-                                    <span class="text-center">-</span>
-                                }
-                            </td>
-                            <td>@item.Fe_Registro</td>
-                        </tr>
-
+                        <span>@item2.Tx_NombresHermano @item2.Tx_ApellidoPatHermano @item2.Tx_ApellidoMatHermano</span>
+                        <br />
                     }
 
-                </tbody>
-            </table>
-        </div>
+                </td>
+                <td class="text-center">
+                    @if (item.Fl_CosanguiniedadEstado == 1)
+                    {
+
+                        foreach (var item3 in item.FamiliaEstado)
+                        {
+                            <span>
+                                @item3.Tx_Parentesco |  @item3.Tx_NombreCompleto |  @item3.Fe_Nacimiento.Value.ToString("dd/MM/yyyy") | @item3.Tx_Entidad |  @item3.Tx_Cargo
+                            </span>
+                            <br />
+                        }
+                    }
+                    else
+                    {
+                        <span>No</span>
+                    }
+                </td>
+                <td class="text-center">
+                    @if (item.Fl_CargoPublico == 1)
+                    {
+
+                        foreach (var item3 in item.CargoPublico)
+                        {
+                            <span>
+                                @item3.Tx_Entidad | @item3.Tx_Cargo | @item3.Fe_Fecha.Value.ToString("dd/MM/yyyy")
+                            </span><br />
+
+                        }
+                    }
+                    else
+                    {
+                        <span class="text-center">No</span>
+                    }
+                </td>
+                <td>@item.Fe_Registro</td>
+                <td>@item.Fe_Actualizacion</td>
+            </tr>
+           
+
+            }
+
+        </tbody>
+    </table>
+    @**************************************tabla oculta******************************************@
+    <div class="p-4">
+        <table class="table table-striped textBlue w-100" id="table-listado-general">
+            <thead class="bg-blue text-white">
+                <tr>
+                    <th scope="col" class="d-none">Codigo</th>
+                    <th scope="col" style="width:6%">Usuario</th>
+                    <th scope="col">Nombre Padre</th>
+                    <th scope="col" style="width:12%">Nombre Madre</th>
+                    <th scope="col" style="width:13%">Nombre Hermanos</th>
+                    <th scope="col">Familiares trabajando en el estado</th>
+                    <th scope="col">¿Ha ejercido algún cargo público?</th>
+                    <th scope="col">Fec. Registro</th>
+                    <th scope="col" style="width:10%">Fec. Actualización</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row" class="d-none">@item.Co_Familia</th>
+                        <td>@item.No_Usuario</td>
+                        <td>@item.Tx_NombresPadre @item.Tx_ApellidoPatPadre @item.Tx_ApellidoMatPadre</td>
+                        <td>@item.Tx_NombresMadre @item.Tx_ApellidoPatMadre @item.Tx_ApellidoMatMadre</td>
+                        <td>
+                            <ul class="list-unstyled">
+                                @foreach (var item2 in item.Hermano)
+                                {
+                                    <li> <b>- </b> @item2.Tx_NombresHermano @item2.Tx_ApellidoPatHermano @item2.Tx_ApellidoMatHermano</li>
+                                    
+                                }
+                            </ul>
+                        </td>
+                        <td class="text-center">
+                            @if (item.Fl_CosanguiniedadEstado == 1)
+                            {
+                                <ul style="text-align:left !important;" class="list-unstyled">
+                                    @foreach (var item3 in item.FamiliaEstado)
+                                    {
+                                        <li>
+                                            <i class="fad fa-users" title="Parentesco"></i>&nbsp;&nbsp;@item3.Tx_Parentesco
+                                        </li>
+                                        <li>
+                                            <i class="fad fa-user" title="Nombre Completo"></i>&nbsp;&nbsp;@item3.Tx_NombreCompleto
+                                        </li>
+                                        <li>
+                                            <i class="fad fa-calendar-alt" title="Fecha de Nacimiento"></i>&nbsp;&nbsp;@item3.Fe_Nacimiento.Value.ToString("dd/MM/yyyy")
+                                        </li>
+                                        <li>
+                                            <i class="fad fa-map-marked-alt" title="Entidad"></i>&nbsp;&nbsp;@item3.Tx_Entidad
+                                        </li>
+                                        <li>
+                                            <i class="fad fa-briefcase" title="Cargo"></i>&nbsp;&nbsp;@item3.Tx_Cargo
+                                        </li>
+                                        <hr class="my-1 " />
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <span>No</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            @if (item.Fl_CargoPublico == 1)
+                            {
+                                <ul style="text-align:left !important;" class="list-unstyled">
+                                    @foreach (var item3 in item.CargoPublico)
+                                    {
+                                        <li>
+                                            <i class="fad fa-map-marked-alt" title="Entidad"></i>&nbsp;&nbsp;@item3.Tx_Entidad
+                                        </li>
+                                        <li>
+                                            <i class="fad fa-briefcase" title="Cargo"></i>&nbsp;&nbsp;@item3.Tx_Cargo
+                                        </li>
+                                        <li>
+                                            <i class="fad fa-calendar-alt" title="Fecha"></i>&nbsp;&nbsp;@item3.Fe_Fecha.Value.ToString("dd/MM/yyyy")
+                                        </li>
+                                        <hr class="my-1" />
+
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <span class="text-center">No</span>
+                            }
+                        </td>
+                        <td>@item.Fe_Registro</td>
+                        <td>@item.Fe_Actualizacion</td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
     </div>
+    <br /><br />
+</div>
 }
 
 else
@@ -160,22 +253,71 @@ else
 <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
 
 
+
 <script>
+
+    showTime();
+    function showTime() {
+        myDate = new Date();
+        hours = myDate.getHours();
+        minutes = myDate.getMinutes();
+        seconds = myDate.getSeconds();
+        if (hours < 10) hours = 0 + hours;
+
+       /* formato 12 horas
+         if (hours > 12) {
+            hours -= 12;
+        } else if (hours === 0) {
+            hours = 12;
+        }*/
+
+        if (minutes < 10) minutes = "0" + minutes;
+        if (seconds < 10) seconds = "0" + seconds;
+        $("#HoraActual").text(hours + ":" + minutes + ":" + seconds);
+        setTimeout("showTime()", 1000);
+
+    }
+
+    //---TABLA REPORTE
+    var table2 = $('#tableReporte').DataTable({
+
+        "order": [0, "desc"],
+        orderCellsTop: true,
+        pageLength: 1000,
+        language: {
+            searchPlaceholder: "Buscador general"
+        },
+        dom: 'Bfrtip',
+        buttons: [
+
+            //{
+            //    extend: 'pdfHtml5',
+            //    orientation: 'landscape',
+            //} 
+        ],
+    });
+    //oculta ver registro
+    $('#tableReporte_length').addClass('d-none');
+    $('#tableReporte_wrapper').css({
+        'width': '100%'
+    });
+
     //---TABLA GENERAL
     var table1 = $('#table-listado-general').DataTable({
+        "order": [0, "desc"],
         orderCellsTop: true,
         pageLength: 15,
         mark: true,
         language: {
             searchPlaceholder: 'Buscador General'
         },
-        dom: 'Bfrtip',
-        buttons: [{
-            extend: 'excel', className: "d-none",
-            attr: {
-                id: 'exportTable'
-            }
-        }],
+       /* dom: 'Bfrtip',*/
+        //buttons: [{
+        //    extend: 'excel', className: "d-none",
+        //    attr: {
+        //        id: 'exportTable'
+        //    }
+        //}],
     });
     //oculta ver registro
     $('#table-listado-general_length').toggleClass('d-none');
@@ -184,8 +326,35 @@ else
     });
 
 
-    function DescargarReporte() {
-        $('#exportTable').click();
-    }
+  
 
+    //function DescargarReporte() {
+    //    $('#exportTable').click();
+    //}
+
+    var btn = document.getElementById('exportTable');
+    btn.addEventListener('click', function () {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+            , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table class="center">{table}</table></body></html>'
+            , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+            , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+
+        var table = 'tableReporte';
+        var name = 'REPORTE DE MANDO';
+
+        if (!table.nodeType) table = document.getElementById(table)
+        var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+        window.location.href = uri + base64(format(template, ctx));
+    })
+
+    /*filtar datos en tabla oculta*/
+    $("#table-listado-general_filter").keyup(function () {
+        var value = $('input', this).val();
+        var prue = $("#tableReporte_filter>label>.container-3>input").val(value);
+        $("#tableReporte_filter>label>.container-3>input").click();
+    });
+
+
+    
+     
 </script>

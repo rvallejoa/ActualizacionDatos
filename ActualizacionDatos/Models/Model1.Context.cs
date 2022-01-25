@@ -29,5 +29,6 @@ namespace ActualizacionDatos.Models
         public virtual DbSet<Familia> Familia { get; set; }
         public virtual DbSet<FamiliaEstado> FamiliaEstado { get; set; }
         public virtual DbSet<Hermano> Hermano { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

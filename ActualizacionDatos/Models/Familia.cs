@@ -34,6 +34,8 @@ namespace ActualizacionDatos.Models
         public Nullable<System.DateTime> Fe_Registro { get; set; }
         public Nullable<int> Fl_CargoPublico { get; set; }
         public Nullable<int> Fl_Activo { get; set; }
+        public Nullable<System.DateTime> Fe_Actualizacion { get; set; }
+        public Nullable<int> Fl_Actualizacion2 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CargoPublico> CargoPublico { get; set; }

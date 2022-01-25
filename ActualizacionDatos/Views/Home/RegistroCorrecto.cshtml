@@ -5,17 +5,21 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-<div style="padding-left:10%;padding-right:10%;background-color:lightgray">
-    <div class="" style="background-color:white;height:96.5vh;">
-        <div class="bg-orange text-white  p-5">
-            <div class="p-2 m-0">
-                <img src="~/Content/logo-white.png" class="img-fluid float-right" style="width:150px" />
-            </div>
-            <span style="font-size:3rem;"> Actualización de datos M&A</span>
-        </div>
-        <div class="p-5 textBlue2">
-            <p style="font-size:3rem;"> <i class="far fa-check-circle"></i> Gracias</p>
+<div style="padding-left: 10%; padding-right: 10%; background-color: #F1F1F1">
+
+    <div class="img-login">
+        <img class="img" src="~/Content/banner.png" />
+        <img class="img-logo" style="width:12%"  src="~/Content/logocolores.png" />
+    </div>
+
+
+    <div class="pt-5" style="height:96.5vh;">
+       
+        <div class="pt-5 textBlue2 text-center">
+            <p style="font-size:6rem;" class="pt-5"> <i class="far fa-check-circle"></i> </p><br />
             <h3>La información fue enviada correctamente!</h3>
+            <br />
+            <a class="btn text-white font-weight-bold" href="@Url.Action("HomeEdit", "Edit", new { })"  style="background-color:var(--btorange2)">Ir a Inicio</a>
         </div>
     </div>
 </div>

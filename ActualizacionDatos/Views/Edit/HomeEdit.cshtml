@@ -1,0 +1,688 @@
+﻿@model ActualizacionDatos.Models.Familia
+@{
+    ViewBag.Title = "HomeEdit";
+}
+<link href="~/Content/SiteEdit.css" rel="stylesheet" />
+
+<div style="background-color:#F1F1F1;padding-left:10%;padding-right:10%;">
+
+    <div class="img-login">
+        <img class="img" src="~/Content/banner.png" />
+        <img class="img-logo" src="~/Content/logocolores.png" />
+    </div>
+    <br />
+    @using (Html.BeginForm())
+    {
+        <input class="d-none" value="@Model.Co_Familia" name="Co_Familia" />
+        <input class="d-none" value="@Model.Fe_Registro" name="Fe_Registro" />
+        <input class="d-none" value="@Model.No_Usuario" name="No_Usuario" />
+        <input class="d-none" value="@Model.Fl_Activo" name="Fl_Activo" />
+
+        <div class="content-title textBlue">
+            <h3 class="textBlue2">Actualización de datos M&A</h3>
+            <div class="pt-1 m-0 textBlue col-md-12" style="font-size: 18px">
+                @*Hola, <b>@ViewBag.usuario</b> la última actualización de sus datos se realizó el <b>@Model.Fe_Actualizacion.Value.ToString("dd/MM/yyyy")</b>.*@
+                <span class="float-right ">Campos Obligatorios (<span class="font-weight-bold" style="font-size:22px;">*</span>)</span>
+            </div>
+            <br />
+            <br />
+            <div class="accordion" id="accordionExample">
+
+
+                <div class="card">
+                    <div class="card-header" id="headingOne" style="padding: 0.75rem 1.25rem;padding-left: 10px;">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-collapse textBlue2" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="outline: 0;color:#325262;text-decoration:none">
+                                <i class="fas fa-user"></i>&nbsp;  DATOS PERSONALES
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p class="font-weight-bold"> 1.- Por favor verifica los nombres y apellidos de tus padres y hermanos:</p>
+                            <div class="form-row" style="padding-left: 70px;padding-right: 70px;">
+                                <label class="col-md-3"><span class="textOrange2">* </span>PADRE</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control obligatorio" name="Tx_NombresPadre" placeholder="Nombres" required autocomplete="off" value="@Model.Tx_NombresPadre" />
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control px-2 obligatorio" name="Tx_ApellidoPatPadre" placeholder="Apellido Paterno" required autocomplete="off" value="@Model.Tx_ApellidoPatPadre" />
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control obligatorio" name="Tx_ApellidoMatPadre" placeholder="Apellido Materno" required autocomplete="off" value="@Model.Tx_ApellidoMatPadre" />
+                                </div>
+
+                                <br /><br />
+                                <label class="col-md-3"><span class="textOrange2">* </span>MADRE</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control obligatorio" name="Tx_NombresMadre" placeholder="Nombres" required autocomplete="off" value="@Model.Tx_NombresMadre" />
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control px-2 obligatorio" name="Tx_ApellidoPatMadre" placeholder="Apellido Paterno" required autocomplete="off" value="@Model.Tx_ApellidoPatMadre" />
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control obligatorio" name="Tx_ApellidoMatMadre" placeholder="Apellido Materno" required autocomplete="off" value="@Model.Tx_ApellidoMatMadre" />
+                                </div>
+                                <br />
+                                <br />
+                                @*/* <div class="col-md-3" style="align-content: center;align-self: center;display: flex;flex-direction: row;column-gap: 10px;">*/*@
+                                <div class="col-md-3 px-0 mx-0">
+                                    <label class=""><span class="text-white">* </span>HERMANO(A)</label> &nbsp;
+                                    <button type="button" class="btn btn-orange py-0 px-1" onclick="NuevoHermano();" style=" left: 90.7%;top: 2px;color:white"><i class="fas fa-plus px-1"></i></button>
+
+                                </div>
+                                <div class="col-md-9 form-row px-0 mx-0">
+                                    @foreach (var item in Model.Hermano)
+                                    {
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" autocomplete="off" value="@item.Tx_NombresHermano" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control px-2" name="Tx_ApellidoPatHermano" placeholder="Apellido Paterno" autocomplete="off" value="@item.Tx_ApellidoPatHermano" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="Tx_ApellidoMatHermano" placeholder="Apellido Materno" autocomplete="off" value="@item.Tx_ApellidoMatHermano" />
+                                        </div>
+                                        <br /><br />
+                                    }
+                                </div>
+
+
+
+                                <div id="nuevo-Hermano" class="p-0 mx-0 mb-0 form-row col-md-12"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingTwo" style="padding: 0.75rem 1.25rem;padding-left: 10px;">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed btn-collapse textBlue2" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="outline: 0;color:#325262;text-decoration:none">
+                                <i class="fas fa-house-user"></i>&nbsp;  DATOS FAMILIARES
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p class="font-weight-bold mb-0"> 2.- ¿En la actualidad tienes algún familiar hasta 2° grado de consanguinidad o afinidad laborando o prestando servicios en el Estado o que <u> en los últimos 5 años</u> ha trabajado en el Estado?</p>
+                            <div class="col-12 d-flex" style="font-size:.9em;">
+                                <div class="col-3">
+                                    <ul>
+                                        <li>Cónyuge.</li>
+                                        <li>Conviviente.</li>
+                                        <li>Pareja.</li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-3">
+                                    <ul>
+                                        <li>Hijos.</li>
+                                        <li>Padres.</li>
+                                        <li>Hermanos.</li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-3">
+                                    <ul>
+                                        <li>Hermanastros(as).</li>
+                                        <li>Abuelos.</li>
+                                        <li>Suegros.</li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-3">
+                                    <ul>
+                                        <li>Cónyuges o convivientes de los hijos.</li>
+                                        <li>Cónyuges o convivientes de los padres.</li>
+                                        <li>Cónyuges o convivientes de los hermanos (cuñados.)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="px-0 mx-0" style="text-align: center;display: flex;flex-direction: row;column-gap: 100px;justify-content: center;">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Sí" onclick="SiNo()" @(Model.Fl_CosanguiniedadEstado == 1 ? "Checked" : "") required>
+                                    <label class="form-check-label" for="inlineRadio1">&nbsp; SI</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No" onclick="SiNo()" @(Model.Fl_CosanguiniedadEstado == 0 ? "Checked" : "") required>
+                                    <label class="form-check-label" for="inlineRadio2">&nbsp; NO</label>
+                                </div>
+
+                                <input type="number" name="Fl_CosanguiniedadEstado" id="Fl_CosanguiniedadEstado" value="@Model.Fl_CosanguiniedadEstado" class="d-none" />
+                            </div>
+
+                            <div class="textBlue d-none" id="oculto">
+                                <p class="font-weight-bold">2.1- Por favor completa los siguientes campos:</p>
+                                <div style="padding-left: 70px;padding-right: 70px;margin-bottom: 10px;" >
+
+                                    @if (Model.FamiliaEstado.Count() > 0)
+                                    {
+                                        foreach (var itemF in Model.FamiliaEstado)
+                                        {
+                                            <div class="form-row mt-2" style="padding: 5px 10px 10px; background: #F1F1F1; border-radius: 10px;" id="divv-Familia_@itemF.Co_FamiliaEstado">
+                                                <div style="width: 100%;display: flex;justify-content: flex-end;">
+                                                    <button type="button" style="position: absolute;background: transparent;border: 0;"><i class="fas fa-times textBlue2" onclick="Remove3('Familia_'+ @itemF.Co_FamiliaEstado)"></i></button>
+                                                </div>
+                                                <br />
+                                                <br />
+                                                <label class="col-md-3 "><span class="textOrange2">* </span>PARENTESCO</label>
+                                                <input type="text" class="col-md-3 form-control obli" name="Tx_Parentesco" placeholder="" autocomplete="off" value="@itemF.Tx_Parentesco" />
+                                                <label class="col-md-3 pl-5"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
+                                                <input type="text" class="col-md-3 form-control obli" name="Tx_NombreCompleto" placeholder="" autocomplete="off" value="@itemF.Tx_NombreCompleto" />
+                                                <br /><br />
+                                                <label class="col-md-3 "><span class="textOrange2">* </span>FECHA DE NACIMIENTO</label>
+                                                <input type="date" class="col-md-3 form-control obli" name="Fe_Nacimiento" placeholder="" autocomplete="off" value="@itemF.Fe_Nacimiento.Value.ToString("yyyy-MM-dd")" />
+
+                                                <label class="col-md-3 pl-5"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
+                                                <input type="text" class="col-md-3 form-control obli" name="Tx_Entidad" placeholder="" autocomplete="off" value="@itemF.Tx_Entidad" />
+                                                <br /><br />
+                                                <label class="col-md-3 "><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                                                <input type="text" class="col-md-3 form-control obli" name="Tx_Cargo" placeholder="" autocomplete="off" value="@itemF.Tx_Cargo" />
+                                            </div>
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        <div class="form-row mt-2" style="padding: 5px 10px 10px; background: #F1F1F1; border-radius: 10px;" id="divv-Familia1">
+                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
+                                                <button type="button" style="position: absolute;background: transparent;border: 0;"><i class="fas fa-times textBlue2" onclick="Remove3('Familia1')"></i></button>
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <label class="col-md-3 "><span class="textOrange2">* </span>PARENTESCO</label>
+                                            <input type="text" class="col-md-3 form-control obli" name="Tx_Parentesco" placeholder="" autocomplete="off" />
+                                            <label class="col-md-3 pl-5"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
+                                            <input type="text" class="col-md-3 form-control obli" name="Tx_NombreCompleto" placeholder="" autocomplete="off" />
+                                            <br /><br />
+                                            <label class="col-md-3 "><span class="textOrange2">* </span>FECHA DE NACIMIENTO</label>
+                                            <input type="date" class="col-md-3 form-control obli" name="Fe_Nacimiento" placeholder="" autocomplete="off" />
+
+                                            <label class="col-md-3 pl-5"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
+                                            <input type="text" class="col-md-3 form-control obli" name="Tx_Entidad" placeholder="" autocomplete="off" />
+                                            <br /><br />
+                                            <label class="col-md-3 "><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                                            <input type="text" class="col-md-3 form-control obli" name="Tx_Cargo" placeholder="" autocomplete="off" />
+                                        </div>
+                                    }
+
+
+                                </div>
+                                <div id="agregarfamilia"></div>
+                                <button type="button" class="btn textBlue2 btn-orange  py-0 position-relative" onclick="Nuevo2();" style=" left: 92.7%;color:white"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingThree" style="padding: 0.75rem 1.25rem;padding-left: 10px;">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed btn-collapse textBlue2" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="outline: 0;color:#325262;text-decoration:none">
+                                <i class="fas fa-briefcase"></i>&nbsp;  DATOS DE CARGOS PUBLICOS
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p class="font-weight-bold">3.- ¿En la actualidad o en los últimos 5 años has ejercido algún cargo público?. Ejm.: Director de una empresa pública, asesor, magistrado, vocal de algún tribunal administrativo o similares. </p>
+                            <div class="px-0 mx-0" style="text-align: center;display: flex;flex-direction: row;column-gap: 100px;justify-content: center;">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="Sí" onclick="SiNo2()" @(Model.Fl_CargoPublico == 1 ? "Checked" : "") required>
+                                    <label class="form-check-label" for="inlineRadio3">&nbsp; SI</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio4" value="No" onclick="SiNo2()" @(Model.Fl_CargoPublico == 0 ? "Checked" : "") required>
+                                    <label class="form-check-label" for="inlineRadio4">&nbsp; NO</label>
+                                </div>
+
+                                <input type="number" name="Fl_CargoPublico" id="Fl_CargoPublico" value="@Model.Fl_CargoPublico" class="d-none" />
+
+                            </div>
+                            <div class="textBlue d-none" id="oculto2">
+                                <p class="font-weight-bold">3.1- Por favor completa los siguientes campos:</p>
+                                <div style="padding-left: 70px;padding-right: 70px;margin-bottom: 10px;" >
+
+                                    @if (Model.CargoPublico.Count() > 0)
+                                    {
+                                        foreach (var itemC in Model.CargoPublico)
+                                        {
+                                            <div class="form-row mt-2" style="padding: 5px 10px 10px; background: #F1F1F1; border-radius: 10px;" id="a-Cargo_@itemC.Co_CargoPublico">
+                                                <div style="width: 100%;display: flex;justify-content: flex-end;">
+                                                    <button type="button" style="background: transparent;border: 0;" onclick="Remove('Cargo_'+ @itemC.Co_CargoPublico);"><i class="fas fa-times textBlue2"></i></button>
+                                                </div>
+                                                <label class="col-md-3 "><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
+                                                <input type="text" class="col-md-3 form-control obli2" name="EntidadEstatal" placeholder="" autocomplete="off" value="@itemC.Tx_Entidad" />
+                                                <label class="col-md-3 pl-5"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                                                <textarea class="col-md-3 form-control obli2" name="Cargo" placeholder="" autocomplete="off" rows="2">@itemC.Tx_Cargo</textarea>
+
+                                                <br /><br />
+                                                <label class="col-md-3 "><span class="textOrange2">* </span>FECHA</label>
+                                                <input type="date" class="col-md-3 form-control obli2" name="fecha" placeholder="" autocomplete="off" value="@itemC.Fe_Fecha.Value.ToString("yyyy-MM-dd")" />
+                                            </div>
+                                        }
+
+
+                                    }
+                                    else
+                                    {
+                                        <div class="form-row mt-2" style="padding: 5px 10px 10px; background: #F1F1F1; border-radius: 10px;" id="a-Cargo1">
+                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
+                                                <button type="button" style="background: transparent;border: 0;" onclick="Remove('Cargo1');"><i class="fas fa-times textBlue2"></i></button>
+                                            </div>
+                                            <label class="col-md-3 "><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
+                                            <input type="text" class="col-md-3 form-control obli2" name="EntidadEstatal" placeholder="" autocomplete="off" />
+                                            <label class="col-md-3 pl-5"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                                            <textarea class="col-md-3 form-control obli2" name="Cargo" placeholder="" autocomplete="off" rows="2"></textarea>
+
+                                            <br /><br />
+                                            <label class="col-md-3 "><span class="textOrange2">* </span>FECHA</label>
+                                            <input type="date" class="col-md-3 form-control obli2" name="fecha" placeholder="" autocomplete="off" />
+                                        </div>
+                                    }
+
+                                </div>
+                                <div id="agregarcargo"></div>
+                                <button type="button" class="btn textBlue2 btn-orange  py-0 position-relative" onclick="Nuevo3();" style=" left: 92.7%;color:white"><i class="fas fa-plus"></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="textBlue bgacero" style="padding:15px;border-radius: 5px;">
+                <h3 style="margin-top:0px;">DECLARACIÓN JURADA</h3>
+                <span>
+                    Mediante el presente documento reconozco haber sido informado sobre sobre la finalidad de la información solicitada, para lo cual brindo mi consentimiento libre e informado. Asimismo, reconozco que la información brindada a través del presente documento virtual es verdadera y tiene calidad de declaración jurada.
+                </span>
+            </div>
+            <br />
+            <div class="text-center" style="display: flex;justify-content: space-evenly;">
+                <button type="button" class=" btn btn-orange text-white font-weight-bold" data-toggle="modal" data-target="#ModalConfirmacion" id="guardar"><i class="fas fa-sync-alt text-orange"></i>&nbsp; Guardar Cambios</button>
+            </div>
+            <br /><br />
+
+            <!-- Modal Confirmacion -->
+            <div class="modal fade" id="ModalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>*@
+                        </div>
+                        <div class="modal-body text-center textBlue2 p-3">
+                            <i class="fas fa-info-circle" style="font-size:3rem;"></i><br />
+                            <h3>&nbsp;Confirmar si desea guardar los cambios</h3>
+                        </div>
+                        <div class="text-center py-4">
+                            <button type="button" class="btn btn-secondary px-4 mr-3" data-dismiss="modal">No</button>
+                            <button type="submit" class="btn btn-orange text-white font-weight-bold px-4">Sí</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    }
+
+
+    <!-- Modal Principal -->
+    <button type="button" class=" btn btn-orange text-white font-weight-bold d-none" data-toggle="modal" data-target="#ModalInicial" id="botonoculto"><i class="fas fa-sync-alt text-orange"></i>&nbsp; principal</button>
+    <div class="modal fade" id="ModalInicial" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-blue">
+                    <div class="modal-body text-center text-white" style="padding: 0px;">
+                        <span class="text-white float-left" style="font-size:1.7rem;"><b>Actualización de datos M&A</b></span>
+                        @*<img src="~/Content/logo-white.png" class="float-right" style="width:160px;" />*@
+                        <a class="btn bg-white textBlue2 float-right" href="@Url.Action("Listado", "Home", new { })">Ir al administrador</a>
+                    </div>
+                </div>
+
+                <div class="modal-body textBlue px-5">
+                    <div>
+                        <p class="textBlue" style="font-size: 18px">
+                            Hola <b style="font-size:1.1rem;">@ViewBag.nombreUsuario</b>, la última actualización de sus datos se realizó el 
+                                 <b>
+                                     @if (Model.Fe_Actualizacion == null)
+                                     {
+                                         @Model.Fe_Registro.Value.ToString("dd/MM/yyyy")
+                                     }
+                                     else
+                                     {
+                                         @Model.Fe_Actualizacion.Value.ToString("dd/MM/yyyy")
+                                     }
+                                 </b>. Por favor seleccione "Confirmar Información" si los datos ingresados se mantienen
+                            o caso contrario "Editar Información".
+                        </p>
+                    </div>
+                    <br />
+                    <p class="font-weight-bold" style="margin-bottom: 0px;">
+                        <span class=" text-white px-2 py-1 p-9" style="border-radius: 6%; background-color: #f37a009e;">1</span> Datos Personales
+                    </p>
+                    <table class="table textBlue mx-4" style="margin-bottom: 0px;">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                            <tr style="border:none">
+                                <th scope="col" style="border:none">PADRE:</th>
+                                <td class="" style="border:none"> @Model.Tx_NombresPadre @Model.Tx_ApellidoPatPadre @Model.Tx_ApellidoMatPadre</td>
+                                <th scope="col" style="border: none">MADRE:</th>
+
+                                <td class="" style="border:none">@Model.Tx_NombresMadre @Model.Tx_ApellidoPatMadre @Model.Tx_ApellidoMatMadre</td>
+
+                            </tr>
+                            <tr style="border:none">
+
+                                <th scope="col" style="border: none">HERMANOS(AS):</th>
+                                <td class="" style="border:none">
+                                    @foreach (var itemHermano in Model.Hermano)
+                                    {
+                                        <span>  @itemHermano.Tx_NombresHermano @itemHermano.Tx_ApellidoPatHermano @itemHermano.Tx_ApellidoMatHermano</span><br />
+                                    }
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <p class="font-weight-bold" style="margin-bottom: 0px;">
+                        <span class=" text-white px-2 py-1 p-9" style="border-radius: 6%; background-color: #f37a009e;">2</span> ¿En la actualidad tienes algún familiar hasta 2° grado de consanguinidad o afinidad laborando o prestando servicios en el  Estado o que en los últimos 5 años ha trabajado en el Estado?
+                    </p>
+                    <br />
+                    @if (Model.Fl_CosanguiniedadEstado == 0)
+                    {
+                        <p class="px-4">No.</p>
+                    }
+                    else
+                    {
+                        <table class="table text-center textBlue mx-4 ">
+                            <thead class="textBlue" style="background: #cbddec5c;">
+                                <tr>
+                                    <th scope="col">Parentesco</th>
+                                    <th scope="col">Nombre Completo</th>
+                                    <th scope="col">Fecha de Nacimiento</th>
+                                    <th scope="col">Entidad Estatal</th>
+                                    <th scope="col">Cargo o Posición</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var itemFam in Model.FamiliaEstado)
+                                {
+                                    <tr>
+                                        <td scope="row">@itemFam.Tx_Parentesco</td>
+                                        <td>@itemFam.Tx_NombreCompleto</td>
+                                        <td>@itemFam.Fe_Nacimiento.Value.ToString("dd/MM/yyyy")</td>
+                                        <td>@itemFam.Tx_Entidad</td>
+                                        <td>@itemFam.Tx_Cargo</td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    }
+
+
+
+                    <p class="font-weight-bold" style="margin-bottom: 0px;">
+                        <span class=" text-white px-2 py-1 p-9" style="border-radius: 6%; background-color: #f37a009e;">3</span> ¿En la actualidad o en los últimos 5 años has ejercido algún cargo público?. Ejm.: Director de una empresa pública, asesor, magistrado, vocal de algún tribunal administrativo o similares.
+                    </p>
+                    <br />
+                    @if (Model.Fl_CargoPublico == 0)
+                    {
+                        <p class="px-4">No.</p>
+                    }
+                    else
+                    {
+                        <table class="table text-center textBlue mx-4">
+                            <thead class="textBlue" style="background: #cbddec5c; ">
+                                <tr>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Entidad Estatal</th>
+                                    <th scope="col">Cargo o Posición</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var itemCargo in Model.CargoPublico)
+                                {
+                                    <tr>
+                                        <td scope="row">@itemCargo.Fe_Fecha.Value.ToString("dd/MM/yyyy")</td>
+                                        <td>@itemCargo.Tx_Entidad</td>
+                                        <td>@itemCargo.Tx_Cargo</td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    }
+
+
+                </div>
+                @using (Html.BeginForm("ConfirmarInfo", "Edit", FormMethod.Post, new { }))
+                {
+                    <input class="d-none" name="codigoUsuario" value="@Model.Co_Familia" />
+                    <div class="text-center pb-4 pt-2">
+                        <button type="button" class="btn btn-orange text-white font-weight-bold mr-3" data-toggle="modal" data-target="#ModalConfirmacionInfo" > <i class="fas fa-check-double"></i> Confirmar Información</button>
+                        <button type="button" class="btn btn-orange text-white font-weight-bold" data-dismiss="modal"> <i class="far fa-edit"></i> Editar Información</button>
+                    </div>
+                    <!-- Modal Confirmacion informacion  -->
+                    <div class="modal fade" id="ModalConfirmacionInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    @*<button type="button" class="close" id="closeModal" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>*@
+                                </div>
+                                <div class="modal-body text-center textBlue2 p-3">
+                                    <i class="fas fa-info-circle" style="font-size:3rem;"></i> <br />
+                                    <h3>
+                                        &nbsp;Está seguro en confirmar la información?
+                                    </h3>
+                                </div>
+                                <div class="text-center py-4">
+                                    <button type="button" class="btn btn-secondary px-4 mr-3" onclick="CerrarModal();">No</button>
+                                    <button type="submit" class="btn btn-orange text-white font-weight-bold px-4">Sí</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+ 
+
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Content/chosen.jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        if(@Model.Fl_CosanguiniedadEstado==1)
+        {
+             $('#oculto').removeClass('d-none')
+        }
+
+        if(@Model.Fl_CargoPublico==1)
+        {
+            $('#oculto2').removeClass('d-none')
+        }
+
+    });
+
+
+    function CerrarModal() {
+        $('#ModalConfirmacionInfo').click();
+    }
+
+    function Mostrar() {
+        $('#botonoculto').click();
+    }
+    $(window).on("load", Mostrar);
+
+
+    var count1 = 0;
+    var count2 = 0;
+    var count3 = 0;
+    var esLleno = 0;
+
+    function NuevoHermano() {
+        count1++;
+        $('#nuevo-Hermano').append(`<div id="div-${count1}" class="p-0 mx-0 mb-0 mt-2 form-row col-md-12">
+                                            <label class="col-md-3"></label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" required/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control px-2" name="Tx_ApellidoPatHermano"  placeholder="Apellido Paterno" required/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" name="Tx_ApellidoMatHermano" placeholder="Apellido Materno" required/>
+                                            </div>
+                                            <button type="button" class="btn btn-orange position-absolute text-white" style="font-size:1rem;left:100%; padding:3.5px 12px; bottom:1px;" onclick="Remove1(${count1})"><i class="fas fa-times"></i></button>
+                                        </div>
+            `);
+    }
+
+    function Remove1(id) {
+        $("#div-" + id).remove();
+    }
+
+    function SiNo() {
+        var seleccionado = $("input[name='inlineRadioOptions']:checked").val();
+        if (seleccionado == 'Sí') {
+            $('#oculto').removeClass('d-none');
+            $('#Fl_CosanguiniedadEstado').val(1);
+            console.log($('.obli'))
+            $('.obli').attr('required', true);
+        } else {
+            $('#oculto').addClass('d-none');
+            $('#Fl_CosanguiniedadEstado').val(0);
+            $('.obli').removeAttr('required');
+
+        }
+
+        var obligatorios = $('.obligatorio');
+        obligatorios.each(function () {
+            if (this.value == "") {
+                console.log('vacio');
+            } else {
+                esLleno = 1;
+            }
+        });
+
+        //console.log(esLleno);
+        //if (esLleno == 1) {
+        //    $('#guardar').removeAttr('disabled');
+        //}
+    }
+
+    function Nuevo2() {
+        count3++;
+        $("#agregarfamilia").append(`<div style="padding-left: 70px;padding-right: 70px;margin-bottom: 10px;" id="divv-${count3}">
+                                                <div class="form-row" style="padding: 5px;background: #F1F1F1;border-radius: 10px;" >
+                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
+                                                <button type="button" style="position: absolute;background: transparent;border: 0;" onclick="Remove3(${count3});"><i class="fas fa-times textBlue2"></i></button>
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <label class="col-md-3 "><span class="textOrange2">* </span>PARENTESCO</label>
+                                            <input type="text" class="col-md-3 form-control obli" name="Tx_Parentesco" placeholder="" autocomplete="off" />
+
+                                            <label class="col-md-3 pl-5"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
+                                            <input type="text" class="col-md-3 form-control obli" name="Tx_NombreCompleto" placeholder="" autocomplete="off" />
+                                            <br /><br />
+                                            <label class="col-md-3 "><span class="textOrange2">* </span>FECHA DE NACIMIENTO</label>
+                                            <input type="date" class="col-md-3 form-control obli" name="Fe_Nacimiento" placeholder="" autocomplete="off" />
+
+                                            <label class="col-md-3 pl-5"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
+                                            <input type="text" class="col-md-3 form-control obli" name="Tx_Entidad" placeholder="" autocomplete="off" />
+                                            <br /><br />
+                                            <label class="col-md-3 "><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                                            <input type="text" class="col-md-3 form-control obli" name="Tx_Cargo" placeholder="" autocomplete="off" />
+                                        </div>
+                                    </div>`)
+    }
+
+    function Remove3(id) {
+        $("#divv-" + id).remove();
+    }
+
+    function SiNo2() {
+        var seleccionado = $("input[name='inlineRadioOptions2']:checked").val();
+        if (seleccionado == 'Sí') {
+            $('#oculto2').removeClass('d-none');
+            $('#Fl_CargoPublico').val(1);
+            console.log($('.obli2'))
+            $('.obli2').attr('required', true);
+        } else {
+            $('#oculto2').addClass('d-none');
+            $('#Fl_CargoPublico').val(0);
+            $('.obli2').removeAttr('required');
+
+        }
+
+        var obligatorios = $('.obligatorio2');
+        obligatorios.each(function () {
+            if (this.value == "") {
+                console.log('vacio');
+            } else {
+                esLleno = 1;
+            }
+        });
+
+        //console.log(esLleno);
+        //if (esLleno == 1) {
+        //    $('#guardar').removeAttr('disabled');
+        //}
+    }
+
+    function Nuevo3() {
+        count2++;
+        $('#agregarcargo').append(`<div style="padding-left: 70px;padding-right: 70px;margin-bottom: 10px;" id="a-${count2}">
+
+                                    <div class="form-row " style="padding: 10px;background: #F1F1F1;border-radius: 10px;">
+                                        <div style="width: 100%;display: flex;justify-content: flex-end;">
+                                            <button type="button" style="background: transparent;border: 0;"  onclick="Remove(${count2});"><i class="fas fa-times textBlue2"></i></button>
+                                        </div>
+                                        <label class="col-md-3 "><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
+                                        <input type="text" class="col-md-3 form-control obli2" name="EntidadEstatal" placeholder="" autocomplete="off" />
+                                        <label class="col-md-3 pl-5"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                                        <textarea class="col-md-3 form-control obli2" name="Cargo" placeholder="" autocomplete="off" rows="2"></textarea>
+                                        <br /><br />
+                                        <label class="col-md-3 "><span class="textOrange2">* </span>FECHA</label>
+                                        <input type="date" class="col-md-3 form-control obli2" name="fecha" placeholder="" autocomplete="off" />
+                                    </div>
+                                </div>`)
+    }
+
+    function Remove(id) {
+        $("#a-" + id).remove();
+    }
+
+    //function habilitarSeccionAccordion() {
+    //    $("#collapseOne").hide();
+    //    $("#collapseTwo").hide();
+    //    $("#collapseThree").hide();
+    //}
+
+
+</script>
+

@@ -12,6 +12,7 @@
         <AssociationConnector Association="IntranetModel.FK_CargoPublico_Familia" ManuallyRouted="false" />
         <AssociationConnector Association="IntranetModel.FK_FamiliaEstado_Familia" ManuallyRouted="false" />
         <AssociationConnector Association="IntranetModel.FK_Hermano_Familia" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IntranetModel.Usuario" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

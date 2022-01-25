@@ -186,6 +186,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EditController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Global.asax.cs">
@@ -220,10 +221,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Usuario.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\banner.PNG" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -242,8 +247,43 @@
     <Content Include="Content\chosen.min.css" />
     <Content Include="Content\chosen.proto.js" />
     <Content Include="Content\chosen.proto.min.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\images\sort_asc.png" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\images\sort_both.png" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\images\sort_desc.png" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\dataTables.bootstrap.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\dataTables.bootstrap.min.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\dataTables.bootstrap4.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\dataTables.foundation.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\dataTables.foundation.min.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\dataTables.jqueryui.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\dataTables.jqueryui.min.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\dataTables.semanticui.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\dataTables.semanticui.min.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\jquery.dataTables.js" />
+    <Content Include="Content\DataTable\DataTables-1.10.18\js\jquery.dataTables.min.js" />
+    <Content Include="Content\DataTable\datatables.css" />
+    <Content Include="Content\DataTable\datatables.js" />
+    <Content Include="Content\DataTable\datatables.min.css" />
+    <Content Include="Content\DataTable\datatables.min.js" />
     <Content Include="Content\logo-white.png" />
+    <Content Include="Content\logocolores.png" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\SiteEdit.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -342,6 +382,9 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Views\Home\RegistroCorrecto.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Edit\EditCorrecto.cshtml" />
+    <Content Include="Views\Edit\HomeEdit.cshtml" />
+    <Content Include="Views\Home\IndexBK11012022.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

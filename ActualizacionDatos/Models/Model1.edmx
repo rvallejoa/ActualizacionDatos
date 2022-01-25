@@ -32,6 +32,8 @@
           <Property Name="Fe_Registro" Type="datetime" />
           <Property Name="Fl_CargoPublico" Type="int" />
           <Property Name="Fl_Activo" Type="int" />
+          <Property Name="Fe_Actualizacion" Type="datetime" />
+          <Property Name="Fl_Actualizacion2" Type="int" />
         </EntityType>
         <EntityType Name="FamiliaEstado">
           <Key>
@@ -56,6 +58,46 @@
           <Property Name="Tx_ApellidoPatHermano" Type="varchar" MaxLength="60" />
           <Property Name="Tx_ApellidoMatHermano" Type="varchar" MaxLength="60" />
           <Property Name="Fe_Registro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Co_Usuario" />
+          </Key>
+          <Property Name="Co_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Co_Foto" Type="int" />
+          <Property Name="No_Usuario" Type="varchar" MaxLength="50" />
+          <Property Name="Tx_Nombre" Type="varchar" MaxLength="150" />
+          <Property Name="Tx_ApellidoPaterno" Type="varchar" MaxLength="150" />
+          <Property Name="Tx_ApellidoMaterno" Type="varchar" MaxLength="150" />
+          <Property Name="Tx_NombreCorto" Type="varchar" MaxLength="100" />
+          <Property Name="Tx_Iniciales" Type="varchar" MaxLength="10" />
+          <Property Name="Tx_NombreCompleto" Type="varchar" MaxLength="400" />
+          <Property Name="Tx_NombreAlertaCumple" Type="varchar" MaxLength="40" />
+          <Property Name="Fe_Nacimiento" Type="datetime" />
+          <Property Name="Fe_NacimientoCompleta" Type="datetime" />
+          <Property Name="Co_TipoUsuario" Type="int" />
+          <Property Name="Co_AreaPractica" Type="int" />
+          <Property Name="Co_Cargo" Type="int" />
+          <Property Name="Tx_Anexo" Type="varchar" MaxLength="25" />
+          <Property Name="Tx_Directo" Type="varchar" MaxLength="25" />
+          <Property Name="Tx_Movil" Type="varchar" MaxLength="25" />
+          <Property Name="Tx_Correo" Type="varchar" MaxLength="150" />
+          <Property Name="Tx_Piso" Type="varchar" MaxLength="10" />
+          <Property Name="Tx_PisoPosicion" Type="varchar" MaxLength="10" />
+          <Property Name="Fl_Activo" Type="int" />
+          <Property Name="Fl_DNI" Type="int" />
+          <Property Name="Tx_RutaDNI" Type="varchar" MaxLength="50" />
+          <Property Name="Co_ColegioAbogados" Type="int" />
+          <Property Name="Nu_Colegiatura" Type="int" />
+          <Property Name="Fl_Sexo" Type="char" MaxLength="1" />
+          <Property Name="Co_TipoDocumento" Type="int" />
+          <Property Name="Nu_Documento" Type="varchar" MaxLength="20" />
+          <Property Name="No_Pais" Type="varchar" MaxLength="50" />
+          <Property Name="No_Ciudad" Type="varchar" MaxLength="100" />
+          <Property Name="Fl_EstadoCivil" Type="varchar" MaxLength="25" />
+          <Property Name="Tx_Sede" Type="varchar" MaxLength="50" />
+          <Property Name="Tx_CuentaSUNARP" Type="varchar" MaxLength="50" />
+          <Property Name="Tx_Secretaria" Type="varchar" MaxLength="250" />
         </EntityType>
         <Association Name="FK_CargoPublico_Familia">
           <End Role="Familia" Type="Self.Familia" Multiplicity="0..1" />
@@ -98,6 +140,7 @@
           <EntitySet Name="Familia" EntityType="Self.Familia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FamiliaEstado" EntityType="Self.FamiliaEstado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hermano" EntityType="Self.Hermano" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CargoPublico_Familia" Association="Self.FK_CargoPublico_Familia">
             <End Role="Familia" EntitySet="Familia" />
             <End Role="CargoPublico" EntitySet="CargoPublico" />
@@ -146,6 +189,8 @@
           <Property Name="Fe_Registro" Type="DateTime" Precision="3" />
           <Property Name="Fl_CargoPublico" Type="Int32" />
           <Property Name="Fl_Activo" Type="Int32" />
+          <Property Name="Fe_Actualizacion" Type="DateTime" Precision="3" />
+          <Property Name="Fl_Actualizacion2" Type="Int32" />
         </EntityType>
         <EntityType Name="FamiliaEstado">
           <Key>
@@ -226,7 +271,48 @@
             <End Role="Familia" EntitySet="Familia" />
             <End Role="Hermano" EntitySet="Hermano" />
           </AssociationSet>
+          <EntitySet Name="Usuario" EntityType="IntranetModel.Usuario" />
         </EntityContainer>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Co_Usuario" />
+          </Key>
+          <Property Name="Co_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Co_Foto" Type="Int32" />
+          <Property Name="No_Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApellidoPaterno" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApellidoMaterno" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_NombreCorto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_Iniciales" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_NombreCompleto" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_NombreAlertaCumple" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Fe_Nacimiento" Type="DateTime" Precision="3" />
+          <Property Name="Fe_NacimientoCompleta" Type="DateTime" Precision="3" />
+          <Property Name="Co_TipoUsuario" Type="Int32" />
+          <Property Name="Co_AreaPractica" Type="Int32" />
+          <Property Name="Co_Cargo" Type="Int32" />
+          <Property Name="Tx_Anexo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_Directo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_Movil" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_Correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_Piso" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_PisoPosicion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Fl_Activo" Type="Int32" />
+          <Property Name="Fl_DNI" Type="Int32" />
+          <Property Name="Tx_RutaDNI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Co_ColegioAbogados" Type="Int32" />
+          <Property Name="Nu_Colegiatura" Type="Int32" />
+          <Property Name="Fl_Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Co_TipoDocumento" Type="Int32" />
+          <Property Name="Nu_Documento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="No_Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="No_Ciudad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fl_EstadoCivil" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_Sede" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_CuentaSUNARP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_Secretaria" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -248,6 +334,8 @@
           <EntitySetMapping Name="Familia">
             <EntityTypeMapping TypeName="IntranetModel.Familia">
               <MappingFragment StoreEntitySet="Familia">
+                <ScalarProperty Name="Fl_Actualizacion2" ColumnName="Fl_Actualizacion2" />
+                <ScalarProperty Name="Fe_Actualizacion" ColumnName="Fe_Actualizacion" />
                 <ScalarProperty Name="Fl_Activo" ColumnName="Fl_Activo" />
                 <ScalarProperty Name="Fl_CargoPublico" ColumnName="Fl_CargoPublico" />
                 <ScalarProperty Name="Fe_Registro" ColumnName="Fe_Registro" />
@@ -286,6 +374,47 @@
                 <ScalarProperty Name="Tx_ApellidoPatHermano" ColumnName="Tx_ApellidoPatHermano" />
                 <ScalarProperty Name="Tx_ApellidoMatHermano" ColumnName="Tx_ApellidoMatHermano" />
                 <ScalarProperty Name="Fe_Registro" ColumnName="Fe_Registro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="IntranetModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Tx_Secretaria" ColumnName="Tx_Secretaria" />
+                <ScalarProperty Name="Tx_CuentaSUNARP" ColumnName="Tx_CuentaSUNARP" />
+                <ScalarProperty Name="Tx_Sede" ColumnName="Tx_Sede" />
+                <ScalarProperty Name="Fl_EstadoCivil" ColumnName="Fl_EstadoCivil" />
+                <ScalarProperty Name="No_Ciudad" ColumnName="No_Ciudad" />
+                <ScalarProperty Name="No_Pais" ColumnName="No_Pais" />
+                <ScalarProperty Name="Nu_Documento" ColumnName="Nu_Documento" />
+                <ScalarProperty Name="Co_TipoDocumento" ColumnName="Co_TipoDocumento" />
+                <ScalarProperty Name="Fl_Sexo" ColumnName="Fl_Sexo" />
+                <ScalarProperty Name="Nu_Colegiatura" ColumnName="Nu_Colegiatura" />
+                <ScalarProperty Name="Co_ColegioAbogados" ColumnName="Co_ColegioAbogados" />
+                <ScalarProperty Name="Tx_RutaDNI" ColumnName="Tx_RutaDNI" />
+                <ScalarProperty Name="Fl_DNI" ColumnName="Fl_DNI" />
+                <ScalarProperty Name="Fl_Activo" ColumnName="Fl_Activo" />
+                <ScalarProperty Name="Tx_PisoPosicion" ColumnName="Tx_PisoPosicion" />
+                <ScalarProperty Name="Tx_Piso" ColumnName="Tx_Piso" />
+                <ScalarProperty Name="Tx_Correo" ColumnName="Tx_Correo" />
+                <ScalarProperty Name="Tx_Movil" ColumnName="Tx_Movil" />
+                <ScalarProperty Name="Tx_Directo" ColumnName="Tx_Directo" />
+                <ScalarProperty Name="Tx_Anexo" ColumnName="Tx_Anexo" />
+                <ScalarProperty Name="Co_Cargo" ColumnName="Co_Cargo" />
+                <ScalarProperty Name="Co_AreaPractica" ColumnName="Co_AreaPractica" />
+                <ScalarProperty Name="Co_TipoUsuario" ColumnName="Co_TipoUsuario" />
+                <ScalarProperty Name="Fe_NacimientoCompleta" ColumnName="Fe_NacimientoCompleta" />
+                <ScalarProperty Name="Fe_Nacimiento" ColumnName="Fe_Nacimiento" />
+                <ScalarProperty Name="Tx_NombreAlertaCumple" ColumnName="Tx_NombreAlertaCumple" />
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="Tx_Iniciales" ColumnName="Tx_Iniciales" />
+                <ScalarProperty Name="Tx_NombreCorto" ColumnName="Tx_NombreCorto" />
+                <ScalarProperty Name="Tx_ApellidoMaterno" ColumnName="Tx_ApellidoMaterno" />
+                <ScalarProperty Name="Tx_ApellidoPaterno" ColumnName="Tx_ApellidoPaterno" />
+                <ScalarProperty Name="Tx_Nombre" ColumnName="Tx_Nombre" />
+                <ScalarProperty Name="No_Usuario" ColumnName="No_Usuario" />
+                <ScalarProperty Name="Co_Foto" ColumnName="Co_Foto" />
+                <ScalarProperty Name="Co_Usuario" ColumnName="Co_Usuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

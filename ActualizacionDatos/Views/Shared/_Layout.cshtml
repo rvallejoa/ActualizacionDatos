@@ -9,10 +9,11 @@
     @Scripts.Render("~/bundles/modernizr")
     <script src="https://kit.fontawesome.com/bfbfaaa461.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    <div style="background-color: lightgray;">
+<body style="background-color: #F1F1F1">
+    <div style="background-color: lightgray;" class="">
         @RenderBody()
-        <footer class="bg-blue text-center text-white" style="padding:.6em 0;">
+
+        <footer class="bg-blue text-center text-white mb-0 w-100" style="padding: .6em 0; position: fixed; bottom: 0">
             <p class="pb-0 mb-0">&copy; @DateTime.Now.Year - M&A</p>
         </footer>
     </div>

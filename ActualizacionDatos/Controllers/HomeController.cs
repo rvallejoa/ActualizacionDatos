@@ -17,7 +17,26 @@ namespace ActualizacionDatos.Controllers
 
         public ActionResult Index()
         {
-            return View();
+
+            string name = User.Identity.Name;
+            int position = name.IndexOf('@');
+            string usuario = name.Substring(0, position);
+
+            //Obtener nombre de usuario logeado
+            var usuarioDet = db.Usuario.Where(x => x.No_Usuario == usuario).FirstOrDefault();
+            ViewBag.nombreUsuario = usuarioDet.Tx_Nombre;
+
+
+            Familia fam = db.Familia.Where(x => x.Fl_Activo == 1 && x.No_Usuario == usuario).FirstOrDefault();
+            if (fam == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("HomeEdit", "Edit");
+            }
+           
         }
 
         [HttpPost]
@@ -102,8 +121,11 @@ namespace ActualizacionDatos.Controllers
             string name = User.Identity.Name;
             int position = name.IndexOf('@');
             ViewBag.usuario= name.Substring(0, position);
+           
+            DateTime thisDay = DateTime.Today;
+            ViewBag.fecha=thisDay.ToString("D");
 
-            List<Familia>  Listado = db.Familia.Where(x=>x.Fl_Activo == 1).ToList();
+            List<Familia> Listado = db.Familia.Where(x=>x.Fl_Activo == 1).ToList();
 
             return View(Listado);
 
