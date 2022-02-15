@@ -22,6 +22,9 @@ namespace ActualizacionDatos.Models
         public string Tx_Entidad { get; set; }
         public string Tx_Cargo { get; set; }
         public Nullable<System.DateTime> Fe_Registro { get; set; }
+        public string Tx_FeInicio { get; set; }
+        public string Tx_FeFin { get; set; }
+        public Nullable<int> Fl_Laborando { get; set; }
     
         public virtual Familia Familia { get; set; }
     }

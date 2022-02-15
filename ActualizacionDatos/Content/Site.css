@@ -23,6 +23,10 @@
     --bgacero: #e9ecef;*/
 }
 
+input[type=checkbox] {
+    zoom: 1.3;
+}
+
 
 /************************************/
 #tableReporte_paginate, #tableReporte_info, #tableReporte_filter {

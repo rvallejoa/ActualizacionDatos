@@ -25,6 +25,7 @@ namespace ActualizacionDatos.Controllers
 
             //Obtener nombre de usuario logeado
             var usuarioDet = db.Usuario.Where(x => x.No_Usuario == usuario).FirstOrDefault();
+          
             ViewBag.nombreUsuario = usuarioDet.Tx_Nombre;
 
             return View(familia);
@@ -32,7 +33,9 @@ namespace ActualizacionDatos.Controllers
         }
 
         [HttpPost]
-        public ActionResult HomeEdit(Familia familia, string[] Tx_NombresHermano, string[] Tx_ApellidoPatHermano, string[] Tx_ApellidoMatHermano, string[] Tx_Parentesco, string[] Tx_NombreCompleto, DateTime[] Fe_Nacimiento, string[] Tx_Entidad, string[] Tx_Cargo, string[] EntidadEstatal, string[] Cargo, DateTime[] fecha)
+        public ActionResult HomeEdit(Familia familia, string[] Tx_NombresHermano, string[] Tx_ApellidoPatHermano, string[] Tx_ApellidoMatHermano, 
+            string[] Tx_Parentesco, string[] Tx_NombreCompleto, DateTime[] Fe_Nacimiento, string[] Tx_Entidad, string[] Tx_Cargo, 
+            string[] EntidadEstatal, string[] Cargo, string[] Tx_FeInicio, string[] Tx_FeFin, string[] Tx_FeInicioCargo, string[] Tx_FeFinCargo, int[] Fl_Laborando, int[] Fl_LaborandoCargo)
         {
             string name = User.Identity.Name;
             int position = name.IndexOf('@');
@@ -101,6 +104,10 @@ namespace ActualizacionDatos.Controllers
                         _familiaE.Fe_Nacimiento = Fe_Nacimiento[i];
                         _familiaE.Tx_Entidad = Tx_Entidad[i];
                         _familiaE.Tx_Cargo = Tx_Cargo[i];
+                        _familiaE.Tx_FeInicio = Tx_FeInicio[i];
+                        _familiaE.Tx_FeFin = Tx_FeFin[i];
+                        _familiaE.Tx_FeFin = Tx_FeFin[i];
+                        _familiaE.Fl_Laborando = Fl_Laborando[i];
                         _familiaE.Fe_Registro = DateTime.Now;
                         db.Entry(familia).State = EntityState.Modified;
                         db.FamiliaEstado.Add(_familiaE);
@@ -131,7 +138,10 @@ namespace ActualizacionDatos.Controllers
                         _cargo.Co_Familia = familia.Co_Familia;
                         _cargo.Tx_Entidad = EntidadEstatal[i];
                         _cargo.Tx_Cargo = Cargo[i];
-                        _cargo.Fe_Fecha = fecha[i];
+                        // _cargo.Fe_Fecha = fecha[i];
+                        _cargo.Tx_FeInicioCargo = Tx_FeInicioCargo[i];
+                        _cargo.Tx_FeFinCargo = Tx_FeFinCargo[i];
+                        _cargo.Fl_LaborandoCargo = Fl_LaborandoCargo[i];
                         _cargo.Fe_Registro = DateTime.Now;
                         db.Entry(familia).State = EntityState.Modified;
                         db.CargoPublico.Add(_cargo);

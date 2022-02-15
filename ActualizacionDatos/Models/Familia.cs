@@ -36,6 +36,16 @@ namespace ActualizacionDatos.Models
         public Nullable<int> Fl_Activo { get; set; }
         public Nullable<System.DateTime> Fe_Actualizacion { get; set; }
         public Nullable<int> Fl_Actualizacion2 { get; set; }
+        public Nullable<int> Fl_Pareja { get; set; }
+        public string Tx_NombrePareja { get; set; }
+        public string Tx_ApeMatPareja { get; set; }
+        public string Tx_ApePatPareja { get; set; }
+        public string Tx_NomSuegro { get; set; }
+        public string Tx_ApeMatSuegro { get; set; }
+        public string Tx_ApePatSuegro { get; set; }
+        public string Tx_NomSuegra { get; set; }
+        public string Tx_ApeMatSuegra { get; set; }
+        public string Tx_ApePatSuegra { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CargoPublico> CargoPublico { get; set; }

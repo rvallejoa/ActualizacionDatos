@@ -15,6 +15,9 @@
           <Property Name="Tx_Cargo" Type="varchar" MaxLength="250" />
           <Property Name="Fe_Fecha" Type="date" />
           <Property Name="Fe_Registro" Type="datetime" />
+          <Property Name="Tx_FeInicioCargo" Type="varchar" MaxLength="10" />
+          <Property Name="Tx_FeFinCargo" Type="varchar" MaxLength="10" />
+          <Property Name="Fl_LaborandoCargo" Type="int" />
         </EntityType>
         <EntityType Name="Familia">
           <Key>
@@ -34,6 +37,16 @@
           <Property Name="Fl_Activo" Type="int" />
           <Property Name="Fe_Actualizacion" Type="datetime" />
           <Property Name="Fl_Actualizacion2" Type="int" />
+          <Property Name="Fl_Pareja" Type="int" />
+          <Property Name="Tx_NombrePareja" Type="varchar" MaxLength="100" />
+          <Property Name="Tx_ApeMatPareja" Type="varchar" MaxLength="60" />
+          <Property Name="Tx_ApePatPareja" Type="varchar" MaxLength="60" />
+          <Property Name="Tx_NomSuegro" Type="varchar" MaxLength="100" />
+          <Property Name="Tx_ApeMatSuegro" Type="varchar" MaxLength="60" />
+          <Property Name="Tx_ApePatSuegro" Type="varchar" MaxLength="60" />
+          <Property Name="Tx_NomSuegra" Type="varchar" MaxLength="100" />
+          <Property Name="Tx_ApeMatSuegra" Type="varchar" MaxLength="60" />
+          <Property Name="Tx_ApePatSuegra" Type="varchar" MaxLength="60" />
         </EntityType>
         <EntityType Name="FamiliaEstado">
           <Key>
@@ -47,6 +60,9 @@
           <Property Name="Tx_Entidad" Type="varchar" MaxLength="450" />
           <Property Name="Tx_Cargo" Type="varchar" MaxLength="250" />
           <Property Name="Fe_Registro" Type="datetime" />
+          <Property Name="Tx_FeInicio" Type="varchar" MaxLength="10" />
+          <Property Name="Tx_FeFin" Type="varchar" MaxLength="10" />
+          <Property Name="Fl_Laborando" Type="int" />
         </EntityType>
         <EntityType Name="Hermano">
           <Key>
@@ -169,6 +185,9 @@
           <Property Name="Fe_Fecha" Type="DateTime" Precision="0" />
           <Property Name="Fe_Registro" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Familia" Relationship="Self.FK_CargoPublico_Familia" FromRole="CargoPublico" ToRole="Familia" />
+          <Property Name="Tx_FeInicioCargo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_FeFinCargo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Fl_LaborandoCargo" Type="Int32" />
         </EntityType>
         <EntityType Name="Familia">
           <Key>
@@ -191,6 +210,16 @@
           <Property Name="Fl_Activo" Type="Int32" />
           <Property Name="Fe_Actualizacion" Type="DateTime" Precision="3" />
           <Property Name="Fl_Actualizacion2" Type="Int32" />
+          <Property Name="Fl_Pareja" Type="Int32" />
+          <Property Name="Tx_NombrePareja" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApeMatPareja" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApePatPareja" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_NomSuegro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApeMatSuegro" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApePatSuegro" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_NomSuegra" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApeMatSuegra" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_ApePatSuegra" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="FamiliaEstado">
           <Key>
@@ -205,6 +234,9 @@
           <Property Name="Tx_Cargo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Fe_Registro" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Familia" Relationship="Self.FK_FamiliaEstado_Familia" FromRole="FamiliaEstado" ToRole="Familia" />
+          <Property Name="Tx_FeInicio" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Tx_FeFin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Fl_Laborando" Type="Int32" />
         </EntityType>
         <EntityType Name="Hermano">
           <Key>
@@ -322,6 +354,9 @@
           <EntitySetMapping Name="CargoPublico">
             <EntityTypeMapping TypeName="IntranetModel.CargoPublico">
               <MappingFragment StoreEntitySet="CargoPublico">
+                <ScalarProperty Name="Fl_LaborandoCargo" ColumnName="Fl_LaborandoCargo" />
+                <ScalarProperty Name="Tx_FeFinCargo" ColumnName="Tx_FeFinCargo" />
+                <ScalarProperty Name="Tx_FeInicioCargo" ColumnName="Tx_FeInicioCargo" />
                 <ScalarProperty Name="Co_CargoPublico" ColumnName="Co_CargoPublico" />
                 <ScalarProperty Name="Co_Familia" ColumnName="Co_Familia" />
                 <ScalarProperty Name="Tx_Entidad" ColumnName="Tx_Entidad" />
@@ -334,6 +369,16 @@
           <EntitySetMapping Name="Familia">
             <EntityTypeMapping TypeName="IntranetModel.Familia">
               <MappingFragment StoreEntitySet="Familia">
+                <ScalarProperty Name="Tx_ApePatSuegra" ColumnName="Tx_ApePatSuegra" />
+                <ScalarProperty Name="Tx_ApeMatSuegra" ColumnName="Tx_ApeMatSuegra" />
+                <ScalarProperty Name="Tx_NomSuegra" ColumnName="Tx_NomSuegra" />
+                <ScalarProperty Name="Tx_ApePatSuegro" ColumnName="Tx_ApePatSuegro" />
+                <ScalarProperty Name="Tx_ApeMatSuegro" ColumnName="Tx_ApeMatSuegro" />
+                <ScalarProperty Name="Tx_NomSuegro" ColumnName="Tx_NomSuegro" />
+                <ScalarProperty Name="Tx_ApePatPareja" ColumnName="Tx_ApePatPareja" />
+                <ScalarProperty Name="Tx_ApeMatPareja" ColumnName="Tx_ApeMatPareja" />
+                <ScalarProperty Name="Tx_NombrePareja" ColumnName="Tx_NombrePareja" />
+                <ScalarProperty Name="Fl_Pareja" ColumnName="Fl_Pareja" />
                 <ScalarProperty Name="Fl_Actualizacion2" ColumnName="Fl_Actualizacion2" />
                 <ScalarProperty Name="Fe_Actualizacion" ColumnName="Fe_Actualizacion" />
                 <ScalarProperty Name="Fl_Activo" ColumnName="Fl_Activo" />
@@ -354,6 +399,9 @@
           <EntitySetMapping Name="FamiliaEstado">
             <EntityTypeMapping TypeName="IntranetModel.FamiliaEstado">
               <MappingFragment StoreEntitySet="FamiliaEstado">
+                <ScalarProperty Name="Fl_Laborando" ColumnName="Fl_Laborando" />
+                <ScalarProperty Name="Tx_FeFin" ColumnName="Tx_FeFin" />
+                <ScalarProperty Name="Tx_FeInicio" ColumnName="Tx_FeInicio" />
                 <ScalarProperty Name="Co_FamiliaEstado" ColumnName="Co_FamiliaEstado" />
                 <ScalarProperty Name="Co_Familia" ColumnName="Co_Familia" />
                 <ScalarProperty Name="Tx_Parentesco" ColumnName="Tx_Parentesco" />

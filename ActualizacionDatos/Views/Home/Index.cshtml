@@ -5,7 +5,7 @@
     
 }
 
-<div class="w-100" style="background-color: #F1F1F1; padding-left: 10%; padding-right: 10%;">
+<div class="w-100" style="background-color: #F1F1F1; padding-left: 4%; padding-right: 4%;">
 
     <div class="img-login">
         <img class="img" src="~/Content/banner.png" />
@@ -68,7 +68,7 @@
                                         <br />
                                         <br />
                                         <label class="col-md-3"><span class="text-white">* </span>HERMANO(A) &nbsp; <button type="button" class="btn btn-orange py-0 px-1" onclick="NuevoHermano();" style="color:white"><i class="fas fa-plus px-1"></i></button></label>
-                                        
+
                                         <div class="col-md-3">
                                             <input type="text" class="form-control" name="Tx_NombresHermano" placeholder="Nombres" autocomplete="off" />
                                         </div>
@@ -80,6 +80,48 @@
                                         </div>
 
                                         <div id="nuevo-Hermano" class="p-0 mx-0 mb-0 form-row col-md-12"></div>
+
+                                        @*nueva seccion de pareja*@
+                                        <div class="col-md-3">
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <hr class=" w-100" style="color:lightgray;background-color:lightgray" />
+                                        </div>
+                                        <label class="col-md-3"><span class="text-white">* </span>CÓNYUGE / PAREJA</label>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control " name="Tx_NombrePareja" placeholder="Nombres"  autocomplete="off" value="" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control px-2 " name="Tx_ApePatPareja" placeholder="Apellido Paterno"  autocomplete="off" value="" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control " name="Tx_ApeMatPareja" placeholder="Apellido Materno"  autocomplete="off" value="" />
+                                        </div>
+                                        <br /><br />
+
+                                        <label class="col-md-3"><span class="text-white">* </span>SUEGRO</label>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control " name="Tx_NomSuegro" placeholder="Nombres"  autocomplete="off" value="" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control px-2 " name="Tx_ApePatSuegro" placeholder="Apellido Paterno"  autocomplete="off" value="" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control " name="Tx_ApeMatSuegro" placeholder="Apellido Materno"  autocomplete="off" value="" />
+                                        </div>
+                                        <br /><br />
+
+                                        <label class="col-md-3"><span class="text-white">* </span>SUEGRA</label>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control " name="Tx_NomSuegra" placeholder="Nombres"  autocomplete="off" value="" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control px-2 " name="Tx_ApePatSuegra" placeholder="Apellido Paterno"  autocomplete="off" value="" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control " name="Tx_ApeMatSuegra" placeholder="Apellido Materno"  autocomplete="off" value="" />
+                                        </div>
 
 
                                     </div>
@@ -159,14 +201,31 @@
                                             <label class="col-md-3 pl-5"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
                                             <input type="text" class="col-md-3 form-control obli" name="Tx_NombreCompleto" placeholder="" autocomplete="off" />
                                             <br /><br />
-                                            <label class="col-md-3 "><span class="textOrange2">* </span>FECHA DE NACIMIENTO</label>
-                                            <input type="date" class="col-md-3 form-control obli" name="Fe_Nacimiento" placeholder="" autocomplete="off" />
+                                            <label class="col-md-3"><span class="textOrange2"></span>&nbsp;&nbsp;  FECHA DE NACIMIENTO</label>
+                                            <input type="date" class="col-md-3 form-control" name="Fe_Nacimiento" placeholder="" autocomplete="off" />
 
                                             <label class="col-md-3 pl-5"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
                                             <input type="text" class="col-md-3 form-control obli" name="Tx_Entidad" placeholder="" autocomplete="off" />
                                             <br /><br />
                                             <label class="col-md-3 "><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
                                             <input type="text" class="col-md-3 form-control obli" name="Tx_Cargo" placeholder="" autocomplete="off" />
+
+                                            <label class="col-md-2 pl-5 "><span class="textOrange2">  </span>&nbsp;&nbsp; PERÍODO <span style="color:lightgray"> (Mes de Año) </span></label>
+                                            <div class="col-md-1 float-right">
+                                                <small class=" px-0 mx-0 font-weight-bold float-right pt-2" style="color:gray">Desde</small><br /><br />
+                                                <small class=" px-0 mx-0  font-weight-bold float-right pt-2" style="color: gray">Hasta</small>
+                                            </div>
+                                            <div class="col-md-3 mx-0 px-0 form-row">
+                                                <input type="month" class="col-md-12 form-control px-1 mx-0" name="Tx_FeInicio" /><br /><br />
+                                                <input type="month" class="col-md-12 form-control px-1  mx-0" name="Tx_FeFin" /><br /><br />
+                                                <div class="form-row col-md-12">
+                                                    <input class="col-md-1 mt-1" id="FamiliaEstado1" type="checkbox" onclick="CheckedLaborando('FamiliaEstado1')" />
+                                                    <label class="col-md-10">Actualmente laborando</label>
+                                                    <input class="d-none" type="number" name="Fl_Laborando" id="LaborandoFam_FamiliaEstado1" value="0" />
+                                                </div>
+                                            </div>
+
+
                                         </div>
                                         <div id="agregarfamilia"></div>
                                         @*<button type="button" class="btn textBlue2 bgacero py-0 position-relative" onclick="Nuevo2();" style="left:91%;">&nbsp;&nbsp; + Familiar &nbsp;&nbsp;</button>*@
@@ -211,11 +270,32 @@
                                         <div class="p-4 mx-0 form-row bg-light">
                                             <label class="col-md-3 "><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
                                             <input type="text" class="col-md-3 form-control obli2" name="EntidadEstatal" placeholder="" autocomplete="off" />
-                                            <label class="col-md-3 pl-5"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
-                                            <input type="text" class="col-md-3 form-control obli2" name="Cargo" placeholder="" autocomplete="off" />
+
+                                            <label class="col-md-2 pl-5"><span class="textOrange2">  </span>&nbsp;&nbsp; PERÍODO <span style="color:lightgray"> (Mes de Año) </span></label>
+                                            <div class="col-md-1 float-right">
+                                                <small class=" px-0 mx-0 font-weight-bold float-right pt-2" style="color:gray">Desde</small>
+                                            </div>
+                                            <div class="col-md-3 mx-0 px-0 form-row">
+                                                <input type="month" class="col-md-12 form-control px-1 mx-0" name="Tx_FeInicioCargo" />
+                                            </div>
                                             <br /><br />
-                                            <label class="col-md-3 "><span class="textOrange2">* </span>FECHA</label>
-                                            <input type="date" class="col-md-3 form-control obli2" name="fecha" placeholder="" autocomplete="off" />
+                                            <label class="col-md-3"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                                            <input type="text" class="col-md-3 form-control obli2" name="Cargo" placeholder="" autocomplete="off" />
+
+                                            <label class="col-md-2"></label>
+                                            <div class="col-md-1 float-right">
+                                                <small class=" px-0 mx-0  font-weight-bold float-right pt-2" style="color: gray">Hasta</small>
+                                            </div>
+                                            <div class="col-md-3 mx-0 px-0 form-row">
+                                                <input type="month" class="col-md-12 form-control px-1  mx-0" name="Tx_FeFinCargo" /><br /><br />
+                                                <div class="form-row col-md-12">
+                                                    <input class="col-md-1 mt-1" id="CargoEstado1" type="checkbox" onclick="CheckedLaborando('CargoEstado1')" />
+                                                    <label class="col-md-10">Actualmente laborando</label>
+                                                    <input class="d-none" type="number" name="Fl_LaborandoCargo" id="LaborandoFam_CargoEstado1" value="0" />
+
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div id="agregarcargo"></div>
                                         @*<button type="button" class="btn textBlue2 bgacero py-0 position-relative" onclick="Nuevo3();" style="left:91%;"> &nbsp;&nbsp;&nbsp;&nbsp; + Cargo &nbsp;&nbsp;&nbsp;&nbsp;</button>*@
@@ -303,11 +383,29 @@
 
                                         <label class="col-md-3 "><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
                                         <input type="text" class="col-md-3 form-control" name="EntidadEstatal" placeholder="" required/>
-                                        <label class="col-md-3 pl-5"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
+                                        <label class="col-md-2 pl-5"><span class="textOrange2">  </span>&nbsp;&nbsp; PERÍODO <span style="color:lightgray"> (Mes de Año) </span></label>
+                                            <div class="col-md-1 float-right">
+                                                <small class=" px-0 mx-0 font-weight-bold float-right pt-2" style="color:gray">Desde</small>
+                                            </div>
+                                            <div class="col-md-3 mx-0 px-0 form-row">
+                                                <input type="month" class="col-md-12 form-control px-1 mx-0" name="Tx_FeInicioCargo" />
+                                            </div>
+                                            <br /><br />
+                                        <label class="col-md-3"><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
                                         <input type="text" class="col-md-3 form-control" name="Cargo" placeholder="" required/>
-                                        <br /><br />
-                                        <label class="col-md-3 "><span class="textOrange2">* </span>FECHA</label>
-                                        <input type="date" class="col-md-3 form-control" name="fecha" placeholder="" required/>
+                                          <label class="col-md-2"></label>
+                                            <div class="col-md-1 float-right">
+                                                <small class=" px-0 mx-0  font-weight-bold float-right pt-2" style="color: gray">Hasta</small>
+                                            </div>
+                                            <div class="col-md-3 mx-0 px-0 form-row">
+                                                <input type="month" class="col-md-12 form-control px-1  mx-0" name="Tx_FeFinCargo" /><br /><br />
+                                        <div class="form-row col-md-12">
+                                                  <input class="col-md-1 mt-1" id="Car1_${count2}" type="checkbox" onclick="CheckedLaborando('Car1_${count2}')" />
+                                                  <label class="col-md-10">Actualmente laborando</label>
+                                                  <input class="d-none" type="number" name="Fl_LaborandoCargo" id="LaborandoFam_Car1_${count2}" value="0" />
+
+                                        </div>
+                                            </div>
                                         
                                     </div>`)
         }
@@ -386,13 +484,41 @@
                                                 <label class="col-md-3 pl-5"><span class="textOrange2">* </span>NOMBRE COMPLETO</label>
                                                 <input type="text" class="col-md-3 form-control" name="Tx_NombreCompleto" placeholder="" required/>
                                                 <br /><br />
-                                                <label class="col-md-3 "><span class="textOrange2">* </span>FECHA DE NACIMIENTO</label>
-                                                <input type="date" class="col-md-3 form-control" name="Fe_Nacimiento" placeholder="" required/>
+                                                <label class="col-md-3 "><span class="textOrange2"> </span>&nbsp;&nbsp; FECHA DE NACIMIENTO</label>
+                                                <input type="date" class="col-md-3 form-control" name="Fe_Nacimiento" placeholder="" />
                                                 <label class="col-md-3 pl-5"><span class="textOrange2">* </span>ENTIDAD ESTATAL</label>
                                                 <input type="text" class="col-md-3 form-control" name="Tx_Entidad" placeholder="" required/>
                                                 <br /><br />
                                                 <label class="col-md-3 "><span class="textOrange2">* </span>CARGO O POSICIÓN</label>
                                                 <input type="text" class="col-md-3 form-control" name="Tx_Cargo" placeholder="" required/>
+                                            <label class="col-md-2 pl-5 "><span class="textOrange2">  </span>&nbsp;&nbsp; PERÍODO <span style="color:lightgray"> (Mes de Año) </span></label>
+                                    <div class="col-md-1 float-right">
+                                        <small class=" px-0 mx-0 font-weight-bold float-right pt-2" style="color:gray">Desde</small><br /><br />
+                                        <small class=" px-0 mx-0  font-weight-bold float-right pt-2" style="color: gray">Hasta</small>
+                                    </div>
+                                    <div class="col-md-3 mx-0 px-0 form-row">
+                                        <input type="month" class="col-md-12 form-control px-1 mx-0" name="Tx_FeInicio"  /><br /><br />
+                                        <input type="month" class="col-md-12 form-control px-1  mx-0" name="Tx_FeFin" /><br /><br />
+                                            <div class="form-row col-md-12">
+                                                <input class="col-md-1 mt-1" id="Fam1_${count3}" type="checkbox" onclick="CheckedLaborando('Fam1_${count3}')" />
+                                                <label class="col-md-10">Actualmente laborando</label>
+                                                <input class="d-none" type="number" name="Fl_Laborando" id="LaborandoFam_Fam1_${count3}" value="0" />
+
+                                              </div>
+                                    </div>
                                             </div>`)
+        }
+
+
+        //funcion checked 
+        function CheckedLaborando(valor) {
+            const valorCheckbox = document.getElementById(valor);
+
+            if (valorCheckbox.checked) {
+                $('#LaborandoFam_' + valor).val(1);
+
+            } else {
+                $('#LaborandoFam_' + valor).val(0);
+            }
         }
     </script>

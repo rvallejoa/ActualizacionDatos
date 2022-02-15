@@ -52,9 +52,12 @@
             <tr>
                 <th scope="col" class="d-none">Codigo</th>
                 <th scope="col">Usuario </th>
-                <th scope="col" style="width:15%">Nombre Padre</th>
-                <th scope="col" style="width:15%">Nombre Madre</th>
-                <th scope="col" style="width:15%">Nombre Hermanos</th>
+                <th scope="col" style="width:15%"> Padre</th>
+                <th scope="col" style="width:15%"> Madre</th>
+                <th scope="col" style="width:15%"> Hermanos</th>
+                <th scope="col" style="width:15%"> Cónyuge/Pareja</th>
+                <th scope="col" style="width:15%"> Suegro</th>
+                <th scope="col" style="width:15%"> Suegra</th>
                 <th scope="col">Familiares trabajando en el estado</th>
                 <th scope="col">¿Ha ejercido algún cargo público?</th>
                 <th scope="col"style="width:12%">Fecha Registro</th>
@@ -78,6 +81,15 @@
                     }
 
                 </td>
+                <td>
+                    @item.Tx_NombrePareja @item.Tx_ApePatPareja @item.Tx_ApeMatPareja
+                </td>
+                <td>
+                    @item.Tx_NomSuegro @item.Tx_ApePatSuegro @item.Tx_ApeMatSuegro 
+                </td>
+                <td>
+                    @item.Tx_NomSuegra @item.Tx_ApePatSuegra @item.Tx_ApeMatSuegra
+                </td>
                 <td class="text-center">
                     @if (item.Fl_CosanguiniedadEstado == 1)
                     {
@@ -85,7 +97,10 @@
                         foreach (var item3 in item.FamiliaEstado)
                         {
                             <span>
-                                @item3.Tx_Parentesco |  @item3.Tx_NombreCompleto |  @item3.Fe_Nacimiento.Value.ToString("dd/MM/yyyy") | @item3.Tx_Entidad |  @item3.Tx_Cargo
+                                @item3.Tx_Parentesco |  @item3.Tx_NombreCompleto |  @(item3.Fe_Nacimiento.Value.ToString("dd/MM/yyyy") != "01/01/0001" ? item3.Fe_Nacimiento.Value.ToString("dd/MM/yyyy") :" - ") | @item3.Tx_Entidad |  @item3.Tx_Cargo | @item3.Tx_FeInicio  @(item3.Fl_Laborando == 1?" - Actualidad":item3.Tx_FeFin != "" ? " hasta " + item3.Tx_FeFin : "")
+
+
+
                             </span>
                             <br />
                         }
@@ -102,7 +117,8 @@
                         foreach (var item3 in item.CargoPublico)
                         {
                             <span>
-                                @item3.Tx_Entidad | @item3.Tx_Cargo | @item3.Fe_Fecha.Value.ToString("dd/MM/yyyy")
+                                @item3.Tx_Entidad | @item3.Tx_Cargo | @item3.Tx_FeInicioCargo  @(item3.Fl_LaborandoCargo == 1 ? " - Actualidad ": item3.Tx_FeFinCargo != "" ? " hasta " + item3.Tx_FeFinCargo : "")
+
                             </span><br />
 
                         }
@@ -128,9 +144,10 @@
                 <tr>
                     <th scope="col" class="d-none">Codigo</th>
                     <th scope="col" style="width:6%">Usuario</th>
-                    <th scope="col">Nombre Padre</th>
-                    <th scope="col" style="width:12%">Nombre Madre</th>
-                    <th scope="col" style="width:13%">Nombre Hermanos</th>
+                    <th scope="col">Padres</th>
+                    <th scope="col" style="width:13%"> Hermanos</th>
+                    <th scope="col" style="width:10%"> Cónyuge/Pareja</th>
+                    <th scope="col" style="width:10%"> Suegros</th>
                     <th scope="col">Familiares trabajando en el estado</th>
                     <th scope="col">¿Ha ejercido algún cargo público?</th>
                     <th scope="col">Fec. Registro</th>
@@ -144,8 +161,9 @@
                     <tr>
                         <th scope="row" class="d-none">@item.Co_Familia</th>
                         <td>@item.No_Usuario</td>
-                        <td>@item.Tx_NombresPadre @item.Tx_ApellidoPatPadre @item.Tx_ApellidoMatPadre</td>
-                        <td>@item.Tx_NombresMadre @item.Tx_ApellidoPatMadre @item.Tx_ApellidoMatMadre</td>
+                        <td> <b>- </b> @item.Tx_NombresPadre @item.Tx_ApellidoPatPadre @item.Tx_ApellidoMatPadre <br /> 
+                                                                                                                 <b>- </b> @item.Tx_NombresMadre @item.Tx_ApellidoPatMadre @item.Tx_ApellidoMatMadre</td>
+                       
                         <td>
                             <ul class="list-unstyled">
                                 @foreach (var item2 in item.Hermano)
@@ -155,30 +173,48 @@
                                 }
                             </ul>
                         </td>
+                        <td>
+                            @item.Tx_NombrePareja @item.Tx_ApePatPareja @item.Tx_ApeMatPareja
+                        </td>
+                        <td>
+                           @item.Tx_NomSuegro @item.Tx_ApePatSuegro @item.Tx_ApeMatSuegro <br />  @item.Tx_NomSuegra @item.Tx_ApePatSuegra @item.Tx_ApeMatSuegra
+                        </td>
                         <td class="text-center">
                             @if (item.Fl_CosanguiniedadEstado == 1)
                             {
-                                <ul style="text-align:left !important;" class="list-unstyled">
-                                    @foreach (var item3 in item.FamiliaEstado)
-                                    {
-                                        <li>
-                                            <i class="fad fa-users" title="Parentesco"></i>&nbsp;&nbsp;@item3.Tx_Parentesco
-                                        </li>
-                                        <li>
-                                            <i class="fad fa-user" title="Nombre Completo"></i>&nbsp;&nbsp;@item3.Tx_NombreCompleto
-                                        </li>
-                                        <li>
-                                            <i class="fad fa-calendar-alt" title="Fecha de Nacimiento"></i>&nbsp;&nbsp;@item3.Fe_Nacimiento.Value.ToString("dd/MM/yyyy")
-                                        </li>
-                                        <li>
-                                            <i class="fad fa-map-marked-alt" title="Entidad"></i>&nbsp;&nbsp;@item3.Tx_Entidad
-                                        </li>
-                                        <li>
-                                            <i class="fad fa-briefcase" title="Cargo"></i>&nbsp;&nbsp;@item3.Tx_Cargo
-                                        </li>
-                                        <hr class="my-1 " />
-                                    }
-                                </ul>
+                            <ul style="text-align:left !important;" class="list-unstyled">
+                                @foreach (var item3 in item.FamiliaEstado)
+                                {
+                                    <li>
+                                        <i class="fad fa-users" title="Parentesco"></i>&nbsp;&nbsp;@item3.Tx_Parentesco
+                                    </li>
+                                    <li>
+                                        <i class="fad fa-user" title="Nombre Completo"></i>&nbsp;&nbsp;@item3.Tx_NombreCompleto
+                                    </li>
+                                    <li>
+                                        <i class="fad fa-calendar-alt" title="Fecha de Nacimiento"></i>&nbsp;&nbsp;@(item3.Fe_Nacimiento.Value.ToString("dd/MM/yyyy") != "01/01/0001" ? item3.Fe_Nacimiento.Value.ToString("dd/MM/yyyy") :"")
+                                    </li>
+                                    <li>
+                                        <i class="fad fa-map-marked-alt" title="Entidad"></i>&nbsp;&nbsp;@item3.Tx_Entidad
+                                    </li>
+                                    <li>
+                                        <i class="fad fa-briefcase" title="Cargo"></i>&nbsp;&nbsp;@item3.Tx_Cargo
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-clock" title="Período"></i>&nbsp;&nbsp;@item3.Tx_FeInicio
+                                        @if (item3.Fl_Laborando == 1)
+                                        {
+                                            <span> - Actualidad</span>
+                                        }
+                                        else
+                                        {
+                                            @(item3.Tx_FeFin != "" ?  " hasta " + item3.Tx_FeFin : "")
+                                        }
+
+                                    </li>
+                                    <hr class="my-1 " />
+                                 }
+                            </ul>
                             }
                             else
                             {
@@ -198,7 +234,16 @@
                                             <i class="fad fa-briefcase" title="Cargo"></i>&nbsp;&nbsp;@item3.Tx_Cargo
                                         </li>
                                         <li>
-                                            <i class="fad fa-calendar-alt" title="Fecha"></i>&nbsp;&nbsp;@item3.Fe_Fecha.Value.ToString("dd/MM/yyyy")
+                                            <i class="fas fa-clock" title="Fecha"></i>&nbsp;&nbsp;@item3.Tx_FeInicioCargo
+                                            @if (item3.Fl_LaborandoCargo == 1)
+                                            {
+                                              <span> - Actualidad</span>
+                                            }
+                                            else
+                                            {
+                                                @(item3.Tx_FeFinCargo != "" ?  " hasta " + item3.Tx_FeFinCargo : "")
+                                            }
+
                                         </li>
                                         <hr class="my-1" />
 
