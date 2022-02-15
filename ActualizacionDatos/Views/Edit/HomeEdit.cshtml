@@ -477,7 +477,7 @@
                 </div>
 
                 <div class="modal-body textBlue px-5">
-                    <div>
+                    <div class="pt-4">
                         <p class="textBlue" style="font-size: 18px">
                             Hola <b style="font-size:1.1rem;">@ViewBag.nombreUsuario</b>, la última actualización de sus datos se realizó el
                             <b>
@@ -671,7 +671,7 @@
                 @using (Html.BeginForm("ConfirmarInfo", "Edit", FormMethod.Post, new { }))
                 {
                     <input class="d-none" name="codigoUsuario" value="@Model.Co_Familia" />
-                    <div class="text-center pb-4 pt-2">
+                    <div class="text-center pb-5 pt-2">
                         <button type="button" class="btn btn-orange text-white font-weight-bold mr-3" data-toggle="modal" data-target="#ModalConfirmacionInfo" > <i class="fas fa-check-double"></i> Confirmar Información</button>
                         <button type="button" class="btn btn-orange text-white font-weight-bold" data-dismiss="modal"> <i class="far fa-edit"></i> Editar Información</button>
                     </div>
