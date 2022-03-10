@@ -489,8 +489,7 @@
                                 {
                                     @Model.Fe_Actualizacion.Value.ToString("dd/MM/yyyy")
                                 }
-                            </b>. Por favor seleccione "Confirmar Información" si los datos ingresados se mantienen
-                            o caso contrario "Editar Información".
+                            </b>. Por favor seleccione "Editar Información" para realizar la actualización.
                         </p>
                     </div>
                     <br />
@@ -672,7 +671,7 @@
                 {
                     <input class="d-none" name="codigoUsuario" value="@Model.Co_Familia" />
                     <div class="text-center pb-5 pt-2">
-                        <button type="button" class="btn btn-orange text-white font-weight-bold mr-3" data-toggle="modal" data-target="#ModalConfirmacionInfo" > <i class="fas fa-check-double"></i> Confirmar Información</button>
+                        <button type="button" class="btn btn-orange text-white font-weight-bold mr-3 d-none" data-toggle="modal" data-target="#ModalConfirmacionInfo" > <i class="fas fa-check-double"></i> Confirmar Información</button>
                         <button type="button" class="btn btn-orange text-white font-weight-bold" data-dismiss="modal"> <i class="far fa-edit"></i> Editar Información</button>
                     </div>
                     <!-- Modal Confirmacion informacion  -->
