@@ -13,6 +13,9 @@ namespace ActualizacionDatos.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        //Se actualiza el link del GITHUB
+
+
         private IntranetEntities db = new IntranetEntities();
 
         public ActionResult Index()
