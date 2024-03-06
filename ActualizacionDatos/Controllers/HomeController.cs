@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using ActualizacionDatos.Models;
 
+
 namespace ActualizacionDatos.Controllers
 {
 
@@ -27,7 +28,7 @@ namespace ActualizacionDatos.Controllers
 
             //Obtener nombre de usuario logeado
             var usuarioDet = db.Usuario.Where(x => x.No_Usuario == usuario).FirstOrDefault();
-           
+
             ViewBag.nombreUsuario = usuarioDet.Tx_Nombre;
 
 
@@ -40,22 +41,22 @@ namespace ActualizacionDatos.Controllers
             {
                 return RedirectToAction("HomeEdit", "Edit");
             }
-           
+
         }
 
         [HttpPost]
-        public ActionResult Index(Familia familia, string[] Tx_NombresHermano, string[] Tx_ApellidoPatHermano,string[] Tx_ApellidoMatHermano, 
-            string[] Tx_Parentesco, string[] Tx_NombreCompleto,DateTime[] Fe_Nacimiento,string[] Tx_Entidad,string[] Tx_Cargo, string[] EntidadEstatal, 
-            string[] Cargo, string[] Tx_FeInicio, string[] Tx_FeFin,string[] Tx_FeInicioCargo , string[] Tx_FeFinCargo, int[] Fl_Laborando, int[] Fl_LaborandoCargo)
+        public ActionResult Index(Familia familia, string[] Tx_NombresHermano, string[] Tx_ApellidoPatHermano, string[] Tx_ApellidoMatHermano,
+            string[] Tx_Parentesco, string[] Tx_NombreCompleto, DateTime[] Fe_Nacimiento, string[] Tx_Entidad, string[] Tx_Cargo, string[] EntidadEstatal,
+            string[] Cargo, string[] Tx_FeInicio, string[] Tx_FeFin, string[] Tx_FeInicioCargo, string[] Tx_FeFinCargo, int[] Fl_Laborando, int[] Fl_LaborandoCargo)
         {
             string name = User.Identity.Name;
             int position = name.IndexOf('@');
 
-            familia.No_Usuario = name.Substring(0, position); 
+            familia.No_Usuario = name.Substring(0, position);
             familia.Fe_Registro = DateTime.Now;
             familia.Fl_Activo = 1;
             db.Familia.Add(familia);
-         
+
 
             if (db.SaveChanges() == 1)
             {
@@ -100,7 +101,7 @@ namespace ActualizacionDatos.Controllers
                     }
                 }
 
-                if (familia.Fl_CargoPublico==1)
+                if (familia.Fl_CargoPublico == 1)
                 {
                     //Se agrega la logica para Cargos publicos
                     CargoPublico temporal3;
@@ -123,7 +124,7 @@ namespace ActualizacionDatos.Controllers
                     }
                 }
 
-               
+
 
             }
 
@@ -132,24 +133,100 @@ namespace ActualizacionDatos.Controllers
 
         public ActionResult RegistroCorrecto()
         {
-         
+
 
             return View();
         }
+
+        //public ActionResult Listado()
+        //{
+        //    string name = User.Identity.Name;
+        //    int position = name.IndexOf('@');
+        //    ViewBag.usuario = name.Substring(0, position);
+
+        //    DateTime thisDay = DateTime.Today;
+        //    ViewBag.fecha = thisDay.ToString("D");
+
+        //    List<Familia> Listado = db.Familia.Where(x => x.Fl_Activo == 1).ToList();
+        //   // List<Usp_ListadoFamilia1_Result> ListadoCopy = db.Usp_ListadoFamilia().ToList();
+        //    return View(Listado);
+
+        //}
+        //public ActionResult ListadoCopy()
+        //{
+        //    string name = User.Identity.Name;
+        //    int position = name.IndexOf('@');
+        //    ViewBag.usuario = name.Substring(0, position);
+
+        //    DateTime thisDay = DateTime.Today;
+        //    ViewBag.fecha = thisDay.ToString("D");
+
+        //    List<Usp_ListadoFamilia_Result> ListadoCopy = db.Usp_ListadoFamilia().ToList();
+
+        //    return View(ListadoCopy);
+
+        //}
+        //public ActionResult Listado()
+        //{
+        //    string name = User.Identity.Name;
+        //    int position = name.IndexOf('@');
+        //    ViewBag.usuario = name.Substring(0, position);
+
+        //    DateTime thisDay = DateTime.Today;
+        //    ViewBag.fecha = thisDay.ToString("D");
+
+        //    // Obtener los resultados del stored procedure Usp_ListadoFamilia
+        //    List<Usp_ListadoFamilia5_Result> resultados = db.Usp_ListadoFamilia5().ToList();
+        //    List<CargoPublico> Listado = db.CargoPublico.ToList();
+        //    // Crear una lista de Familia donde fusionaremos las propiedades
+        //    List<Familia> familias = new List<Familia>();
+        //     familias =db.Familia.ToList();
+        //    // Iterar sobre los resultados del procedimiento almacenado
+        //    foreach (var resultado in resultados)
+        //    {
+        //        // Crear una nueva instancia de Familia
+        //        Familia familia = new Familia();
+                
+        //        // Asignar las propiedades específicas de Usp_ListadoFamilia_Result a la instancia de Familia
+        //        familia.Tx_NombreCompleto = resultado.Tx_NombreCompleto;
+        //        familia.No_Cargo = resultado.No_Cargo;
+        //        familia.ApellidosMadre = resultado.ApellidosMadre;
+        //        familia.ApellidosPadre = resultado.ApellidosPadre;
+        //        familia.Hermanos = resultado.Hermanos;
+        //        familia.Pareja = resultado.Pareja;
+        //        familia.Suegro = resultado.Suegro;
+        //        familia.Suegra = resultado.Suegra;
+        //        familia.FamiliarEstadoYo= resultado.FamiliarEstadoYo;
+        //        familia.CargoEstado= resultado.CargoEstado;
+        //        familia.EstadoYo = resultado.EstadoYo;
+        //        familia.Registro= resultado.Registro;
+        //        familia.Actualizacion= resultado.Actualizacion;
+               
+                                                                                                                   
+                                                                                                                
+        //        familias.Add(familia);
+        //    }
+
+        //    return View(familias);
+        //}
 
         public ActionResult Listado()
         {
             string name = User.Identity.Name;
             int position = name.IndexOf('@');
-            ViewBag.usuario= name.Substring(0, position);
-           
+            ViewBag.usuario = name.Substring(0, position);
+
             DateTime thisDay = DateTime.Today;
-            ViewBag.fecha=thisDay.ToString("D");
+            ViewBag.fecha = thisDay.ToString("D");
 
-            List<Familia> Listado = db.Familia.Where(x=>x.Fl_Activo == 1).ToList();
+            // Obtener los resultados del stored procedure Usp_ListadoFamilia5
+            List<Usp_ListadoFamilia11_Result> resultados = db.Usp_ListadoFamilia11().ToList();
 
-            return View(Listado);
-
+            return View(resultados);
         }
+
+
+
+
     }
 }

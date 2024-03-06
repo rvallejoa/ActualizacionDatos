@@ -12,6 +12,8 @@ namespace ActualizacionDatos.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class IntranetEntities : DbContext
     {
@@ -30,5 +32,55 @@ namespace ActualizacionDatos.Models
         public virtual DbSet<FamiliaEstado> FamiliaEstado { get; set; }
         public virtual DbSet<Hermano> Hermano { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+    
+        public virtual ObjectResult<Usp_ListadoFamilia2_Result> Usp_ListadoFamilia2()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListadoFamilia2_Result>("Usp_ListadoFamilia2");
+        }
+    
+        public virtual ObjectResult<Usp_ListadoFamilia3_Result> Usp_ListadoFamilia3()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListadoFamilia3_Result>("Usp_ListadoFamilia3");
+        }
+    
+        public virtual ObjectResult<Usp_ListadoFamilia4_Result> Usp_ListadoFamilia4()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListadoFamilia4_Result>("Usp_ListadoFamilia4");
+        }
+    
+        public virtual ObjectResult<Usp_ListadoFamilia5_Result> Usp_ListadoFamilia5()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListadoFamilia5_Result>("Usp_ListadoFamilia5");
+        }
+    
+        public virtual ObjectResult<Usp_ListadoFamilia6_Result> Usp_ListadoFamilia6()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListadoFamilia6_Result>("Usp_ListadoFamilia6");
+        }
+    
+        public virtual ObjectResult<Usp_ListadoFamilia7_Result> Usp_ListadoFamilia7()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListadoFamilia7_Result>("Usp_ListadoFamilia7");
+        }
+    
+        public virtual ObjectResult<Usp_ListadoFamilia8_Result> Usp_ListadoFamilia8()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListadoFamilia8_Result>("Usp_ListadoFamilia8");
+        }
+    
+        public virtual ObjectResult<Usp_ListadoFamilia9_Result> Usp_ListadoFamilia9()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListadoFamilia9_Result>("Usp_ListadoFamilia9");
+        }
+    
+        public virtual ObjectResult<Usp_ListadoFamilia10_Result> Usp_ListadoFamilia10()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListadoFamilia10_Result>("Usp_ListadoFamilia10");
+        }
+    
+        public virtual ObjectResult<Usp_ListadoFamilia11_Result> Usp_ListadoFamilia11()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListadoFamilia11_Result>("Usp_ListadoFamilia11");
+        }
     }
 }

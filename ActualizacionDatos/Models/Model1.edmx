@@ -151,6 +151,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Usp_ListadoFamilia10" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListadoFamilia11" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListadoFamilia2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListadoFamilia3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListadoFamilia4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListadoFamilia5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListadoFamilia6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListadoFamilia7" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListadoFamilia8" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListadoFamilia9" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="IntranetModelStoreContainer">
           <EntitySet Name="CargoPublico" EntityType="Self.CargoPublico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Familia" EntityType="Self.Familia" Schema="dbo" store:Type="Tables" />
@@ -304,6 +314,16 @@
             <End Role="Hermano" EntitySet="Hermano" />
           </AssociationSet>
           <EntitySet Name="Usuario" EntityType="IntranetModel.Usuario" />
+          <FunctionImport Name="Usp_ListadoFamilia2" ReturnType="Collection(IntranetModel.Usp_ListadoFamilia2_Result)" />
+          <FunctionImport Name="Usp_ListadoFamilia3" ReturnType="Collection(IntranetModel.Usp_ListadoFamilia3_Result)" />
+          <FunctionImport Name="Usp_ListadoFamilia4" ReturnType="Collection(IntranetModel.Usp_ListadoFamilia4_Result)" />
+          <FunctionImport Name="Usp_ListadoFamilia5" ReturnType="Collection(IntranetModel.Usp_ListadoFamilia5_Result)" />
+          <FunctionImport Name="Usp_ListadoFamilia6" ReturnType="Collection(IntranetModel.Usp_ListadoFamilia6_Result)" />
+          <FunctionImport Name="Usp_ListadoFamilia7" ReturnType="Collection(IntranetModel.Usp_ListadoFamilia7_Result)" />
+          <FunctionImport Name="Usp_ListadoFamilia8" ReturnType="Collection(IntranetModel.Usp_ListadoFamilia8_Result)" />
+          <FunctionImport Name="Usp_ListadoFamilia9" ReturnType="Collection(IntranetModel.Usp_ListadoFamilia9_Result)" />
+          <FunctionImport Name="Usp_ListadoFamilia10" ReturnType="Collection(IntranetModel.Usp_ListadoFamilia10_Result)" />
+          <FunctionImport Name="Usp_ListadoFamilia11" ReturnType="Collection(IntranetModel.Usp_ListadoFamilia11_Result)" />
         </EntityContainer>
         <EntityType Name="Usuario">
           <Key>
@@ -345,6 +365,181 @@
           <Property Name="Tx_CuentaSUNARP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Tx_Secretaria" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="Usp_ListadoFamilia2_Result">
+          <Property Type="String" Name="Tx_NombreCompleto" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="No_Cargo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ApellidosPadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="ApellidosMadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Hermanos" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Pareja" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegro" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegra" Nullable="false" MaxLength="222" />
+          <Property Type="Int32" Name="FamiliaEstadoConsan" Nullable="true" />
+          <Property Type="Int32" Name="CargoEstado" Nullable="true" />
+          <Property Type="String" Name="Registro" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Actualizacion" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="pariente" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="nombrefamiliar" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="fechafamiliar" Nullable="true" />
+          <Property Type="String" Name="entidadfamiliar" Nullable="true" MaxLength="450" />
+          <Property Type="String" Name="cargopublicofamiliar" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="entidadyo" Nullable="true" MaxLength="450" />
+          <Property Type="String" Name="cargopublicoyo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="fechacargo" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListadoFamilia3_Result">
+          <Property Type="String" Name="Tx_NombreCompleto" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="No_Cargo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="ApellidosPadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="ApellidosMadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="FamiliarEstado" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Hermanos" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Pareja" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegro" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegra" Nullable="false" MaxLength="222" />
+          <Property Type="Int32" Name="FamiliaEstadoConsan" Nullable="true" />
+          <Property Type="Int32" Name="CargoEstado" Nullable="true" />
+          <Property Type="String" Name="Registro" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Actualizacion" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Co_Familia" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListadoFamilia4_Result">
+          <Property Type="String" Name="Tx_NombreCompleto" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="No_Cargo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="ApellidosPadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="ApellidosMadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="FamiliarEstado" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Hermanos" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Pareja" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegro" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegra" Nullable="false" MaxLength="222" />
+          <Property Type="Int32" Name="FamiliaEstadoConsan" Nullable="true" />
+          <Property Type="Int32" Name="CargoEstado" Nullable="true" />
+          <Property Type="String" Name="Registro" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Actualizacion" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="mifamilia" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListadoFamilia5_Result">
+          <Property Type="String" Name="Tx_NombreCompleto" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="No_Cargo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="ApellidosPadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="ApellidosMadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="FamiliarEstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Hermanos" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Pareja" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegro" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegra" Nullable="false" MaxLength="222" />
+          <Property Type="Int32" Name="FamiliaEstadoConsan" Nullable="true" />
+          <Property Type="Int32" Name="CargoEstado" Nullable="true" />
+          <Property Type="String" Name="Registro" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Actualizacion" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="mifamilia" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListadoFamilia6_Result">
+          <Property Type="String" Name="Tx_NombreCompleto" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="No_Cargo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="ApellidosPadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="ApellidosMadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="FamiliarEstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Hermanos" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Pareja" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegro" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegra" Nullable="false" MaxLength="222" />
+          <Property Type="Int32" Name="FamiliaEstadoConsan" Nullable="true" />
+          <Property Type="Int32" Name="CargoEstado" Nullable="true" />
+          <Property Type="String" Name="Registro" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Actualizacion" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="mifamilia" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListadoFamilia7_Result">
+          <Property Type="String" Name="Tx_NombreCompleto" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="No_Cargo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="ApellidosPadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="ApellidosMadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="FamiliarEstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Hermanos" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Pareja" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegro" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegra" Nullable="false" MaxLength="222" />
+          <Property Type="Int32" Name="FamiliaEstadoConsan" Nullable="true" />
+          <Property Type="Int32" Name="CargoEstado" Nullable="true" />
+          <Property Type="String" Name="Registro" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Actualizacion" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="mifamilia" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListadoFamilia8_Result">
+          <Property Type="String" Name="Tx_NombreCompleto" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="No_Cargo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="ApellidosPadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="ApellidosMadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="FamiliarEstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Hermanos" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Pareja" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegro" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegra" Nullable="false" MaxLength="222" />
+          <Property Type="Int32" Name="FamiliaEstadoConsan" Nullable="true" />
+          <Property Type="Int32" Name="CargoEstado" Nullable="true" />
+          <Property Type="DateTime" Name="Registro" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Actualizacion" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="mifamilia" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListadoFamilia9_Result">
+          <Property Type="String" Name="Tx_NombreCompleto" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="No_Cargo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="ApellidosPadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="ApellidosMadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="FamiliarEstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Hermanos" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Pareja" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegro" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegra" Nullable="false" MaxLength="222" />
+          <Property Type="Int32" Name="FamiliaEstadoConsan" Nullable="true" />
+          <Property Type="Int32" Name="CargoEstado" Nullable="true" />
+          <Property Type="String" Name="Registro" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Actualizacion" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="mifamilia" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListadoFamilia10_Result">
+          <Property Type="String" Name="Tx_NombreCompleto" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="No_Cargo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="ApellidosPadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="ApellidosMadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="FamiliarEstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Hermanos" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Pareja" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegro" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegra" Nullable="false" MaxLength="222" />
+          <Property Type="Int32" Name="FamiliaEstadoConsan" Nullable="true" />
+          <Property Type="Int32" Name="CargoEstado" Nullable="true" />
+          <Property Type="String" Name="Registro" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Actualizacion" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="mifamilia" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Usp_ListadoFamilia11_Result">
+          <Property Type="String" Name="Tx_NombreCompleto" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="No_Cargo" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="ApellidosPadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="ApellidosMadre" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="FamiliarEstadoYo" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Hermanos" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="Pareja" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegro" Nullable="false" MaxLength="222" />
+          <Property Type="String" Name="Suegra" Nullable="false" MaxLength="222" />
+          <Property Type="Int32" Name="FamiliaEstadoConsan" Nullable="true" />
+          <Property Type="Int32" Name="CargoEstado" Nullable="true" />
+          <Property Type="String" Name="Registro" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Actualizacion" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="mifamilia" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -466,6 +661,221 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListadoFamilia2" FunctionName="IntranetModel.Store.Usp_ListadoFamilia2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntranetModel.Usp_ListadoFamilia2_Result">
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="No_Cargo" ColumnName="No_Cargo" />
+                <ScalarProperty Name="ApellidosPadre" ColumnName="ApellidosPadre" />
+                <ScalarProperty Name="ApellidosMadre" ColumnName="ApellidosMadre" />
+                <ScalarProperty Name="Hermanos" ColumnName="Hermanos" />
+                <ScalarProperty Name="Pareja" ColumnName="Pareja" />
+                <ScalarProperty Name="Suegro" ColumnName="Suegro" />
+                <ScalarProperty Name="Suegra" ColumnName="Suegra" />
+                <ScalarProperty Name="FamiliaEstadoConsan" ColumnName="FamiliaEstadoConsan" />
+                <ScalarProperty Name="CargoEstado" ColumnName="CargoEstado" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Actualizacion" ColumnName="Actualizacion" />
+                <ScalarProperty Name="pariente" ColumnName="pariente" />
+                <ScalarProperty Name="nombrefamiliar" ColumnName="nombrefamiliar" />
+                <ScalarProperty Name="fechafamiliar" ColumnName="fechafamiliar" />
+                <ScalarProperty Name="entidadfamiliar" ColumnName="entidadfamiliar" />
+                <ScalarProperty Name="cargopublicofamiliar" ColumnName="cargopublicofamiliar" />
+                <ScalarProperty Name="entidadyo" ColumnName="entidadyo" />
+                <ScalarProperty Name="cargopublicoyo" ColumnName="cargopublicoyo" />
+                <ScalarProperty Name="fechacargo" ColumnName="fechacargo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListadoFamilia3" FunctionName="IntranetModel.Store.Usp_ListadoFamilia3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntranetModel.Usp_ListadoFamilia3_Result">
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="No_Cargo" ColumnName="No_Cargo" />
+                <ScalarProperty Name="EstadoYo" ColumnName="EstadoYo" />
+                <ScalarProperty Name="ApellidosPadre" ColumnName="ApellidosPadre" />
+                <ScalarProperty Name="ApellidosMadre" ColumnName="ApellidosMadre" />
+                <ScalarProperty Name="FamiliarEstado" ColumnName="FamiliarEstado" />
+                <ScalarProperty Name="Hermanos" ColumnName="Hermanos" />
+                <ScalarProperty Name="Pareja" ColumnName="Pareja" />
+                <ScalarProperty Name="Suegro" ColumnName="Suegro" />
+                <ScalarProperty Name="Suegra" ColumnName="Suegra" />
+                <ScalarProperty Name="FamiliaEstadoConsan" ColumnName="FamiliaEstadoConsan" />
+                <ScalarProperty Name="CargoEstado" ColumnName="CargoEstado" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Actualizacion" ColumnName="Actualizacion" />
+                <ScalarProperty Name="Co_Familia" ColumnName="Co_Familia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListadoFamilia4" FunctionName="IntranetModel.Store.Usp_ListadoFamilia4">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntranetModel.Usp_ListadoFamilia4_Result">
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="No_Cargo" ColumnName="No_Cargo" />
+                <ScalarProperty Name="EstadoYo" ColumnName="EstadoYo" />
+                <ScalarProperty Name="ApellidosPadre" ColumnName="ApellidosPadre" />
+                <ScalarProperty Name="ApellidosMadre" ColumnName="ApellidosMadre" />
+                <ScalarProperty Name="FamiliarEstado" ColumnName="FamiliarEstado" />
+                <ScalarProperty Name="Hermanos" ColumnName="Hermanos" />
+                <ScalarProperty Name="Pareja" ColumnName="Pareja" />
+                <ScalarProperty Name="Suegro" ColumnName="Suegro" />
+                <ScalarProperty Name="Suegra" ColumnName="Suegra" />
+                <ScalarProperty Name="FamiliaEstadoConsan" ColumnName="FamiliaEstadoConsan" />
+                <ScalarProperty Name="CargoEstado" ColumnName="CargoEstado" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Actualizacion" ColumnName="Actualizacion" />
+                <ScalarProperty Name="mifamilia" ColumnName="mifamilia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListadoFamilia5" FunctionName="IntranetModel.Store.Usp_ListadoFamilia5">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntranetModel.Usp_ListadoFamilia5_Result">
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="No_Cargo" ColumnName="No_Cargo" />
+                <ScalarProperty Name="EstadoYo" ColumnName="EstadoYo" />
+                <ScalarProperty Name="ApellidosPadre" ColumnName="ApellidosPadre" />
+                <ScalarProperty Name="ApellidosMadre" ColumnName="ApellidosMadre" />
+                <ScalarProperty Name="FamiliarEstadoYo" ColumnName="FamiliarEstadoYo" />
+                <ScalarProperty Name="Hermanos" ColumnName="Hermanos" />
+                <ScalarProperty Name="Pareja" ColumnName="Pareja" />
+                <ScalarProperty Name="Suegro" ColumnName="Suegro" />
+                <ScalarProperty Name="Suegra" ColumnName="Suegra" />
+                <ScalarProperty Name="FamiliaEstadoConsan" ColumnName="FamiliaEstadoConsan" />
+                <ScalarProperty Name="CargoEstado" ColumnName="CargoEstado" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Actualizacion" ColumnName="Actualizacion" />
+                <ScalarProperty Name="mifamilia" ColumnName="mifamilia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListadoFamilia6" FunctionName="IntranetModel.Store.Usp_ListadoFamilia6">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntranetModel.Usp_ListadoFamilia6_Result">
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="No_Cargo" ColumnName="No_Cargo" />
+                <ScalarProperty Name="EstadoYo" ColumnName="EstadoYo" />
+                <ScalarProperty Name="ApellidosPadre" ColumnName="ApellidosPadre" />
+                <ScalarProperty Name="ApellidosMadre" ColumnName="ApellidosMadre" />
+                <ScalarProperty Name="FamiliarEstadoYo" ColumnName="FamiliarEstadoYo" />
+                <ScalarProperty Name="Hermanos" ColumnName="Hermanos" />
+                <ScalarProperty Name="Pareja" ColumnName="Pareja" />
+                <ScalarProperty Name="Suegro" ColumnName="Suegro" />
+                <ScalarProperty Name="Suegra" ColumnName="Suegra" />
+                <ScalarProperty Name="FamiliaEstadoConsan" ColumnName="FamiliaEstadoConsan" />
+                <ScalarProperty Name="CargoEstado" ColumnName="CargoEstado" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Actualizacion" ColumnName="Actualizacion" />
+                <ScalarProperty Name="mifamilia" ColumnName="mifamilia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListadoFamilia7" FunctionName="IntranetModel.Store.Usp_ListadoFamilia7">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntranetModel.Usp_ListadoFamilia7_Result">
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="No_Cargo" ColumnName="No_Cargo" />
+                <ScalarProperty Name="EstadoYo" ColumnName="EstadoYo" />
+                <ScalarProperty Name="ApellidosPadre" ColumnName="ApellidosPadre" />
+                <ScalarProperty Name="ApellidosMadre" ColumnName="ApellidosMadre" />
+                <ScalarProperty Name="FamiliarEstadoYo" ColumnName="FamiliarEstadoYo" />
+                <ScalarProperty Name="Hermanos" ColumnName="Hermanos" />
+                <ScalarProperty Name="Pareja" ColumnName="Pareja" />
+                <ScalarProperty Name="Suegro" ColumnName="Suegro" />
+                <ScalarProperty Name="Suegra" ColumnName="Suegra" />
+                <ScalarProperty Name="FamiliaEstadoConsan" ColumnName="FamiliaEstadoConsan" />
+                <ScalarProperty Name="CargoEstado" ColumnName="CargoEstado" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Actualizacion" ColumnName="Actualizacion" />
+                <ScalarProperty Name="mifamilia" ColumnName="mifamilia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListadoFamilia8" FunctionName="IntranetModel.Store.Usp_ListadoFamilia8">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntranetModel.Usp_ListadoFamilia8_Result">
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="No_Cargo" ColumnName="No_Cargo" />
+                <ScalarProperty Name="EstadoYo" ColumnName="EstadoYo" />
+                <ScalarProperty Name="ApellidosPadre" ColumnName="ApellidosPadre" />
+                <ScalarProperty Name="ApellidosMadre" ColumnName="ApellidosMadre" />
+                <ScalarProperty Name="FamiliarEstadoYo" ColumnName="FamiliarEstadoYo" />
+                <ScalarProperty Name="Hermanos" ColumnName="Hermanos" />
+                <ScalarProperty Name="Pareja" ColumnName="Pareja" />
+                <ScalarProperty Name="Suegro" ColumnName="Suegro" />
+                <ScalarProperty Name="Suegra" ColumnName="Suegra" />
+                <ScalarProperty Name="FamiliaEstadoConsan" ColumnName="FamiliaEstadoConsan" />
+                <ScalarProperty Name="CargoEstado" ColumnName="CargoEstado" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Actualizacion" ColumnName="Actualizacion" />
+                <ScalarProperty Name="mifamilia" ColumnName="mifamilia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListadoFamilia9" FunctionName="IntranetModel.Store.Usp_ListadoFamilia9">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntranetModel.Usp_ListadoFamilia9_Result">
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="No_Cargo" ColumnName="No_Cargo" />
+                <ScalarProperty Name="EstadoYo" ColumnName="EstadoYo" />
+                <ScalarProperty Name="ApellidosPadre" ColumnName="ApellidosPadre" />
+                <ScalarProperty Name="ApellidosMadre" ColumnName="ApellidosMadre" />
+                <ScalarProperty Name="FamiliarEstadoYo" ColumnName="FamiliarEstadoYo" />
+                <ScalarProperty Name="Hermanos" ColumnName="Hermanos" />
+                <ScalarProperty Name="Pareja" ColumnName="Pareja" />
+                <ScalarProperty Name="Suegro" ColumnName="Suegro" />
+                <ScalarProperty Name="Suegra" ColumnName="Suegra" />
+                <ScalarProperty Name="FamiliaEstadoConsan" ColumnName="FamiliaEstadoConsan" />
+                <ScalarProperty Name="CargoEstado" ColumnName="CargoEstado" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Actualizacion" ColumnName="Actualizacion" />
+                <ScalarProperty Name="mifamilia" ColumnName="mifamilia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListadoFamilia10" FunctionName="IntranetModel.Store.Usp_ListadoFamilia10">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntranetModel.Usp_ListadoFamilia10_Result">
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="No_Cargo" ColumnName="No_Cargo" />
+                <ScalarProperty Name="EstadoYo" ColumnName="EstadoYo" />
+                <ScalarProperty Name="ApellidosPadre" ColumnName="ApellidosPadre" />
+                <ScalarProperty Name="ApellidosMadre" ColumnName="ApellidosMadre" />
+                <ScalarProperty Name="FamiliarEstadoYo" ColumnName="FamiliarEstadoYo" />
+                <ScalarProperty Name="Hermanos" ColumnName="Hermanos" />
+                <ScalarProperty Name="Pareja" ColumnName="Pareja" />
+                <ScalarProperty Name="Suegro" ColumnName="Suegro" />
+                <ScalarProperty Name="Suegra" ColumnName="Suegra" />
+                <ScalarProperty Name="FamiliaEstadoConsan" ColumnName="FamiliaEstadoConsan" />
+                <ScalarProperty Name="CargoEstado" ColumnName="CargoEstado" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Actualizacion" ColumnName="Actualizacion" />
+                <ScalarProperty Name="mifamilia" ColumnName="mifamilia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListadoFamilia11" FunctionName="IntranetModel.Store.Usp_ListadoFamilia11">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IntranetModel.Usp_ListadoFamilia11_Result">
+                <ScalarProperty Name="Tx_NombreCompleto" ColumnName="Tx_NombreCompleto" />
+                <ScalarProperty Name="No_Cargo" ColumnName="No_Cargo" />
+                <ScalarProperty Name="EstadoYo" ColumnName="EstadoYo" />
+                <ScalarProperty Name="ApellidosPadre" ColumnName="ApellidosPadre" />
+                <ScalarProperty Name="ApellidosMadre" ColumnName="ApellidosMadre" />
+                <ScalarProperty Name="FamiliarEstadoYo" ColumnName="FamiliarEstadoYo" />
+                <ScalarProperty Name="Hermanos" ColumnName="Hermanos" />
+                <ScalarProperty Name="Pareja" ColumnName="Pareja" />
+                <ScalarProperty Name="Suegro" ColumnName="Suegro" />
+                <ScalarProperty Name="Suegra" ColumnName="Suegra" />
+                <ScalarProperty Name="FamiliaEstadoConsan" ColumnName="FamiliaEstadoConsan" />
+                <ScalarProperty Name="CargoEstado" ColumnName="CargoEstado" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="Actualizacion" ColumnName="Actualizacion" />
+                <ScalarProperty Name="mifamilia" ColumnName="mifamilia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
